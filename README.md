@@ -1,1 +1,1 @@
-# 7thSemProject
+How to
