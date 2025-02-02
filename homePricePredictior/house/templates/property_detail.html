@@ -1,0 +1,122 @@
+{% extends 'index.html' %} {% block title %}Seller Detail{% endblock %}
+<!--jfghsd-->
+{% block content %} {% load static %}
+
+<main class="main">
+  <!-- Page Title -->
+  <div class="page-title" data-aos="fade">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-lg-8">
+            <h1>{{ property.address }}</h1>
+            <p class="mb-0">{{ property.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="current">{{ property.title }}</li>
+        </ol>
+      </div>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <!-- Real Estate 2 Section -->
+  <section id="real-estate-2" class="real-estate-2 section">
+    <div class="container" data-aos="fade-up">
+      <div class="row justify-content-between gy-4 mt-4">
+        <!-- House Image and Details -->
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="portfolio-description">
+            <!-- Single House Image -->
+            {% if property.images.all %}
+            <img
+              src="{{ property.images.first.image.url }}"
+              alt="House Image"
+              class="img-fluid mb-4"
+            />
+            {% endif %}
+
+            <!-- House Details -->
+            <h2>Property Details</h2>
+            <p><strong>Price:</strong> Rs.{{ property.price }}</p>
+            <p><strong>Title:</strong> {{ property.title }}</p>
+            <p><strong>City:</strong> {{ property.city }}</p>
+            <p><strong>Area:</strong> {{ property.building_area }}</p>
+          </div>
+        </div>
+
+        <!-- Seller Details -->
+        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="portfolio-info">
+            <h3>Seller Details</h3>
+            <ul>
+              <li><strong>Name:</strong> {{ property.seller.name }}</li>
+              <li><strong>Location:</strong> {{ property.seller.location }}</li>
+              <li><strong>Email:</strong> {{ property.seller.email }}</li>
+              <li><strong>Phone:</strong> {{ property.seller.phone }}</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Message Form -->
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="portfolio-description">
+            <h3>Contact the Seller</h3>
+
+            <!-- Display error message if form validation fails -->
+            {% if error_message %}
+            <div class="alert alert-danger">{{ error_message }}</div>
+            {% endif %}
+
+            <!-- Message Form -->
+            <form method="POST">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="sender_name" class="form-label">Your Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="sender_name"
+                  name="sender_name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="sender_email" class="form-label">Your Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="sender_email"
+                  name="sender_email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="content" class="form-label">Message</label>
+                <textarea
+                  class="form-control"
+                  id="content"
+                  name="content"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-success">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Real Estate 2 Section -->
+</main>
+
+{% endblock %}

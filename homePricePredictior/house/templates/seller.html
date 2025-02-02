@@ -1,0 +1,341 @@
+{% extends 'index.html' %} {% load static %} {% block title %}Sell{% endblock %}
+{% block content %}
+<main class="main">
+  <!-- Page Title -->
+  <div class="page-title" data-aos="fade">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-lg-8">
+            <h1>Sell Property</h1>
+            <p class="mb-0">
+              "Ready to sell your property? Get an accurate estimate and connect
+              with buyers in no time!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="current">Seller</li>
+        </ol>
+      </div>
+    </nav>
+  </div>
+
+  <section class="section-property section-t4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <!-- <h2 class="title-a">List Your Property</h2> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              {% if messages %}
+              <div class="alert-container">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+              <form
+                method="POST"
+                class="property-form"
+                enctype="multipart/form-data"
+              >
+                {% csrf_token %}
+
+                <!-- Title -->
+                <div class="form-group mb-3">
+                  <label for="title" class="form-label"
+                    >Title <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    placeholder="House for Sale"
+                    name="title"
+                    required
+                  />
+                </div>
+
+                <!-- City Dropdown -->
+                <div class="form-group mb-3">
+                  <label for="city" class="form-label"
+                    >City <span class="text-danger">*</span></label
+                  >
+                  <select class="form-control" id="city" name="city" required>
+                    <option value="">Select City</option>
+                    <option value="Kathmandu">Kathmandu</option>
+                    <option value="Pokhara">Pokhara</option>
+                    <option value="Lalitpur">Lalitpur</option>
+                    <option value="Bhaktapur">Bhaktapur</option>
+                  </select>
+                </div>
+
+                <!-- Area -->
+                <div class="form-group mb-3">
+                  <label for="area" class="form-label"
+                    >Area (Aana) <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    class="form-control"
+                    id="area"
+                    placeholder="e.g. 5"
+                    name="area"
+                    required
+                  />
+                </div>
+
+                <!-- Bedrooms, Bathrooms, and Floor Number -->
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group mb-3">
+                      <label for="bedrooms" class="form-label"
+                        >Bedrooms <span class="text-danger">*</span></label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="bedrooms"
+                        placeholder="e.g. 3"
+                        name="bedrooms"
+                        min="0"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group mb-3">
+                      <label for="bathrooms" class="form-label"
+                        >Bathrooms <span class="text-danger">*</span></label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="bathrooms"
+                        placeholder="e.g. 2"
+                        name="bathrooms"
+                        min="0"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group mb-3">
+                      <label for="floor_number" class="form-label"
+                        >Floor Number <span class="text-danger">*</span></label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="floor_number"
+                        placeholder="e.g. 2"
+                        name="floor_number"
+                        min="0"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Parking Space -->
+                <div class="form-group mb-3">
+                  <label for="parking_space" class="form-label"
+                    >Parking Space Available
+                    <span class="text-danger">*</span></label
+                  >
+                  <select
+                    class="form-control"
+                    id="parking_space"
+                    name="parking_space"
+                    required
+                  >
+                    <option value="">Select Yes/No</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+
+                <!-- Year Built -->
+                <div class="form-group mb-3">
+                  <label for="year_built" class="form-label"
+                    >Year Built <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="year_built"
+                    placeholder="e.g. 2080"
+                    name="year_built"
+                    min="1900"
+                    required
+                  />
+                </div>
+
+                <!-- Building Area -->
+                <div class="form-group mb-3">
+                  <label for="building_area" class="form-label"
+                    >Building Area (Aana)
+                    <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    class="form-control"
+                    id="building_area"
+                    placeholder="e.g. 5"
+                    name="building_area"
+                    required
+                  />
+                </div>
+
+                <!-- Road Width and Type -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="road_width" class="form-label"
+                        >Road Width (ft)
+                        <span class="text-danger">*</span></label
+                      >
+                      <input
+                        type="number"
+                        step="0.01"
+                        class="form-control"
+                        id="road_width"
+                        placeholder="e.g. 5"
+                        name="road_width"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <label for="road_type" class="form-label"
+                        >Road Type <span class="text-danger">*</span></label
+                      >
+                      <select
+                        class="form-control"
+                        id="road_type"
+                        name="road_type"
+                        required
+                      >
+                        <option value="">Select Road Type</option>
+                        <option value="paved">Paved</option>
+                        <option value="gravel">Gravel</option>
+                        <option value="dirt">Dirt</option>
+                        <option value="blacktopped">Blacktopped</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="price" class="form-label"
+                    >Price (Rs.) <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    class="form-control"
+                    id="price"
+                    placeholder="e.g. 5000000"
+                    name="price"
+                    required
+                  />
+                </div>
+
+                <!-- Property Images -->
+                <div class="form-group mb-3">
+                  <label for="property_images" class="form-label"
+                    >Property Images <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="property_images"
+                    name="property_images"
+                    accept="image/*"
+                    multiple
+                    required
+                  />
+                </div>
+
+                <div class="form-group mt-4">
+                  <button type="submit" class="btn btn-success">
+                    List Property
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %} {% block extra_css %}
+<style>
+  .alert-container .alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+  }
+
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  .alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+
+  .section-t4 {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+  .property-form {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .form-group label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .card {
+    margin-bottom: 4rem;
+  }
+  .btn-b-n {
+    background-color: #2eca6a;
+    color: #fff;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 4px;
+  }
+  .btn-b-n:hover {
+    background-color: #25a555;
+    color: #fff;
+  }
+  .alert {
+    margin-bottom: 1rem;
+  }
+</style>
+{% endblock %}

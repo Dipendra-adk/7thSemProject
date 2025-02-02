@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>{% block title %}City Estate{% endblock %}</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
+    {% block styles %} {% endblock %}
+
+  </head>
+  <body class="{% block body_class %}index-page{% endblock %}">
+    <!-- Header -->
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+      >
+        <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+          <h1 class="sitename">City <span>Estate</span></h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'predict' %}">Predict</a></li>
+            <li><a href="{% url 'buyer' %}">Buy</a></li>
+            <li><a href="{% url 'seller_view' %}">Sell</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+
+            {% if user.is_authenticated %}
+            <li>
+              <button type="button" class="btn btn-success">
+                <a href="{% url 'logout' %}">Logout</a></li>
+              </button>
+            </li>
+            <li>
+            {% else %}
+            <li> <button type="button" class="btn btn-success">
+              <a href="{% url 'login' %}">Login</a></li>
+            </button></li>
+            {% endif %}
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Content Section -->
+    <main id="main">
+      {% block content %}
+      <!-- Child templates will populate this block -->
+      {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer light-background">
+      <div class="container copyright text-center mt-4">
+        <p>
+          © <span>Copyright</span>
+          <strong class="px-1 sitename">City Estate</strong>
+          <span>All Rights Reserved</span>
+        </p>
+        <div class="credits">Designed by <a href="#">Tea & Coffee</a></div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+    >
+      <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>

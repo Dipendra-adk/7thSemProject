@@ -1,0 +1,195 @@
+{% extends 'index.html' %} {% load static %} {% block title %}Predict House
+Price{% endblock %} {% block content %}
+<main class="main">
+  <!-- Page Title -->
+  <div class="page-title" data-aos="fade">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-lg-8">
+            <h1>Sell Property</h1>
+            <p class="mb-0">
+              "Estimate the value of a home instantly with our predictive
+              model!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="current">Predict</li>
+        </ol>
+      </div>
+    </nav>
+  </div>
+
+  <section class="section-property section-t4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              <form method="POST" action="{% url 'predict' %}">
+                {% csrf_token %}
+
+                <div class="form-group mb-3">
+                  <label for="area"
+                    >Area (sq ft) <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    class="form-control"
+                    id="area"
+                    name="area"
+                    required
+                  />
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="bedrooms"
+                      >Bedrooms <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="bedrooms"
+                      name="bedrooms"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="bathrooms"
+                      >Bathrooms <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="bathrooms"
+                      name="bathrooms"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="stories"
+                      >Stories (Floors)
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="stories"
+                      name="stories"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="parking"
+                      >Parking Spaces (No. of Cars Parkings)
+                      <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="parking"
+                      name="parking"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="mainroad">Main Road Access</label>
+                    <select class="form-control" id="mainroad" name="mainroad">
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="guestroom">Guest Room</label>
+                    <select
+                      class="form-control"
+                      id="guestroom"
+                      name="guestroom"
+                    >
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="basement">Basement</label>
+                    <select class="form-control" id="basement" name="basement">
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="hotwaterheating">Hot Water Heating</label>
+                    <select
+                      class="form-control"
+                      id="hotwaterheating"
+                      name="hotwaterheating"
+                    >
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="airconditioning">Air Conditioning</label>
+                    <select
+                      class="form-control"
+                      id="airconditioning"
+                      name="airconditioning"
+                    >
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+                </div>
+
+                <label for="furnishingstatus">Furnishing Status</label>
+                <select
+                  class="form-control mb-3"
+                  id="furnishingstatus"
+                  name="furnishingstatus"
+                >
+                  <option value="furnished">Furnished</option>
+                  <option value="semi-furnished">Semi-Furnished</option>
+                  <option value="unfurnished">Unfurnished</option>
+                </select>
+
+                <button type="submit" class="btn btn-success">
+                  Predict Price
+                </button>
+              </form>
+              <br />
+              {% if prediction_svm or prediction_dt %}
+              <div class="alert alert-success mb-4">
+                <h4 class="alert-heading">House Price Predicted:</h4>
+                <p class="mb-1">
+                  <strong>SVM Model:</strong> {{ prediction_svm }}
+                </p>
+                <p class="mb-1">
+                  <strong>Decision Tree Model:</strong> {{ prediction_dt }}
+                </p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
