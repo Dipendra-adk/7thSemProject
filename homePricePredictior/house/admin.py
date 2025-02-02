@@ -29,8 +29,8 @@ class CustomUserAdmin(UserAdmin):
 # Register the Property model with custom admin
 @admin.register(Property)
 class PropertyAdmin(admin.ModelAdmin):
-    list_display = ('title', 'city', 'area', 'bedrooms', 'bathrooms', 'floor_number', 'parking_space', 'year_built', 'building_area', 'road_width', 'road_type', 'price', 'created_at')
-    list_filter = ('city', 'bedrooms', 'bathrooms', 'floor_number', 'road_type', 'parking_space')
+    list_display = ('title', 'city', 'area', 'bedrooms', 'bathrooms', 'stories', 'mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'parking', 'prefarea', 'furnishingstatus', 'price', 'created_at')
+    list_filter = ('city', 'bedrooms', 'bathrooms', 'furnishingstatus')
     search_fields = ('title', 'city')
 
 # Register PropertyImage model with custom admin

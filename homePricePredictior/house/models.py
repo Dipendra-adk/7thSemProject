@@ -58,12 +58,6 @@ class User(AbstractUser):
 
 class Property(models.Model):
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="properties_for_sale")
-    ROAD_TYPE_CHOICES = [
-        ('paved', 'Paved'),
-        ('gravel', 'Gravel'),
-        ('dirt', 'Dirt'),
-        ('blacktopped', 'Blacktopped'),
-    ]
     CITY_CHOICES = [
         ('ktm', 'Kathmandu'),
         ('bkt', 'Bhaktapur'),
@@ -71,23 +65,32 @@ class Property(models.Model):
         ('pkr', 'Pokhara'),
         ('bir', 'Biratnagar'),
     ]
+    FURNISHING_STATUS_CHOICES = [
+        ('furnished', 'Furnished'),
+        ('semi_furnished', 'Semi-furnished'),
+        ('unfurnished', 'Unfurnished'),
+    ]
     title = models.CharField(max_length=200)
     city = models.CharField(max_length=100, choices=CITY_CHOICES)
     area = models.DecimalField(max_digits=10, decimal_places=2)
     bedrooms = models.IntegerField()
     bathrooms = models.IntegerField()
-    floor_number = models.IntegerField()
-    parking_space = models.BooleanField(default=False)
-    year_built = models.IntegerField()
-    building_area = models.DecimalField(max_digits=10, decimal_places=2)
-    road_width = models.DecimalField(max_digits=5, decimal_places=2)
-    road_type = models.CharField(max_length=20, choices=ROAD_TYPE_CHOICES)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    stories = models.IntegerField()
+    mainroad = models.BooleanField(default=False)
+    guestroom = models.BooleanField(default=False)
+    basement = models.BooleanField(default=False)
+    hotwaterheating = models.BooleanField(default=False)
+    airconditioning = models.BooleanField(default=False)
+    parking = models.IntegerField(default=0)
+    prefarea = models.BooleanField(default=False)
+    furnishingstatus = models.CharField(max_length=20, choices=FURNISHING_STATUS_CHOICES, default='unfurnished')
+    price = models.DecimalField(max_digits=20, decimal_places=2)
     property_image = models.ImageField(upload_to='property_images/')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Property in {self.city} - {self.area} sq ft"
+        
+        return f"Property in {self.city} - {self.area}"
 
 class PropertyImage(models.Model):
     property = models.ForeignKey(Property, related_name="images", on_delete=models.CASCADE)
@@ -97,7 +100,7 @@ class PropertyImage(models.Model):
         return f"Image for {self.property.title}"
 
 class Message(models.Model):
-    property = models.ForeignKey(Property, on_delete=models.CASCADE, null=True, blank=True)  # May not always be related to a property
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, null=True, blank=True)  
     sender_name = models.CharField(max_length=255)
     sender_email = models.EmailField()
     content = models.TextField()
