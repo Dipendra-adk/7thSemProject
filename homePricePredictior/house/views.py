@@ -217,16 +217,19 @@ def seller_view(request):
         area = request.POST.get('area')
         bedrooms = request.POST.get('bedrooms')
         bathrooms = request.POST.get('bathrooms')
-        floor_number = request.POST.get('floor_number')
-        parking_space = request.POST.get('parking_space') == 'yes' 
-        year_built = request.POST.get('year_built')
-        building_area = request.POST.get('building_area')
-        road_width = request.POST.get('road_width')
-        road_type = request.POST.get('road_type')
+        stories = request.POST.get('stories')
+        mainroad = request.POST.get('mainroad') == 'yes'
+        guestroom = request.POST.get('guestroom') == 'yes'
+        basement = request.POST.get('basement') == 'yes'
+        hotwaterheating = request.POST.get('hotwaterheating') == 'yes'
+        airconditioning = request.POST.get('airconditioning') == 'yes'
+        parking = request.POST.get('parking') == 'yes'
+        prefarea = request.POST.get('prefarea') == 'yes'
+        furnishingstatus = request.POST.get('furnishingstatus')
         price = request.POST.get('price')
         property_images = request.FILES.getlist('property_images')
         try:
-            if not title or not city or not area or not bedrooms or not bathrooms or not floor_number or not price:
+            if not title or not city or not area or not bedrooms or not bathrooms or not stories or not price:
                 raise ValidationError('Please fill out all required fields.')
 
             property = Property(
@@ -235,12 +238,15 @@ def seller_view(request):
                 area=area,
                 bedrooms=bedrooms,
                 bathrooms=bathrooms,
-                floor_number=floor_number,
-                parking_space=parking_space,
-                year_built=year_built,
-                building_area=building_area,
-                road_width=road_width,
-                road_type=road_type,
+                stories=stories,
+                mainroad=mainroad,
+                guestroom=guestroom,
+                basement=basement,
+                hotwaterheating=hotwaterheating,
+                airconditioning=airconditioning,
+                parking=parking,
+                prefarea=prefarea,
+                furnishingstatus=furnishingstatus,
                 price=price,
                 seller=request.user
                 
