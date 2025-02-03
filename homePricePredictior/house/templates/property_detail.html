@@ -47,7 +47,7 @@
             <p><strong>Price:</strong> Rs.{{ property.price }}</p>
             <p><strong>Title:</strong> {{ property.title }}</p>
             <p><strong>City:</strong> {{ property.city }}</p>
-            <p><strong>Area:</strong> {{ property.area }}</p>
+            <p><strong>Area:</strong> {{ property.area }} Aana</p>
           </div>
         </div>
 
@@ -63,7 +63,6 @@
           </div>
         </div>
 
-        <!-- Message Form -->
         <div class="col-lg-8" data-aos="fade-up">
           <div class="portfolio-description">
             <h3>Contact the Seller</h3>
@@ -71,8 +70,9 @@
             <!-- Display error message if form validation fails -->
             {% if error_message %}
             <div class="alert alert-danger">{{ error_message }}</div>
-            {% endif %}
-
+            {% endif %} {% if messages %} {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+            {% endfor %} {% endif %}
             <!-- Message Form -->
             <form method="POST">
               {% csrf_token %}
@@ -107,7 +107,7 @@
                 ></textarea>
               </div>
               <button type="submit" class="btn btn-success">
-                Send Message
+                Contact Seller
               </button>
             </form>
           </div>

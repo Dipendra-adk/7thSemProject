@@ -266,33 +266,53 @@ def seller_view(request):
     return render(request, 'seller.html')
 
 
+
 def property_detail(request, property_id):
     property_obj = get_object_or_404(Property, id=property_id)
-
+    seller_email = property_obj.seller.email 
     if request.method == "POST":
-        sender_name = request.POST.get('sender_name')
-        sender_email = request.POST.get('sender_email')
-        content = request.POST.get('content')
+        sender_name = request.POST.get("sender_name")
+        sender_email = request.POST.get("sender_email")
+        content = request.POST.get("content")
 
         if sender_name and sender_email and content:
             message = Message(
                 sender_name=sender_name,
                 sender_email=sender_email,
                 content=content,
-                property=property_obj,  
+                property=property_obj,
             )
             message.save()
-            return redirect('property_detail', property_id=property_id)
+
+            subject = f"Inquiry about {property_obj.title}"
+            body = f"""
+            Hello {property_obj.seller.username},\n\n
+            You have a new inquiry about your property: {property_obj.title}\n
+            Buyer Details:
+            Name: {sender_name}
+            Email: {sender_email}\n
+            Message: {content}\n\n
+            Please respond to the buyer if you're interested.
+            """
+            send_mail(
+                subject,
+                body,
+                settings.EMAIL_HOST_USER,  
+                [seller_email],  
+                fail_silently=False,
+            )
+            messages.success(request, "Your message has been sent to the seller.")
+            return redirect("property_detail", property_id=property_id)
         else:
             error_message = "Please fill in all fields."
-            return render(request, 'property_detail.html', {
-                'property': property_obj, 
-                'error_message': error_message
-            })
-    return render(request, 'property_detail.html', {
-        'property': property_obj,  
-        'error_message': None  
-    })
+            return render(
+                request,
+                "property_detail.html",
+                {"property": property_obj, "error_message": error_message},
+            )
+
+    return render(request, "property_detail.html", {"property": property_obj, "error_message": None})
+
 
 def predict(request):
     try:
