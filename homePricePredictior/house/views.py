@@ -288,6 +288,8 @@ def property_detail(request, property_id):
             body = f"""
             Hello {property_obj.seller.username},\n\n
             You have a new inquiry about your property: {property_obj.title}\n
+            Now you can directly contact the buyer at {sender_email}.\n
+            Contact him/her to discuss further details and discussion.\n\n
             Buyer Details:
             Name: {sender_name}
             Email: {sender_email}\n
@@ -297,9 +299,10 @@ def property_detail(request, property_id):
             send_mail(
                 subject,
                 body,
-                settings.EMAIL_HOST_USER,  
+                sender_email,  
                 [seller_email],  
                 fail_silently=False,
+                
             )
             messages.success(request, "Your message has been sent to the seller.")
             return redirect("property_detail", property_id=property_id)
