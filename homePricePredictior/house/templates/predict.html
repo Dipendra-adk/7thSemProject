@@ -7,7 +7,7 @@ Price{% endblock %} {% block content %}
       <div class="container">
         <div class="row d-flex justify-content-center text-center">
           <div class="col-lg-8">
-            <h1>Sell Property</h1>
+            <h1 style="color: rgb(244, 174, 15)">Sell Property</h1>
             <p class="mb-0">
               "Estimate the value of a home instantly with our predictive
               model!"
@@ -48,9 +48,88 @@ Price{% endblock %} {% block content %}
                     required
                   />
                 </div>
+                <div class="form-group mb-3">
+                  <label for="area"
+                    >Build Area <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    class="form-control"
+                    id="area"
+                    name="area"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="area"
+                    >Road Width <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="number"
+                    step="0.01"
+                    class="form-control"
+                    id="area"
+                    name="area"
+                    required
+                  />
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="area"
+                    >Location <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="area"
+                    name="area"
+                    placeholder="Enter name of city"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="area"
+                    >Tole <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="area"
+                    name="area"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="area"
+                    >Amenities (Comma-separated)
+                    <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="area"
+                    name="area"
+                    placeholder="e.g. Fencing, Garden, Modular Kitchen, ..."
+                    required
+                  />
+                </div>
 
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
+                    <label for="bedrooms"
+                      >Built Year <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="bedrooms"
+                      name="bedrooms"
+                      placeholder="e.g. 2021 (in AD)"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
                     <label for="bedrooms"
                       >Bedrooms <span class="text-danger">*</span></label
                     >
@@ -62,7 +141,7 @@ Price{% endblock %} {% block content %}
                       required
                     />
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="bathrooms"
                       >Bathrooms <span class="text-danger">*</span></label
                     >
@@ -74,10 +153,9 @@ Price{% endblock %} {% block content %}
                       required
                     />
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="stories"
-                      >Stories (Floors)
-                      <span class="text-danger">*</span></label
+                      >Floors <span class="text-danger">*</span></label
                     >
                     <input
                       type="number"
