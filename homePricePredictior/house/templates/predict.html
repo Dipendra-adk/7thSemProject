@@ -1,5 +1,9 @@
-{% extends 'index.html' %} {% load static %} {% block title %}Predict House
-Price{% endblock %} {% block content %}
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Predict House Price{% endblock %}
+
+{% block content %}
 <main class="main">
   <!-- Page Title -->
   <div class="page-title" data-aos="fade">
@@ -7,10 +11,9 @@ Price{% endblock %} {% block content %}
       <div class="container">
         <div class="row d-flex justify-content-center text-center">
           <div class="col-lg-8">
-            <h1>Sell Property</h1>
+            <h1>Predict House Price</h1>
             <p class="mb-0">
-              "Estimate the value of a home instantly with our predictive
-              model!"
+              "Estimate the value of a home instantly with our predictive model!"
             </p>
           </div>
         </div>
@@ -36,153 +39,64 @@ Price{% endblock %} {% block content %}
                 {% csrf_token %}
 
                 <div class="form-group mb-3">
-                  <label for="area"
-                    >Area (sq ft) <span class="text-danger">*</span></label
-                  >
-                  <input
-                    type="number"
-                    step="0.01"
-                    class="form-control"
-                    id="area"
-                    name="area"
-                    required
-                  />
+                  <label for="area">Area (Aana) <span class="text-danger">*</span></label>
+                  <input type="number" step="0.01" class="form-control" id="area" name="area" required value="{{ input_area|default:'' }}" />
                 </div>
 
-                <div class="row">
-                  <div class="col-md-4">
-                    <label for="bedrooms"
-                      >Bedrooms <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="bedrooms"
-                      name="bedrooms"
-                      required
-                    />
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="stories">Floors <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" id="stories" name="stories" required value="{{ input_stories|default:'' }}" />
                   </div>
-                  <div class="col-md-4">
-                    <label for="bathrooms"
-                      >Bathrooms <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="bathrooms"
-                      name="bathrooms"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-4">
-                    <label for="stories"
-                      >Stories (Floors)
-                      <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="stories"
-                      name="stories"
-                      required
-                    />
+                  <div class="col-md-6">
+                    <label for="road_width">Road Width (Feet)</label>
+                    <input type="number" step="0.01" class="form-control" id="road_width" name="road_width" value="{{ input_road_width|default:'' }}" />
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="row mb-3">
                   <div class="col-md-6">
-                    <label for="parking"
-                      >Parking Spaces (No. of Cars Parkings)
-                      <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="parking"
-                      name="parking"
-                      required
-                    />
+                    <label for="city">City</label>
+                    <select class="form-control" id="city" name="city">
+                      <option value="Kathmandu" {% if input_city == 'Kathmandu' %}selected{% endif %}>Kathmandu</option>
+                      <option value="Bhaktapur" {% if input_city == 'Bhaktapur' %}selected{% endif %}>Bhaktapur</option>
+                      <option value="Lalitpur" {% if input_city == 'Lalitpur' %}selected{% endif %}>Lalitpur</option>
+                    </select>
                   </div>
                   <div class="col-md-6">
-                    <label for="mainroad">Main Road Access</label>
-                    <select class="form-control" id="mainroad" name="mainroad">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
+                    <label for="road_type">Road Type</label>
+                    <select class="form-control" id="road_type" name="road_type">
+                      <option value="Blacktopped" {% if input_road_type == 'Blacktopped' %}selected{% endif %}>Blacktopped</option>
+                      <option value="Gravelled" {% if input_road_type == 'Gravelled' %}selected{% endif %}>Gravelled</option>
+                      <option value="Soil_Stabilized" {% if input_road_type == 'Soil_Stabilized' %}selected{% endif %}>Soil Stabilized</option>
                     </select>
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-6">
-                    <label for="guestroom">Guest Room</label>
-                    <select
-                      class="form-control"
-                      id="guestroom"
-                      name="guestroom"
-                    >
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="basement">Basement</label>
-                    <select class="form-control" id="basement" name="basement">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
-                    <label for="hotwaterheating">Hot Water Heating</label>
-                    <select
-                      class="form-control"
-                      id="hotwaterheating"
-                      name="hotwaterheating"
-                    >
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="airconditioning">Air Conditioning</label>
-                    <select
-                      class="form-control"
-                      id="airconditioning"
-                      name="airconditioning"
-                    >
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                    </select>
-                  </div>
-                </div>
-
-                <label for="furnishingstatus">Furnishing Status</label>
-                <select
-                  class="form-control mb-3"
-                  id="furnishingstatus"
-                  name="furnishingstatus"
-                >
-                  <option value="furnished">Furnished</option>
-                  <option value="semi-furnished">Semi-Furnished</option>
-                  <option value="unfurnished">Unfurnished</option>
-                </select>
-
-                <button type="submit" class="btn btn-success">
-                  Predict Price
-                </button>
+                <button type="submit" class="btn btn-success">Predict Price</button>
               </form>
-              <br />
+
               {% if prediction_svm or prediction_dt %}
-              <div class="alert alert-success mb-4">
-                <h4 class="alert-heading">House Price Predicted:</h4>
+              <div class="alert alert-success mt-4">
+                <h4 class="alert-heading">House Price Prediction Results:</h4>
+
+                {% if prediction_svm %}
                 <p class="mb-1">
                   <strong>SVM Model:</strong> {{ prediction_svm }}
                 </p>
+                {% endif %}
+
+                {% if prediction_dt %}
                 <p class="mb-1">
                   <strong>Decision Tree Model:</strong> {{ prediction_dt }}
                 </p>
+                {% endif %}
+              </div>
+              {% endif %}
+
+              {% if error %}
+              <div class="alert alert-danger mt-4">
+                {{ error }}
               </div>
               {% endif %}
             </div>
