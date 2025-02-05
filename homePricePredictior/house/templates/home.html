@@ -205,6 +205,34 @@
         {% endfor %}
       </div>
     </div>
+    {% comment %}
+    <div style="text-align: center">
+      <a href="{% url 'buyer' %}" class="btn btn-primary">Visit More</a>
+    </div>
+    {% endcomment %}
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        {% comment %} align-items: center; {% endcomment %}
+        {% comment %} height: 5vh; {% endcomment %}
+      "
+    >
+      <a
+        href="{% url 'buyer' %}"
+        style="
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: rgb(21, 115, 71);
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 16px;
+        "
+        >Visit More</a
+      >
+    </div>
   </section>
   <!-- /Property Section -->
 </main>
