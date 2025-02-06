@@ -1,5 +1,4 @@
-{% extends 'index.html' %} {% load static %} {% block title %}Home{% endblock%}
-{% block content %}
+{% extends 'index.html' %} {% load static %} {% block title %}City-Estate{%endblock%} {% block content %}
 <main class="main">
   <!-- Hero Section -->
   <section id="hero" class="hero section dark-background">
@@ -56,9 +55,11 @@
           <div>
             <p><span>City</span> Estate</p>
             <h2>Find Your Dream Home, Where Comfort Meets Convenience.</h2>
-            <!-- <a href="property-single.html" class="btn-get-started"
+            {% comment %}
+            <a href="property-single.html" class="btn-get-started"
               >rent | $ 3.000</a
-            > -->
+            >
+            {% endcomment %}
           </div>
         </div>
       </div>

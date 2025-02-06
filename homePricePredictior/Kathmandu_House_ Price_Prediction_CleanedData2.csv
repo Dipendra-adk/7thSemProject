@@ -1,0 +1,810 @@
+City,Price,Floors,Face,Area,Road Width,Road Type
+Kathmandu,90000000,2.0,West,16.0,20.0,Blacktopped
+Kathmandu,80000000,2.0,East,21.0,20.0,Blacktopped
+Kathmandu,70000000,2.0,East,17.0,20.0,Blacktopped
+Kathmandu,100000000,2.0,East,19.5,20.0,Blacktopped
+Kathmandu,100000000,3.0,East,12.8125,13.0,Blacktopped
+Kathmandu,50000000,2.0,East,9.25,20.0,Blacktopped
+Kathmandu,100000000,3.5,North,12.875,20.0,Blacktopped
+Kathmandu,32500000,2.5,South East,4.0,12.0,Blacktopped
+Kathmandu,39900000,3.0,North West,4.5,14.0,Blacktopped
+Kathmandu,15000000,1.0,South,5.0,12.0,Gravelled
+Kathmandu,52500000,3.0,South East,8.0,20.0,Blacktopped
+Kathmandu,26500000,3.0,East,4.0,13.0,Blacktopped
+Kathmandu,25500000,3.0,East,4.0,13.0,Gravelled
+Kathmandu,33000000,2.5,East,6.0,20.0,Blacktopped
+Kathmandu,18500000,2.75,South,6.0,13.0,Soil Stabilized
+Kathmandu,62000000,2.75,East,10.0,0.0,Soil Stabilized
+Bhaktapur,20500000,3.0,East,3.5,10.0,Gravelled
+Bhaktapur,22000000,2.75,East,3.5,20.0,Blacktopped
+Kathmandu,55000000,3.0,South,19.0,20.0,Gravelled
+Kathmandu,24000000,2.5,East,4.0,13.0,Blacktopped
+Kathmandu,37000000,3.0,South East,6.1,32.0,Soil Stabilized
+Lalitpur,22000000,3.5,South,4.5,13.0,Gravelled
+Kathmandu,58500000,3.0,East,6.5,16.0,Blacktopped
+Lalitpur,18500000,2.5,East,3.0,13.0,Gravelled
+Lalitpur,21000000,2.5,East,3.5,13.0,Gravelled
+Lalitpur,17500000,3.0,South,3.125,13.0,Soil Stabilized
+Kathmandu,40000000,4.0,East,7.0,15.0,Blacktopped
+Kathmandu,26500000,3.0,West,5.0,14.0,Blacktopped
+Kathmandu,22500000,3.0,North East,3.1,18.0,Blacktopped
+Kathmandu,60000000,3.0,South East,11.0,15.0,Soil Stabilized
+Kathmandu,40000000,4.0,East,9.0,13.0,Blacktopped
+Kathmandu,30000000,3.0,East,3.5,15.0,Blacktopped
+Kathmandu,65000000,3.0,East,12.0,14.0,Gravelled
+Kathmandu,33000000,3.0,North,5.0,13.0,Blacktopped
+Kathmandu,30500000,2.0,West,4.0,13.0,Blacktopped
+Kathmandu,28000000,3.0,South East,4.0,13.0,Blacktopped
+Kathmandu,41000000,4.0,South East,4.0,26.0,Blacktopped
+Kathmandu,27000000,3.0,East,4.5,14.0,Gravelled
+Kathmandu,22000000,3.0,East,3.1,13.0,Soil Stabilized
+Kathmandu,37000000,3.0,South East,8.0,15.0,Blacktopped
+Kathmandu,46000000,2.5,South West,6.75,13.0,Blacktopped
+Kathmandu,22500000,3.0,East,4.0,13.0,Soil Stabilized
+Bhaktapur,29000000,2.0,North,4.5,20.0,Blacktopped
+Kathmandu,31000000,3.0,East,3.0,19.68504,Blacktopped
+Kathmandu,42500000,2.75,West,5.3125,29.0,Soil Stabilized
+Kathmandu,37500000,3.0,South East,5.0,0.0,Soil Stabilized
+Kathmandu,80000000,2.75,West,9.9375,13.0,Gravelled
+Lalitpur,25000000,2.0,East,4.5,13.0,Gravelled
+Bhaktapur,32500000,2.0,South,7.0,20.0,Blacktopped
+Kathmandu,20000000,2.5,West,4.3125,10.0,Gravelled
+Bhaktapur,19000000,3.5,West,3.0,20.0,Gravelled
+Kathmandu,33500000,3.0,South East,4.0,18.0,Blacktopped
+Kathmandu,37000000,2.75,North East,5.125,13.0,Blacktopped
+Kathmandu,36000000,2.75,East,7.5,20.0,Soil Stabilized
+Lalitpur,12500000,1.0,West,3.0,20.0,Gravelled
+Lalitpur,19500000,2.5,East,3.25,20.0,Gravelled
+Lalitpur,22000000,2.5,West,3.5,20.0,Gravelled
+Lalitpur,21500000,2.5,East,4.0,20.0,Gravelled
+Lalitpur,19500000,2.5,North East,3.5,20.0,Gravelled
+Lalitpur,19000000,2.5,South,3.0,13.0,Gravelled
+Lalitpur,18000000,2.5,South,3.0,13.0,Gravelled
+Kathmandu,37000000,3.0,South,5.4375,12.0,Gravelled
+Kathmandu,34000000,3.0,South,4.0,12.0,Gravelled
+Kathmandu,26000000,3.0,South,4.125,16.0,Gravelled
+Kathmandu,22000000,2.75,South West,6.5,10.0,Soil Stabilized
+Kathmandu,23000000,2.75,North East,4.0,10.0,Soil Stabilized
+Kathmandu,57500000,2.75,North East,6.25,12.0,Blacktopped
+Kathmandu,90000000,2.75,South East,10.0,20.0,Soil Stabilized
+Kathmandu,17000000,2.5,North West,4.0,10.0,Blacktopped
+Lalitpur,12500000,1.5,South,3.25,13.0,Gravelled
+Kathmandu,45000000,3.0,South West,11.0,22.0,Soil Stabilized
+Lalitpur,12500000,1.5,South,3.0,13.0,Gravelled
+Lalitpur,19000000,2.5,North West,3.5,13.0,Gravelled
+Kathmandu,32000000,2.75,South West,10.0,20.0,Soil Stabilized
+Kathmandu,15500000,1.5,South West,4.0,20.0,Gravelled
+Lalitpur,35000000,2.75,North East,4.090577063550037,20.0,Soil Stabilized
+Kathmandu,23000000,2.75,South,4.62527392257122,20.0,Soil Stabilized
+Lalitpur,16500000,5.0,East,3.506208911614317,40.0,Blacktopped
+Kathmandu,24500000,2.0,East,3.0,16.0,Gravelled
+Kathmandu,17000000,3.0,West,3.0,14.0,Soil Stabilized
+Kathmandu,28500000,2.75,South East,5.5,20.0,Soil Stabilized
+Lalitpur,21500000,2.75,South West,3.5,13.0,Gravelled
+Lalitpur,12500000,2.0,West,5.0,16.0,Blacktopped
+Kathmandu,32500000,2.75,East,4.5,20.0,Blacktopped
+Lalitpur,22000000,2.5,North West,4.0,10.0,Gravelled
+Kathmandu,17000000,3.0,South,3.1,20.0,Blacktopped
+Lalitpur,11000000,1.5,West,2.75,13.0,Gravelled
+Lalitpur,13000000,1.5,North East,3.0,13.0,Gravelled
+Kathmandu,42500000,5.0,East,5.3125,29.0,Soil Stabilized
+Kathmandu,50000000,3.0,South,80.0,20.0,Blacktopped
+Kathmandu,30000000,3.0,North,5.0,14.0,Gravelled
+Lalitpur,31500000,3.0,South,4.3,12.0,Blacktopped
+Lalitpur,18000000,3.0,South East,3.1875,18.0,Soil Stabilized
+Kathmandu,57500000,3.0,South West,8.0,20.0,Blacktopped
+Kathmandu,60000000,2.0,East,9.5,15.0,Blacktopped
+Kathmandu,35000000,2.5,West,3.625,12.0,Blacktopped
+Kathmandu,25000000,4.0,East,2.5,20.0,Blacktopped
+Kathmandu,15500000,2.0,North,3.5,13.0,Blacktopped
+Kathmandu,75000000,5.0,East,9.0,12.0,Blacktopped
+Kathmandu,75000000,3.0,East,10.0,16.0,Gravelled
+Kathmandu,39500000,4.0,East,6.0,18.0,Blacktopped
+Kathmandu,37000000,3.0,South,4.0,20.0,Blacktopped
+Lalitpur,25600000,4.0,East,4.0,10.0,Gravelled
+Kathmandu,36500000,2.0,East,6.25,20.0,Blacktopped
+Kathmandu,22500000,3.0,East,3.25,14.0,Blacktopped
+Kathmandu,23500000,3.0,East,3.0,15.0,Blacktopped
+Kathmandu,22500000,3.0,East,3.1875,15.0,Gravelled
+Kathmandu,32500000,3.0,East,4.0,15.0,Gravelled
+Kathmandu,42500000,3.0,East,12.0,15.0,Blacktopped
+Kathmandu,11000000,2.0,East,4.0,3.0,Soil Stabilized
+Kathmandu,42500000,2.0,East,5.0,12.0,Blacktopped
+Kathmandu,35000000,2.0,East,6.0,18.0,Gravelled
+Kathmandu,37000000,3.0,South,4.0,20.0,Blacktopped
+Kathmandu,45000000,3.0,East,6.0,20.0,Blacktopped
+Lalitpur,39000000,1.0,East,11.0,0.0,Soil Stabilized
+Kathmandu,17000000,3.0,East,3.75,12.0,Blacktopped
+Kathmandu,16500000,2.5,South East,3.0,10.0,Gravelled
+Kathmandu,20500000,2.5,East,3.75,13.0,Blacktopped
+Lalitpur,25000000,3.0,North East,4.75,13.0,Blacktopped
+Bhaktapur,12500000,2.0,East,3.0,16.0,Soil Stabilized
+Lalitpur,21000000,1.0,South West,4.0,20.0,Gravelled
+Kathmandu,18000000,3.0,South,0.0,13.0,Blacktopped
+Lalitpur,35200000,2.75,East,5.5,20.0,Blacktopped
+Lalitpur,37100000,2.75,West,6.0,20.0,Blacktopped
+Kathmandu,55000000,3.0,East,5.0,14.0,Blacktopped
+Lalitpur,34500000,2.75,West,5.25,20.0,Blacktopped
+Kathmandu,45000000,3.0,North East,6.0,13.0,Blacktopped
+Kathmandu,22500000,3.0,East,3.1,14.0,Gravelled
+Kathmandu,23500000,3.0,East,3.0,13.0,Blacktopped
+Lalitpur,28200000,2.0,North East,4.25,40.0,Blacktopped
+Kathmandu,13000000,1.0,East,3.5,10.0,Gravelled
+Kathmandu,32500000,3.0,East,4.0,13.0,Blacktopped
+Kathmandu,26000000,3.0,North,5.0,13.0,Blacktopped
+Kathmandu,24000000,4.0,South East,5.0,13.0,Gravelled
+Lalitpur,17700000,2.5,West,2.5,12.0,Blacktopped
+Kathmandu,16800000,3.0,North East,3.0,14.0,Gravelled
+Kathmandu,34000000,3.0,North East,5.5,30.0,Blacktopped
+Kathmandu,42500000,3.0,South East,12.0,14.0,Gravelled
+Kathmandu,41000000,2.5,North,5.0,10.0,Blacktopped
+Lalitpur,37500000,4.0,North West,7.25,12.0,Blacktopped
+Kathmandu,16000000,2.5,East,3.0,13.0,Blacktopped
+Lalitpur,21500000,2.5,West,4.0,20.0,Blacktopped
+Kathmandu,60000000,2.5,South,6.0,13.0,Blacktopped
+Lalitpur,30000000,2.75,East,3.0,0.0,Soil Stabilized
+Kathmandu,81000000,3.0,East,21.0,15.0,Gravelled
+Kathmandu,55000000,2.0,North,12.0,22.0,Blacktopped
+Kathmandu,30000000,2.75,East,3.0,0.0,Soil Stabilized
+Kathmandu,17500000,3.0,North,3.25,15.0,Soil Stabilized
+Kathmandu,65000000,2.0,East,12.0,12.0,Blacktopped
+Kathmandu,80000000,4.0,South,9.0,8.0,Blacktopped
+Lalitpur,20000000,2.75,East,3.0,0.0,Soil Stabilized
+Kathmandu,31000000,3.0,South,4.0,10.0,Blacktopped
+Lalitpur,17500000,2.75,North West,0.1875,13.0,Blacktopped
+Lalitpur,19500000,3.0,North East,3.0,20.0,Soil Stabilized
+Kathmandu,65000000,2.0,East,8.0,20.0,Blacktopped
+Kathmandu,37000000,3.0,East,6.0,16.0,Blacktopped
+Kathmandu,19000000,2.0,East,3.0,15.0,Blacktopped
+Kathmandu,65000000,3.0,South East,8.0,22.0,Blacktopped
+Lalitpur,19500000,2.5,West,3.25,20.0,Blacktopped
+Kathmandu,24000000,3.0,West,4.0,14.0,Blacktopped
+Bhaktapur,35000000,2.75,East,4.75,30.0,Blacktopped
+Lalitpur,20000000,4.0,East,0.0,15.0,Gravelled
+Lalitpur,23500000,3.0,West,4.0,13.0,Gravelled
+Kathmandu,24000000,2.0,South,3.9375,18.0,Blacktopped
+Lalitpur,40000000,3.0,South,9.375,492.126,Blacktopped
+Bhaktapur,39999999,3.0,South,5.125,28.0,Blacktopped
+Kathmandu,43500000,3.0,West,7.75,13.0,Blacktopped
+Kathmandu,45000000,3.0,East,6.0,20.0,Blacktopped
+Kathmandu,85000000,3.0,East,13.0,20.0,Blacktopped
+Kathmandu,61000000,4.0,East,11.0,13.0,Blacktopped
+Kathmandu,45000000,3.0,East,6.0,15.0,Blacktopped
+Kathmandu,49500000,3.0,East,4.5,14.0,Blacktopped
+Kathmandu,24000000,3.0,North East,3.5,15.0,Blacktopped
+Kathmandu,22500000,3.0,East,2.5,14.0,Blacktopped
+Kathmandu,69000000,3.0,South,12.0,22.0,Blacktopped
+Kathmandu,68000000,2.75,East,8.0,30.0,Blacktopped
+Kathmandu,62000000,3.0,South West,17.0,14.0,Gravelled
+Kathmandu,69000000,3.0,South East,12.0,20.0,Blacktopped
+Kathmandu,45000000,3.0,East,6.0,15.0,Blacktopped
+Kathmandu,65000000,2.0,East,12.0,16.0,Blacktopped
+Kathmandu,42000000,4.0,South East,6.0,20.0,Blacktopped
+Lalitpur,13000000,1.35,North East,3.5,10.0,Gravelled
+Lalitpur,12700000,1.5,North,3.1875,10.0,Gravelled
+Lalitpur,11000000,1.5,West,2.5,16.0,Gravelled
+Lalitpur,12000000,1.5,West,3.0,13.0,Gravelled
+Lalitpur,12500000,1.5,East,3.8125,13.0,Gravelled
+Kathmandu,19000000,3.0,North,3.5,10.0,Gravelled
+Lalitpur,11500000,1.5,South,2.875,13.0,Gravelled
+Lalitpur,15000000,1.5,North East,4.125,16.0,Blacktopped
+Lalitpur,11000000,1.5,East,3.0,13.0,Gravelled
+Kathmandu,23000000,3.0,West,4.0,13.0,Gravelled
+Kathmandu,60000000,4.0,East,5.5,13.0,Blacktopped
+Kathmandu,25500000,3.0,East,4.0,14.0,Blacktopped
+Kathmandu,55000000,2.0,South East,7.0,14.0,Blacktopped
+Lalitpur,22200000,2.75,South West,3.25,0.0,Soil Stabilized
+Kathmandu,55000000,3.0,South,7.0,14.0,Blacktopped
+Kathmandu,25500000,4.0,South West,3.75,14.0,Blacktopped
+Kathmandu,27500000,2.0,East,4.0,15.0,Blacktopped
+Kathmandu,63000000,2.0,East,10.0,16.0,Blacktopped
+Kathmandu,34500000,3.0,East,6.0,30.0,Blacktopped
+Kathmandu,38000000,2.0,East,9.0,16.0,Blacktopped
+Lalitpur,12000000,1.5,North East,5.25,4.0,Blacktopped
+Lalitpur,12500000,1.0,East,3.0,13.0,Soil Stabilized
+Lalitpur,23500000,3.0,West,3.75,13.0,Blacktopped
+Lalitpur,27000000,3.0,East,3.5,13.0,Blacktopped
+Kathmandu,27600000,3.0,East,4.0,13.0,Gravelled
+Kathmandu,70000000,2.75,East,22.0,16.0,Blacktopped
+Kathmandu,22500000,2.0,East,3.0,15.0,Blacktopped
+Kathmandu,23500000,2.0,East,3.0,16.0,Blacktopped
+Kathmandu,70000000,3.0,East,22.0,15.0,Blacktopped
+Kathmandu,42500000,3.0,South East,6.0,15.0,Blacktopped
+Kathmandu,18000000,3.0,North,3.1,13.0,Gravelled
+Kathmandu,27500000,3.0,East,4.0,14.0,Gravelled
+Kathmandu,33000000,2.5,West,5.0,15.0,Blacktopped
+Lalitpur,21000000,2.5,South West,4.0,20.0,Gravelled
+Lalitpur,28500000,3.0,South East,4.8125,13.0,Blacktopped
+Kathmandu,17500000,2.75,North East,5.0,20.0,Soil Stabilized
+Kathmandu,15500000,2.0,North East,4.0,0.0,Soil Stabilized
+Kathmandu,42000000,3.0,East,8.5,13.0,Gravelled
+Lalitpur,19000000,3.0,West,3.25,0.0,Blacktopped
+Lalitpur,21000000,2.5,South,3.0625,13.0,Blacktopped
+Kathmandu,85000000,3.0,East,14.0,14.0,Blacktopped
+Kathmandu,17000000,10.0,North,3.5,10.0,Soil Stabilized
+Kathmandu,18500000,2.5,East,3.0,14.0,Gravelled
+Kathmandu,17000000,3.0,West,3.0,16.0,Gravelled
+Kathmandu,32500000,3.0,South East,4.0,20.0,Blacktopped
+Kathmandu,29800000,3.0,East,4.0,15.0,Blacktopped
+Kathmandu,29900000,3.0,South West,5.0,20.0,Blacktopped
+Kathmandu,49000000,3.0,South,5.3,14.0,Blacktopped
+Kathmandu,29900000,2.5,South,3.0,10.0,Blacktopped
+Kathmandu,21000000,3.0,East,3.0,13.0,Blacktopped
+Kathmandu,100000000,3.0,East,19.0,13.0,Blacktopped
+Kathmandu,33500000,3.0,South East,4.0,14.0,Blacktopped
+Kathmandu,28500000,3.0,North,4.0,15.0,Gravelled
+Kathmandu,50000000,3.0,East,11.0,16.0,Blacktopped
+Kathmandu,35000000,3.0,East,5.0,20.0,Blacktopped
+Kathmandu,49000000,3.0,West,8.5,13.0,Gravelled
+Kathmandu,39000000,3.0,East,7.0,15.0,Blacktopped
+Kathmandu,29000000,3.0,East,4.0,13.0,Blacktopped
+Kathmandu,44500000,3.0,South,5.0,16.0,Blacktopped
+Kathmandu,29800000,3.0,East,4.1,16.0,Blacktopped
+Lalitpur,45000000,13.0,South,5.259313367421475,20.0,Blacktopped
+Kathmandu,38700000,3.0,East,4.0,15.0,Blacktopped
+Kathmandu,39000000,3.0,East,4.0,13.0,Blacktopped
+Kathmandu,15000000,1.5,South,4.75,18.0,Blacktopped
+Kathmandu,32500000,2.0,East,5.75,11.0,Blacktopped
+Lalitpur,90000000,2.5,South,20.0,16.0,Blacktopped
+Kathmandu,21000000,2.5,East,4.0,14.0,Blacktopped
+Lalitpur,21500000,2.5,South,3.25,20.0,Blacktopped
+Lalitpur,22500000,2.5,South,3.5,20.0,Blacktopped
+Kathmandu,35000000,2.0,East,7.0,20.0,Gravelled
+Kathmandu,60000000,2.0,East,14.0,16.0,Blacktopped
+Kathmandu,75000000,2.0,East,11.0,18.0,Blacktopped
+Kathmandu,36500000,2.0,East,5.0,15.0,Gravelled
+Kathmandu,37500000,2.0,South East,5.0,15.0,Blacktopped
+Kathmandu,24000000,2.0,East,4.0,14.0,Blacktopped
+Kathmandu,55000000,2.75,East,5.0,15.0,Blacktopped
+Kathmandu,29500000,2.0,East,4.0,13.0,Blacktopped
+Kathmandu,45000000,2.75,East,7.0,16.0,Blacktopped
+Kathmandu,80000000,2.75,East,21.0,16.0,Blacktopped
+Kathmandu,35000000,2.0,East,5.0,15.0,Blacktopped
+Kathmandu,57500000,2.0,South East,12.0,16.0,Blacktopped
+Kathmandu,55000000,2.0,South East,9.0,20.0,Blacktopped
+Kathmandu,67500000,2.75,South East,9.0,20.0,Blacktopped
+Kathmandu,55000000,2.0,South East,8.0,14.0,Blacktopped
+Kathmandu,35000000,2.0,East,5.0,15.0,Blacktopped
+Kathmandu,36000000,2.0,North East,6.0,15.0,Blacktopped
+Kathmandu,26000000,2.0,North East,4.0,14.0,Blacktopped
+Kathmandu,47500000,2.0,South East,9.0,16.0,Blacktopped
+Kathmandu,18200000,3.0,East,3.2,13.0,Blacktopped
+Kathmandu,26000000,3.0,East,4.0,14.0,Blacktopped
+Kathmandu,39000000,3.0,East,7.0,14.0,Blacktopped
+Kathmandu,33500000,3.0,North West,5.5,13.0,Gravelled
+Kathmandu,39900000,3.0,East,7.0,14.0,Blacktopped
+Lalitpur,18000000,4.0,East,3.6785975164353535,0.0,Soil Stabilized
+Kathmandu,32500000,4.0,South East,4.0,20.0,Blacktopped
+Kathmandu,29000000,3.0,South,5.0,14.0,Gravelled
+Kathmandu,36000000,3.0,East,6.0,13.0,Blacktopped
+Kathmandu,47500000,3.0,East,9.0,15.0,Soil Stabilized
+Kathmandu,28000000,2.75,East,4.0,12.0,Blacktopped
+Lalitpur,15000000,2.5,West,2.5,13.0,Gravelled
+Lalitpur,20000000,2.5,North,3.5,13.0,Gravelled
+Kathmandu,23000000,3.0,North West,3.5,13.0,Gravelled
+Lalitpur,18500000,2.5,West,3.5,13.0,Gravelled
+Kathmandu,24500000,3.0,North East,4.0,22.0,Gravelled
+Kathmandu,23800000,3.0,East,4.0,18.0,Blacktopped
+Kathmandu,39000000,3.0,South,6.5,15.0,Soil Stabilized
+Kathmandu,31000000,3.0,South West,4.5,14.0,Blacktopped
+Kathmandu,29000000,3.0,South,4.0,13.0,Gravelled
+Kathmandu,25000000,3.0,South,3.5,13.0,Gravelled
+Kathmandu,56000000,3.0,South,8.0,15.0,Blacktopped
+Kathmandu,67500000,3.0,South East,9.0,20.0,Blacktopped
+Kathmandu,37500000,3.0,East,3.75,13.0,Blacktopped
+Kathmandu,35000000,3.0,East,4.75,13.0,Blacktopped
+Lalitpur,22000000,2.5,East,3.5,20.0,Gravelled
+Lalitpur,19500000,2.5,East,3.5,13.0,Gravelled
+Lalitpur,17000000,2.5,South,3.5,20.0,Blacktopped
+Lalitpur,17500000,2.5,South,3.125,16.0,Gravelled
+Lalitpur,17500000,2.5,South East,3.125,13.0,Gravelled
+Kathmandu,22000000,2.75,East,3.25,20.0,Blacktopped
+Kathmandu,22000000,2.5,South,6.0,11.0,Gravelled
+Lalitpur,19000000,2.75,North,3.5,0.0,Soil Stabilized
+Kathmandu,22000000,2.5,East,2.75,13.0,Blacktopped
+Kathmandu,17500000,3.0,North,3.1,15.0,Soil Stabilized
+Lalitpur,18000000,2.0,South,3.125,0.0,Soil Stabilized
+Kathmandu,34000000,2.75,South,6.0,14.0,Soil Stabilized
+Kathmandu,26300000,2.75,East,4.0,13.0,Soil Stabilized
+Kathmandu,37000000,2.75,East,5.25,13.0,Soil Stabilized
+Lalitpur,17000000,2.5,South,3.375,13.0,Gravelled
+Lalitpur,17000000,2.5,South,3.0,13.0,Gravelled
+Kathmandu,16000000,2.75,East,3.0,12.0,Blacktopped
+Lalitpur,22000000,3.0,South,3.75,13.0,Blacktopped
+Kathmandu,11500000,1.0,North East,4.0,13.0,Blacktopped
+Lalitpur,19700000,3.0,South,3.5,13.0,Soil Stabilized
+Kathmandu,29000000,3.0,East,4.0,20.0,Gravelled
+Kathmandu,45000000,3.0,East,8.5,13.0,Gravelled
+Kathmandu,36000000,3.0,West,7.0,30.0,Soil Stabilized
+Kathmandu,35500000,3.0,North West,5.5,13.0,Gravelled
+Kathmandu,24100000,3.0,South West,2.75,13.0,Blacktopped
+Kathmandu,40000000,3.0,East,7.5,20.0,Blacktopped
+Lalitpur,20000000,3.0,South,3.0,20.0,Blacktopped
+Lalitpur,18000000,3.0,West,3.1,13.0,Blacktopped
+Lalitpur,35000000,3.0,East,6.5,12.0,Gravelled
+Kathmandu,17000000,2.75,East,3.0,12.0,Soil Stabilized
+Kathmandu,26000000,2.5,North,3.5,13.0,Blacktopped
+Kathmandu,25500000,3.0,East,3.5,13.0,Blacktopped
+Kathmandu,68000000,3.0,East,12.0,15.0,Blacktopped
+Kathmandu,21500000,3.0,North East,3.5,20.0,Gravelled
+Kathmandu,18200000,3.0,West,3.0,13.0,Gravelled
+Kathmandu,80000000,3.0,East,21.0,14.0,Blacktopped
+Kathmandu,19900000,3.0,South West,3.1,12.0,Blacktopped
+Kathmandu,72000000,3.0,South West,17.0,15.0,Blacktopped
+Kathmandu,60000000,3.0,North East,6.0,13.0,Blacktopped
+Kathmandu,57500000,3.0,North West,12.0,15.0,Blacktopped
+Kathmandu,66000000,3.0,South East,14.0,20.0,Blacktopped
+Kathmandu,29900000,3.0,South West,4.0,13.0,Blacktopped
+Kathmandu,29900000,3.0,South East,4.0,13.0,Blacktopped
+Kathmandu,33500000,3.0,North East,5.0,20.0,Blacktopped
+Lalitpur,37500000,2.75,East,4.75,16.0,Gravelled
+Kathmandu,23000000,3.0,East,5.25,20.0,Soil Stabilized
+Kathmandu,20600000,3.0,North East,3.1,13.0,Soil Stabilized
+Kathmandu,26000000,3.0,West,4.0,26.0,Blacktopped
+Kathmandu,65000000,2.75,South,8.0,20.0,Blacktopped
+Kathmandu,45000000,3.0,South East,7.0,15.0,Blacktopped
+Kathmandu,28500000,3.0,North East,4.0,16.0,Blacktopped
+Kathmandu,40000000,2.5,North,5.0,13.0,Blacktopped
+Lalitpur,19000000,2.75,North East,4.0,0.0,Soil Stabilized
+Lalitpur,11000000,1.0,East,2.75,13.0,Soil Stabilized
+Lalitpur,19200000,3.0,East,3.0625,20.0,Blacktopped
+Kathmandu,36000000,3.0,East,5.5,13.0,Blacktopped
+Kathmandu,20500000,2.75,South,4.0,15.0,Gravelled
+Kathmandu,18000000,3.0,North,3.1,13.0,Gravelled
+Kathmandu,72000000,3.0,East,13.0,15.0,Blacktopped
+Kathmandu,23000000,3.0,East,4.0,13.0,Blacktopped
+Kathmandu,19900000,3.0,South East,3.1,13.0,Blacktopped
+Kathmandu,40000000,4.0,East,4.0,14.0,Blacktopped
+Kathmandu,21500000,3.0,South,3.5,13.0,Gravelled
+Kathmandu,34500000,2.0,North East,4.0,0.0,Soil Stabilized
+Kathmandu,70000000,2.0,West,16.0,14.0,Blacktopped
+Kathmandu,55000000,2.75,East,6.2,32.8084,Gravelled
+Kathmandu,65000000,3.0,South,15.0,14.0,Blacktopped
+Kathmandu,62000000,3.0,East,8.0,13.0,Blacktopped
+Kathmandu,25500000,3.5,North,4.5,13.0,Blacktopped
+Lalitpur,28000000,2.75,South,5.75,20.0,Soil Stabilized
+Kathmandu,20000000,0.0,East,3.0,14.0,Gravelled
+Kathmandu,67500000,2.0,East,14.0,15.0,Blacktopped
+Kathmandu,35000000,2.0,East,7.0,15.0,Gravelled
+Kathmandu,32500000,3.0,East,4.0,30.0,Blacktopped
+Kathmandu,22000000,3.0,North,5.0,15.0,Blacktopped
+Kathmandu,35000000,3.0,East,6.0,33.0,Blacktopped
+Kathmandu,26000000,3.0,East,4.0,12.0,Gravelled
+Kathmandu,26500000,3.0,South East,4.0,14.0,Blacktopped
+Kathmandu,60000000,4.0,South,5.1,0.0,Soil Stabilized
+Kathmandu,37000000,4.0,South,5.0,16.0,Blacktopped
+Kathmandu,13200000,0.0,East,0.0087655222790357,13.0,Gravelled
+Bhaktapur,27000000,3.0,North,6.0,13.0,Blacktopped
+Kathmandu,27500000,3.0,East,4.5,13.0,Blacktopped
+Kathmandu,18000000,3.0,East,3.0,13.0,Gravelled
+Kathmandu,32000000,2.75,North,3.25,0.0,Soil Stabilized
+Lalitpur,38500000,3.0,North West,5.625,13.0,Blacktopped
+Kathmandu,35000000,4.0,East,4.0,22.0,Blacktopped
+Kathmandu,18200000,2.75,East,3.0,13.0,Blacktopped
+Kathmandu,18000000,3.0,East,3.3125,9.0,Blacktopped
+Kathmandu,20000000,0.0,South West,0.0,30.0,Blacktopped
+Kathmandu,45000000,2.75,South,8.0,15.0,Soil Stabilized
+Kathmandu,49500000,2.75,South,9.0,15.0,Blacktopped
+Lalitpur,70000000,2.0,East,10.0,20.0,Blacktopped
+Kathmandu,70000000,3.0,East,9.5,20.0,Blacktopped
+Lalitpur,25000000,2.75,East,4.0,20.0,Blacktopped
+Lalitpur,16000000,4.0,East,4.0,10.0,Blacktopped
+Lalitpur,12000000,1.0,North East,3.0625,12.0,Soil Stabilized
+Kathmandu,27800000,3.0,East,5.0,13.0,Gravelled
+Lalitpur,36000000,2.75,East,6.5,20.0,Blacktopped
+Kathmandu,100000000,4.0,South,13.5,13.0,Blacktopped
+Kathmandu,60000000,2.75,South,9.25,20.0,Blacktopped
+Kathmandu,65000000,3.0,South East,15.0,13.0,Soil Stabilized
+Kathmandu,56000000,3.0,East,10.0,20.0,Soil Stabilized
+Kathmandu,44500000,3.0,South East,8.1,15.0,Blacktopped
+Kathmandu,85000000,2.75,East,17.0,13.0,Soil Stabilized
+Kathmandu,38000000,2.75,East,8.0,13.0,Blacktopped
+Kathmandu,19000000,3.0,South,3.125,10.0,Blacktopped
+Kathmandu,47500000,2.75,East,8.0,20.0,Blacktopped
+Kathmandu,25000000,2.75,South,4.0,20.0,Blacktopped
+Lalitpur,22500000,3.0,South,3.875,13.0,Gravelled
+Lalitpur,35000000,2.75,West,6.0,20.0,Blacktopped
+Kathmandu,50000000,2.0,South East,7.0,10.0,Blacktopped
+Kathmandu,25000000,4.0,North,3.0,13.0,Gravelled
+Kathmandu,16500000,2.0,South East,3.0625,14.0,Blacktopped
+Kathmandu,46000000,2.75,South West,7.0,13.0,Blacktopped
+Bhaktapur,30000000,3.0,East,7.5,15.0,Blacktopped
+Kathmandu,28000000,3.0,South,5.0,13.0,Gravelled
+Kathmandu,35000000,2.75,North,4.25,13.0,Blacktopped
+Kathmandu,49000000,2.75,South,4.5,12.0,Blacktopped
+Kathmandu,21500000,3.0,East,3.5,13.0,Gravelled
+Kathmandu,25500000,3.0,East,5.0,20.0,Gravelled
+Kathmandu,16500000,2.75,North,3.0625,13.0,Gravelled
+Kathmandu,22000000,2.75,West,4.25,13.0,Gravelled
+Kathmandu,70000000,2.0,East,12.0,14.0,Blacktopped
+Kathmandu,39500000,3.0,North,5.75,20.0,Blacktopped
+Kathmandu,18000000,1.0,South,5.25,12.0,Blacktopped
+Kathmandu,22000000,3.0,East,3.0,14.0,Soil Stabilized
+Kathmandu,47000000,2.75,South,6.0,13.0,Blacktopped
+Kathmandu,22500000,2.75,North,3.0,12.0,Gravelled
+Kathmandu,45000000,3.0,South West,8.0,20.0,Blacktopped
+Kathmandu,22000000,3.0,East,5.0,14.0,Gravelled
+Lalitpur,17000000,2.0,West,4.0,13.0,Gravelled
+Kathmandu,30000000,4.0,South,4.0,30.0,Blacktopped
+Lalitpur,19000000,3.0,East,4.0625,13.0,Gravelled
+Kathmandu,12000000,1.0,North West,2.6875,10.0,Gravelled
+Kathmandu,20000000,2.75,South,4.0,15.0,Soil Stabilized
+Lalitpur,17000000,2.75,South,3.0,13.0,Blacktopped
+Kathmandu,17000000,2.75,East,3.0,10.0,Gravelled
+Kathmandu,44000000,3.0,East,4.0,15.0,Blacktopped
+Kathmandu,100000000,3.0,North West,20.0,20.0,Blacktopped
+Kathmandu,96000000,3.0,South East,18.0,20.0,Blacktopped
+Kathmandu,28500000,3.0,East,4.5,20.0,Blacktopped
+Kathmandu,22500000,2.75,North,4.0,16.0,Blacktopped
+Kathmandu,41000000,2.75,East,8.1,15.0,Blacktopped
+Kathmandu,65000000,3.0,East,6.5,15.0,Blacktopped
+Kathmandu,35000000,3.0,West,6.5,32.0,Blacktopped
+Kathmandu,20000000,2.75,South East,3.25,13.0,Blacktopped
+Kathmandu,18000000,2.75,South,3.0,16.0,Blacktopped
+Kathmandu,35000000,2.75,North,7.0,15.0,Gravelled
+Lalitpur,17600000,2.75,North,2.8125,13.0,Soil Stabilized
+Kathmandu,18500000,2.75,North,3.5,13.0,Gravelled
+Lalitpur,25000000,3.0,South East,5.5,12.0,Gravelled
+Kathmandu,33000000,4.0,East,5.0,12.0,Blacktopped
+Kathmandu,22500000,3.0,South,3.0,13.0,Blacktopped
+Kathmandu,27500000,3.0,West,4.0,13.0,Blacktopped
+Lalitpur,23800000,3.0,South East,4.0,13.0,Gravelled
+Kathmandu,18500000,2.75,West,3.5,12.0,Soil Stabilized
+Kathmandu,33000000,2.75,North,6.25,12.0,Gravelled
+Kathmandu,23000000,3.0,South,4.0,12.0,Blacktopped
+Kathmandu,19000000,2.75,East,2.75,10.0,Blacktopped
+Kathmandu,29800000,2.75,West,5.5,15.0,Blacktopped
+Kathmandu,26200000,2.75,West,6.25,13.0,Blacktopped
+Kathmandu,41000000,2.0,East,8.25,13.0,Blacktopped
+Kathmandu,42000000,2.75,West,7.0,15.0,Blacktopped
+Kathmandu,25500000,3.0,East,4.5,13.0,Blacktopped
+Kathmandu,32000000,2.75,East,4.0,13.0,Blacktopped
+Lalitpur,49500000,2.75,East,9.0,16.0,Blacktopped
+Lalitpur,80000000,2.75,East,9.0,20.0,Blacktopped
+Kathmandu,17000000,3.0,East,3.0,12.0,Blacktopped
+Lalitpur,10000000,1.0,North East,3.0,13.0,Blacktopped
+Lalitpur,30000000,4.0,North West,3.5,33.0,Blacktopped
+Kathmandu,22500000,3.0,East,3.5,13.0,Blacktopped
+Kathmandu,22000000,2.0,West,5.0,15.0,Gravelled
+Kathmandu,36000000,2.75,South,6.75,20.0,Gravelled
+Kathmandu,13200000,2.0,North,2.5,13.0,Gravelled
+Kathmandu,29000000,4.0,North,4.25,32.0,Gravelled
+Kathmandu,20500000,2.75,West,5.0,20.0,Blacktopped
+Kathmandu,27000000,2.75,North,3.5,0.0,Soil Stabilized
+Lalitpur,19500000,3.0,North,3.5,13.0,Gravelled
+Kathmandu,19500000,2.75,North,4.25,13.0,Blacktopped
+Kathmandu,26500000,3.0,East,4.0,13.0,Blacktopped
+Kathmandu,25500000,3.0,North,4.0,13.0,Blacktopped
+Kathmandu,29500000,3.0,South,6.9375,15.0,Blacktopped
+Kathmandu,23500000,3.0,East,4.1,13.0,Blacktopped
+Lalitpur,19000000,3.0,South East,3.1875,10.0,Gravelled
+Lalitpur,23500000,3.0,South,3.75,20.0,Gravelled
+Lalitpur,18000000,3.0,North West,3.0,11.0,Gravelled
+Lalitpur,18500000,3.0,South,3.25,13.0,Gravelled
+Kathmandu,24500000,3.0,South East,4.5,10.0,Gravelled
+Kathmandu,33000000,3.0,South,4.5,8.0,Gravelled
+Bhaktapur,21500000,3.5,West,7.0,15.0,Gravelled
+Lalitpur,26000000,2.75,South,5.25,12.0,Blacktopped
+Lalitpur,19500000,2.0,West,0.0,20.0,Gravelled
+Kathmandu,51000000,2.0,East,14.0,14.0,Blacktopped
+Lalitpur,26500000,2.0,East,4.0,16.0,Gravelled
+Lalitpur,29500000,2.75,East,4.0,0.0,Soil Stabilized
+Kathmandu,40000000,3.0,East,3.0,20.0,Soil Stabilized
+Kathmandu,17500000,3.0,East,11.0,20.0,Gravelled
+Kathmandu,90000000,3.0,East,20.0,15.0,Blacktopped
+Lalitpur,11000000,1.0,North,3.0,14.0,Gravelled
+Kathmandu,70000000,3.0,North,9.0,13.0,Blacktopped
+Kathmandu,17900000,3.0,East,3.5,14.0,Gravelled
+Kathmandu,34500000,3.0,South West,7.0,15.0,Blacktopped
+Kathmandu,41000000,3.0,East,7.0,20.0,Blacktopped
+Kathmandu,18500000,4.0,East,1.5,26.0,Blacktopped
+Kathmandu,36500000,5.0,South,6.0,14.0,Blacktopped
+Kathmandu,21000000,2.0,West,3.5,13.0,Gravelled
+Kathmandu,38000000,2.75,North,8.0,14.0,Blacktopped
+Kathmandu,17500000,3.0,East,3.2,0.0,Soil Stabilized
+Kathmandu,27000000,2.75,East,9.0,0.0,Soil Stabilized
+Lalitpur,13000000,1.0,East,3.9375,13.0,Gravelled
+Kathmandu,17800000,3.0,South,3.1,12.0,Blacktopped
+Kathmandu,21800000,3.0,North East,3.5,12.0,Blacktopped
+Kathmandu,29000000,2.75,West,3.75,10.0,Blacktopped
+Kathmandu,23000000,2.0,South,3.1,15.0,Gravelled
+Kathmandu,29000000,3.0,West,4.0,12.0,Blacktopped
+Kathmandu,70000000,2.0,North,16.0,20.0,Blacktopped
+Kathmandu,37500000,2.75,North,4.5,22.0,Blacktopped
+Kathmandu,42500000,3.0,North,6.5,10.0,Blacktopped
+Kathmandu,22000000,2.75,South,4.0,22.0,Gravelled
+Kathmandu,30000000,3.0,West,4.0,20.0,Soil Stabilized
+Lalitpur,17500000,2.75,South,3.0,13.0,Soil Stabilized
+Lalitpur,76000000,2.75,South East,5.0,22.0,Soil Stabilized
+Lalitpur,12000000,1.0,East,2.0452885317750185,20.0,Blacktopped
+Lalitpur,26000000,2.75,North,4.0,13.0,Blacktopped
+Kathmandu,29800000,2.75,North,5.0,13.0,Blacktopped
+Kathmandu,25000000,3.0,South,4.6875,12.0,Gravelled
+Kathmandu,32000000,2.75,South,6.0,12.0,Blacktopped
+Kathmandu,17000000,2.0,South East,4.1,11.0,Soil Stabilized
+Kathmandu,35000000,2.0,South East,5.6875,20.0,Blacktopped
+Lalitpur,30000000,3.0,North,4.0,13.0,Blacktopped
+Kathmandu,22000000,2.75,North,5.4375,30.0,Blacktopped
+Kathmandu,24000000,2.75,North,3.75,13.0,Soil Stabilized
+Kathmandu,21000000,3.0,West,3.5625,15.0,Soil Stabilized
+Kathmandu,22500000,2.0,West,3.625,13.0,Gravelled
+Kathmandu,28000000,2.75,South,4.0,15.0,Gravelled
+Lalitpur,25000000,2.75,West,8.0,14.0,Gravelled
+Kathmandu,24000000,3.0,North West,4.0,15.0,Blacktopped
+Kathmandu,24000000,3.0,South East,4.0,14.0,Blacktopped
+Lalitpur,21000000,3.0,East,3.0,13.0,Blacktopped
+Lalitpur,12500000,2.0,East,3.0,13.0,Gravelled
+Kathmandu,27500000,3.0,South,4.0,26.0,Gravelled
+Kathmandu,24000000,3.0,South,4.0,15.0,Blacktopped
+Kathmandu,24000000,3.0,North,4.0,13.0,Blacktopped
+Kathmandu,24500000,2.75,West,3.3,12.0,Soil Stabilized
+Lalitpur,28500000,3.0,South West,4.5,18.0,Blacktopped
+Kathmandu,62000000,3.0,East,10.0,15.0,Blacktopped
+Kathmandu,42500000,4.0,South,6.0,15.0,Blacktopped
+Kathmandu,24500000,3.0,East,4.0,30.0,Gravelled
+Kathmandu,45000000,3.0,South West,8.0,15.0,Blacktopped
+Kathmandu,33000000,2.75,South West,6.5,18.0,Blacktopped
+Kathmandu,80000000,2.75,South,10.875,12.0,Blacktopped
+Lalitpur,46500000,2.0,East,4.0,21.0,Blacktopped
+Kathmandu,34000000,3.0,South,4.0,15.0,Blacktopped
+Kathmandu,21500000,3.0,East,7.888970051132214,12.0,Blacktopped
+Kathmandu,23500000,2.75,East,3.25,15.0,Blacktopped
+Kathmandu,42000000,2.5,North,4.0,20.0,Blacktopped
+Kathmandu,46000000,2.75,South West,8.0,13.0,Blacktopped
+Lalitpur,33000000,3.0,North,5.25,13.0,Soil Stabilized
+Kathmandu,19000000,3.0,North East,3.2,0.0,Soil Stabilized
+Kathmandu,30500000,3.0,North East,5.0,15.0,Blacktopped
+Kathmandu,21000000,2.0,North,3.0,14.0,Blacktopped
+Kathmandu,55000000,2.75,South,8.0,15.0,Gravelled
+Kathmandu,40000000,2.5,South,6.0,15.0,Gravelled
+Kathmandu,10600000,1.0,South,3.0,10.0,Soil Stabilized
+Lalitpur,19000000,3.0,East,5.551497443389335,15.0,Gravelled
+Kathmandu,20000000,2.75,South,14.0,20.0,Soil Stabilized
+Kathmandu,39000000,3.0,South,5.0,14.0,Soil Stabilized
+Kathmandu,39000000,2.0,South,10.0,13.0,Soil Stabilized
+Kathmandu,26000000,2.75,North East,6.375,16.0,Soil Stabilized
+Kathmandu,33000000,4.0,East,7.0,20.0,Soil Stabilized
+Kathmandu,24500000,2.75,South East,4.0,14.0,Soil Stabilized
+Kathmandu,61500000,2.75,South,18.0,15.0,Soil Stabilized
+Kathmandu,70000000,3.0,South,10.0,12.0,Soil Stabilized
+Lalitpur,70000000,4.0,South West,16.0,9.0,Soil Stabilized
+Kathmandu,35000000,3.0,East,8.31263696128561,12.0,Blacktopped
+Kathmandu,25000000,2.75,North East,4.0,16.0,Gravelled
+Lalitpur,16000000,0.0,North,0.0,13.0,Gravelled
+Kathmandu,10500000,1.0,South West,3.2,12.0,Gravelled
+Lalitpur,19500000,3.0,South,4.0,14.0,Soil Stabilized
+Lalitpur,97500000,2.0,East,24.0,20.0,Soil Stabilized
+Kathmandu,38000000,3.0,East,6.1,14.0,Soil Stabilized
+Kathmandu,29500000,3.0,South East,7.0,20.0,Soil Stabilized
+Kathmandu,43500000,3.0,West,3.85,20.0,Soil Stabilized
+Kathmandu,22000000,3.0,South,3.25,20.0,Soil Stabilized
+Lalitpur,29500000,3.0,West,6.0,18.0,Blacktopped
+Kathmandu,45000000,2.75,South,7.0,12.0,Soil Stabilized
+Bhaktapur,22500000,4.0,South East,4.0,20.0,Soil Stabilized
+Kathmandu,18000000,3.0,South,3.5,13.0,Soil Stabilized
+Kathmandu,34500000,4.0,East,6.3,12.0,Soil Stabilized
+Kathmandu,72500000,2.75,South West,14.0,20.0,Soil Stabilized
+Kathmandu,11500000,1.0,North,3.0,13.0,Gravelled
+Kathmandu,27500000,2.75,North,5.0,13.0,Soil Stabilized
+Kathmandu,31500000,2.75,West,4.0,20.0,Soil Stabilized
+Kathmandu,37500000,3.0,North,5.0,14.0,Blacktopped
+Kathmandu,17500000,3.0,West,4.0,16.0,Soil Stabilized
+Kathmandu,37500000,3.0,South,6.0,20.0,Soil Stabilized
+Bhaktapur,25000000,1.0,East,7.0,13.0,Gravelled
+Kathmandu,18000000,3.0,South,3.0,13.0,Soil Stabilized
+Kathmandu,45000000,2.75,South,7.125,20.0,Blacktopped
+Kathmandu,57500000,3.0,South,7.0,20.0,Soil Stabilized
+Kathmandu,29000000,3.0,West,3.375,20.0,Blacktopped
+Kathmandu,17800000,2.0,North,3.25,15.0,Gravelled
+Kathmandu,29000000,2.5,South West,4.0,15.0,Blacktopped
+Kathmandu,51000000,3.0,South,8.0,15.0,Blacktopped
+Kathmandu,29000000,3.0,North East,5.1875,20.0,Gravelled
+Bhaktapur,75000000,5.0,South,6.5,20.0,Blacktopped
+Kathmandu,26500000,3.0,East,3.5,12.0,Soil Stabilized
+Kathmandu,41000000,3.0,East,4.0,12.0,Blacktopped
+Kathmandu,30000000,3.0,East,6.0,12.0,Soil Stabilized
+Kathmandu,14200000,2.0,West,3.25,13.0,Soil Stabilized
+Kathmandu,17500000,3.0,North East,3.5,13.0,Soil Stabilized
+Kathmandu,20000000,2.0,South,4.0,13.0,Blacktopped
+Kathmandu,15000000,1.0,South,5.0,11.0,Soil Stabilized
+Kathmandu,70000000,4.5,South East,13.0,14.0,Gravelled
+Kathmandu,16500000,3.0,South,3.1,10.0,Blacktopped
+Kathmandu,53000000,3.0,West,7.5,15.0,Blacktopped
+Kathmandu,43000000,3.0,South East,8.0,12.0,Gravelled
+Bhaktapur,21500000,3.0,West,6.0,20.0,Soil Stabilized
+Kathmandu,24500000,2.0,East,3.5,13.12336,Soil Stabilized
+Kathmandu,80000000,4.0,East,8.0,29.52756,Soil Stabilized
+Kathmandu,33500000,3.0,East,5.0,20.0,Blacktopped
+Kathmandu,32000000,2.75,East,5.0,10.0,Blacktopped
+Kathmandu,35000000,3.0,North,4.0,16.0,Blacktopped
+Lalitpur,25500000,2.5,North West,4.2,14.0,Gravelled
+Lalitpur,24000000,3.0,South East,4.0,0.0,Soil Stabilized
+Kathmandu,18700000,3.0,East,5.25,7.0,Soil Stabilized
+Lalitpur,16500000,3.0,South,3.5,13.0,Blacktopped
+Kathmandu,25000000,4.0,West,3.0,13.0,Soil Stabilized
+Kathmandu,31800000,3.0,East,5.1,14.0,Blacktopped
+Kathmandu,27500000,2.75,North,4.0,13.0,Gravelled
+Kathmandu,26000000,3.0,West,4.1,15.0,Blacktopped
+Kathmandu,42500000,2.75,South West,5.5,20.0,Soil Stabilized
+Kathmandu,60000000,3.0,East,9.0,13.0,Soil Stabilized
+Kathmandu,40000000,2.5,West,6.1,20.0,Blacktopped
+Kathmandu,29500000,2.75,East,3.75,0.0,Soil Stabilized
+Kathmandu,19000000,2.0,South West,3.1,24.0,Blacktopped
+Kathmandu,32500000,2.75,North West,5.5,16.0,Gravelled
+Lalitpur,44500000,3.0,North,6.5,16.0,Gravelled
+Kathmandu,32000000,3.0,South,5.0,15.0,Gravelled
+Kathmandu,26000000,3.0,East,4.3,12.0,Blacktopped
+Kathmandu,25000000,3.0,North,5.0,13.0,Blacktopped
+Kathmandu,17500000,3.0,South,4.0,16.0,Blacktopped
+Kathmandu,12500000,1.0,North East,3.0,13.0,Gravelled
+Kathmandu,70000000,3.0,East,15.0,12.0,Blacktopped
+Lalitpur,14200000,1.0,East,3.5,20.0,Gravelled
+Kathmandu,30000000,3.0,South East,6.0,10.0,Soil Stabilized
+Kathmandu,12800000,1.0,West,3.2,12.0,Gravelled
+Kathmandu,25000000,3.0,West,5.5,13.0,Soil Stabilized
+Kathmandu,12500000,1.0,East,3.25,10.0,Soil Stabilized
+Kathmandu,23000000,3.0,South,4.0,12.0,Soil Stabilized
+Kathmandu,25000000,2.75,South East,4.0,13.0,Soil Stabilized
+Kathmandu,39000000,5.0,East,3.0,36.08924,Soil Stabilized
+Lalitpur,20500000,3.0,South,4.0,10.0,Gravelled
+Kathmandu,27500000,3.0,South,4.25,13.0,Blacktopped
+Kathmandu,16500000,3.0,South West,3.0,10.0,Gravelled
+Kathmandu,32000000,3.0,South East,5.25,13.0,Blacktopped
+Lalitpur,42000000,4.0,South West,11.0,0.0,Blacktopped
+Kathmandu,66000000,3.0,East,8.3,40.0,Blacktopped
+Kathmandu,17000000,3.0,East,3.1,13.0,Blacktopped
+Kathmandu,13000000,2.0,South,3.2,13.0,Blacktopped
+Bhaktapur,19500000,4.0,East,3.5,20.0,Soil Stabilized
+Kathmandu,55000000,2.75,North East,9.934258582907232,0.0,Soil Stabilized
+Kathmandu,22500000,2.75,North East,5.200876552227904,20.0,Soil Stabilized
+Kathmandu,30000000,2.75,South East,4.032140248356464,36.08924,Soil Stabilized
+Kathmandu,20000000,2.75,East,4.382761139517896,0.0,Soil Stabilized
+Kathmandu,65000000,2.75,North West,12.0,13.0,Soil Stabilized
+Kathmandu,28000000,2.75,South,6.5,13.0,Soil Stabilized
+Kathmandu,23000000,3.0,South,5.625,20.0,Soil Stabilized
+Lalitpur,35000000,3.0,South,3.0,20.0,Soil Stabilized
+Lalitpur,70000000,3.0,South West,10.0,13.0,Soil Stabilized
+Kathmandu,80000000,2.75,South East,14.75,13.0,Soil Stabilized
+Lalitpur,22500000,3.0,South West,3.3,13.0,Soil Stabilized
+Lalitpur,60000000,3.0,South,10.0,20.0,Soil Stabilized
+Kathmandu,22700000,3.0,West,3.5,12.0,Gravelled
+Kathmandu,19800000,3.0,South East,3.5,12.0,Gravelled
+Kathmandu,33500000,3.0,East,6.0,14.0,Soil Stabilized
+Kathmandu,52500000,3.0,West,5.0,0.0,Soil Stabilized
+Lalitpur,15100000,2.0,North,3.2,0.0,Soil Stabilized
+Kathmandu,25000000,3.0,West,4.5,13.0,Soil Stabilized
+Kathmandu,17000000,3.0,North,3.1,0.0,Soil Stabilized
+Kathmandu,25500000,3.0,North,3.3125,0.0,Soil Stabilized
+Kathmandu,22500000,3.0,North,3.5,0.0,Soil Stabilized
+Kathmandu,34500000,3.0,South,4.2,19.68504,Soil Stabilized
+Kathmandu,52500000,3.0,South,15.0,13.0,Gravelled
+Kathmandu,20500000,2.75,South East,5.0,14.0,Gravelled
+Lalitpur,39077000,3.0,South,8.5,16.0,Blacktopped
+Kathmandu,31000000,4.0,South West,4.0,14.0,Gravelled
+Lalitpur,27000000,3.0,West,3.375,22.0,Blacktopped
+Lalitpur,21500000,3.0,South West,4.5,10.0,Soil Stabilized
+Bhaktapur,25500000,4.0,South West,5.0,10.0,Soil Stabilized
+Lalitpur,40000000,3.0,East,8.0,20.0,Soil Stabilized
+Kathmandu,20000000,3.0,East,4.2,12.0,Gravelled
+Kathmandu,32500000,3.0,East,6.875,13.0,Gravelled
+Kathmandu,45000000,3.0,East,8.0,20.0,Gravelled
+Kathmandu,21500000,3.0,West,4.0,13.12336,Blacktopped
+Kathmandu,70000000,3.0,South,16.0,20.0,Blacktopped
+Kathmandu,47500000,2.75,West,8.0,16.0,Gravelled
+Kathmandu,25000000,2.75,South East,5.259313367421475,0.0,Soil Stabilized
+Kathmandu,45000000,2.75,North East,10.81081081081081,0.0,Soil Stabilized
+Kathmandu,45000000,2.75,North East,10.81081081081081,0.0,Soil Stabilized
+Kathmandu,35000000,2.75,South East,7.158509861212564,0.0,Soil Stabilized
+Kathmandu,11400000,1.0,South,3.0,13.0,Gravelled
+Kathmandu,12000000,1.0,East,3.2,12.0,Soil Stabilized
+Kathmandu,36500000,2.75,North East,4.0,13.0,Soil Stabilized
+Kathmandu,24000000,3.0,South,4.0,16.0,Soil Stabilized
+Kathmandu,20400000,3.0,South,4.0,20.0,Blacktopped
+Kathmandu,35700000,2.75,West,8.5,12.0,Soil Stabilized
+Kathmandu,16000000,5.0,South East,3.1,14.0,Gravelled
+Kathmandu,19500000,3.0,South East,2.75,12.0,Blacktopped
+Kathmandu,17000000,3.0,East,3.2,13.0,Blacktopped
+Kathmandu,38000000,2.75,South,7.0,10.0,Soil Stabilized
+Kathmandu,20000000,3.0,West,3.5,13.0,Soil Stabilized
+Lalitpur,25000000,2.0,South West,5.5,0.0,Soil Stabilized
+Kathmandu,17500000,3.0,North,3.5,12.0,Soil Stabilized
+Kathmandu,25000000,3.0,East,4.0,13.0,Soil Stabilized
+Kathmandu,59900000,3.0,North,16.0,26.0,Gravelled
+Kathmandu,29900000,3.0,East,4.1,0.0,Soil Stabilized
+Kathmandu,55000000,2.0,East,8.2,24.0,Gravelled
+Kathmandu,26500000,3.0,West,4.5,13.0,Gravelled
+Kathmandu,32500000,3.0,South,4.375,13.0,Gravelled
+Kathmandu,21500000,4.0,South West,3.4375,14.0,Gravelled
+Kathmandu,38000000,4.0,North West,7.0,15.0,Soil Stabilized
+Kathmandu,25000000,4.0,North,4.75,12.0,Soil Stabilized
+Kathmandu,24000000,4.0,North,3.0,20.0,Soil Stabilized
+Kathmandu,17000000,4.0,West,3.5,20.0,Gravelled
+Kathmandu,26000000,3.0,North,4.3,16.0,Soil Stabilized
+Kathmandu,29000000,2.75,South,4.0,14.0,Soil Stabilized
+Kathmandu,22800000,3.0,East,4.0,20.0,Soil Stabilized
+Kathmandu,27500000,4.0,South,4.0,12.0,Soil Stabilized
+Kathmandu,22500000,3.0,East,3.13,12.0,Soil Stabilized
+Kathmandu,30000000,3.0,West,6.5,15.0,Soil Stabilized
+Kathmandu,51500000,3.0,North East,6.0,12.0,Soil Stabilized
+Kathmandu,33000000,3.0,East,5.0,15.0,Soil Stabilized
+Kathmandu,40000000,4.0,East,7.0,13.0,Soil Stabilized
+Kathmandu,18200000,3.0,South,3.1,13.0,Soil Stabilized
+Kathmandu,19200000,3.0,East,0.0116873630387143,13.0,Soil Stabilized
+Kathmandu,17700000,4.0,East,3.5,13.0,Soil Stabilized
+Kathmandu,17000000,2.75,East,3.0,13.0,Soil Stabilized
+Kathmandu,29800000,3.0,West,6.0,13.0,Soil Stabilized
+Kathmandu,21000000,3.0,North West,3.5,13.0,Soil Stabilized
+Kathmandu,34000000,3.0,South East,6.0,13.0,Soil Stabilized
+Kathmandu,19900000,2.75,South West,3.0,12.0,Soil Stabilized
+Kathmandu,16800000,3.0,South West,3.0,13.0,Soil Stabilized
+Kathmandu,63000000,4.0,South,12.875,13.0,Soil Stabilized
+Kathmandu,14200000,2.0,North West,3.625,13.0,Soil Stabilized
+Lalitpur,20000000,3.0,North,3.0625,16.0,Soil Stabilized
+Kathmandu,19500000,3.0,East,3.2,13.0,Soil Stabilized
+Kathmandu,21000000,2.0,South,3.1,18.0,Soil Stabilized
+Kathmandu,100000000,3.0,West,10.1,20.0,Soil Stabilized
+Kathmandu,22500000,4.0,North,3.0625,10.0,Soil Stabilized
+Kathmandu,37000000,3.0,South West,4.0,12.0,Soil Stabilized
+Kathmandu,19000000,3.0,East,3.875,20.0,Soil Stabilized
+Kathmandu,45000000,3.0,East,9.0,12.0,Soil Stabilized
+Kathmandu,16500000,3.0,South,4.0,12.0,Soil Stabilized
+Kathmandu,88000000,3.0,West,15.625,20.0,Soil Stabilized
+Kathmandu,29000000,5.0,West,4.2,10.0,Soil Stabilized
+Kathmandu,55000000,4.0,North,7.0,20.0,Soil Stabilized
+Kathmandu,36000000,3.5,South East,3.2,13.0,Soil Stabilized
+Kathmandu,24000000,3.0,East,3.2,13.0,Soil Stabilized
+Kathmandu,12000000,1.0,East,3.0,13.0,Soil Stabilized
+Kathmandu,45000000,4.0,North,4.125,0.0,Soil Stabilized
+Kathmandu,20000000,3.0,East,5.0,13.0,Soil Stabilized
+Lalitpur,16000000,3.0,South East,3.0,13.0,Soil Stabilized
+Kathmandu,37500000,6.0,East,2.875,12.0,Soil Stabilized
+Kathmandu,26000000,3.0,East,4.125,12.0,Soil Stabilized
+Kathmandu,17500000,3.0,South,4.622352081811541,20.0,Soil Stabilized
+Lalitpur,25000000,3.0,South,4.75,13.0,Soil Stabilized
+Kathmandu,28500000,2.0,South West,5.25,18.0,Soil Stabilized
+Lalitpur,14500000,2.0,South East,5.1875,13.0,Soil Stabilized
+Kathmandu,27500000,3.0,South East,5.1875,13.0,Soil Stabilized
+Kathmandu,55000000,2.75,North East,9.934258582907232,20.0,Soil Stabilized
+Lalitpur,16500000,10.0,East,3.944485025566107,20.0,Soil Stabilized
+Kathmandu,65000000,3.0,North West,12.0,13.0,Soil Stabilized
+Kathmandu,47500000,2.75,East,3.0625,36.08924,Soil Stabilized
+Kathmandu,35000000,3.0,West,4.5,20.0,Soil Stabilized
+Kathmandu,20000000,3.0,North,3.75,20.0,Soil Stabilized
+Kathmandu,25000000,4.0,South East,8.765522279035793,13.0,Soil Stabilized
+Kathmandu,49500000,3.0,South,9.0,10.0,Soil Stabilized
+Kathmandu,18000000,2.0,South East,6.0,20.0,Soil Stabilized
+Kathmandu,43500000,3.0,West,3.5625,20.0,Soil Stabilized
+Bhaktapur,35000000,3.0,East,7.1,14.0,Soil Stabilized
+Kathmandu,60000000,3.0,East,12.0,13.0,Soil Stabilized
+Kathmandu,38000000,3.0,East,6.1,14.0,Soil Stabilized
+Kathmandu,70000000,2.0,North West,12.25,20.0,Soil Stabilized
+Kathmandu,41500000,3.0,East,8.25,14.0,Soil Stabilized
+Bhaktapur,22500000,2.75,South,4.0,20.0,Soil Stabilized
+Kathmandu,40100000,2.0,East,4.9375,14.0,Soil Stabilized
+Kathmandu,16500000,3.0,North,3.0,10.0,Soil Stabilized
+Kathmandu,55000000,2.0,West,5.25,20.0,Soil Stabilized
+Kathmandu,26000000,3.0,West,6.25,15.0,Soil Stabilized
+Lalitpur,33000000,3.5,East,7.1,10.0,Soil Stabilized
+Kathmandu,55000000,2.0,East,7.5,13.0,Soil Stabilized
+Lalitpur,12500000,1.0,East,1.995617238860482,20.0,Soil Stabilized
+Kathmandu,62500000,3.0,West,15.0,13.0,Soil Stabilized
+Bhaktapur,35000000,3.0,North East,7.5,18.0,Soil Stabilized
+Kathmandu,36500000,3.0,South,11.75,18.0,Soil Stabilized
+Kathmandu,26000000,2.75,North East,5.0,15.0,Soil Stabilized
+Kathmandu,19000000,2.75,East,4.0,15.0,Soil Stabilized
+Kathmandu,25000000,2.75,North,5.0,15.0,Soil Stabilized
+Kathmandu,20000000,2.75,South East,5.0,15.0,Soil Stabilized
+Kathmandu,29000000,2.75,North,5.0,12.0,Soil Stabilized
+Lalitpur,29000000,2.75,South,4.25,15.0,Soil Stabilized
+Lalitpur,40000000,2.75,East,12.0,10.0,Soil Stabilized
+Kathmandu,18000000,2.75,South,3.5,13.0,Soil Stabilized
+Lalitpur,23000000,2.75,North East,5.625,16.0,Soil Stabilized
+Kathmandu,35000000,2.75,East,11.0,20.0,Soil Stabilized
+Kathmandu,35000000,2.75,East,7.0,20.0,Soil Stabilized
+Kathmandu,45000000,2.75,East,4.0,30.0,Soil Stabilized
+Lalitpur,21000000,2.75,North East,4.5,16.0,Soil Stabilized
+Lalitpur,28000000,2.75,North,4.5,13.0,Soil Stabilized
+Kathmandu,32500000,5.0,East,3.0,25.0,Soil Stabilized
+Kathmandu,12000000,2.0,North East,2.5,13.0,Soil Stabilized
+Kathmandu,27000000,2.0,East,8.0,12.0,Soil Stabilized
+Kathmandu,72500000,3.0,East,13.0,12.0,Soil Stabilized

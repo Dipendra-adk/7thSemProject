@@ -26,7 +26,8 @@ from django.http import HttpResponse
 import json
 from joblib import load
 from pathlib import Path
-from house.ml_models.svm_model import SVMRegressor
+from django.core.mail import EmailMessage
+from house.ml_models.svm_model import SVR
 from house.ml_models.decision_tree import DecisionTreeRegressor
 
 import sys
@@ -84,7 +85,7 @@ def signup_view(request):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         activation_link = f"http://{current_site.domain}{reverse('activate', kwargs={'uidb64': uid, 'token': token})}"
         message = f"Hi {user.first_name},\n\nPlease activate your account by clicking the link below:\n\n{activation_link}"
-        send_mail(mail_subject, message, 'noreply@example.com', [email])
+        send_mail(mail_subject, message, 'noreply@cityestate.com', [email])
         messages.success(request, 'Account created successfully! Please confirm your email to complete the registration.')
         return redirect('login')  
     
@@ -166,7 +167,7 @@ def password_reset_confirm_view(request, uidb64, token):
         user = User.objects.get(pk=uid)
         print(f"User: {user}")  # Debug
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-        print(f"Error: {e}")  # Debug
+        print(f"Error: {e}") # Debug
         user = None
 
     if user is not None and default_token_generator.check_token(user, token):
@@ -204,7 +205,7 @@ def home(request):
 
 
 def buyer(request):
-    properties = Property.objects.all()
+    properties = Property.objects.all().order_by('-created_at')
     return render(request, 'buyer.html', {
         'properties': properties
     })
@@ -269,12 +270,13 @@ def seller_view(request):
 
 def property_detail(request, property_id):
     property_obj = get_object_or_404(Property, id=property_id)
-    seller_email = property_obj.seller.email 
+    seller_email = property_obj.seller.email
+    
     if request.method == "POST":
         sender_name = request.POST.get("sender_name")
         sender_email = request.POST.get("sender_email")
         content = request.POST.get("content")
-
+        
         if sender_name and sender_email and content:
             message = Message(
                 sender_name=sender_name,
@@ -283,27 +285,29 @@ def property_detail(request, property_id):
                 property=property_obj,
             )
             message.save()
-
+            
             subject = f"Inquiry about {property_obj.title}"
             body = f"""
             Hello {property_obj.seller.username},\n\n
-            You have a new inquiry about your property: {property_obj.title}\n
-            Now you can directly contact the buyer at {sender_email}.\n
-            Contact him/her to discuss further details and discussion.\n\n
+            You have a new inquiry about your property: {property_obj.title}
+            Now you can directly contact the buyer at {sender_email}.
+            Contact him/her to discuss further details and discussion.\n
             Buyer Details:
             Name: {sender_name}
-            Email: {sender_email}\n
-            Message: {content}\n\n
+            Email: {sender_email}
+            Message: {content}\n
             Please respond to the buyer if you're interested.
             """
-            send_mail(
-                subject,
-                body,
-                sender_email,  
-                [seller_email],  
-                fail_silently=False,
-                
+            
+            email = EmailMessage(
+                subject=subject,
+                body=body,
+                from_email="noreply@citystate.com", 
+                to=[seller_email],
+                reply_to=[sender_email]
             )
+            email.send(fail_silently=False)
+            
             messages.success(request, "Your message has been sent to the seller.")
             return redirect("property_detail", property_id=property_id)
         else:
@@ -313,69 +317,95 @@ def property_detail(request, property_id):
                 "property_detail.html",
                 {"property": property_obj, "error_message": error_message},
             )
-
+            
     return render(request, "property_detail.html", {"property": property_obj, "error_message": None})
 
 
 def predict(request):
     try:
-        # Load necessary files
-        with open('house/encoder_mappings.json', 'r') as f:
-            encoder_mappings = json.load(f)
+        # Load models and scalers
+        feature_scaler = pickle.load(open('house/ml_models/saved_models/feature_scaler.pkl', 'rb'))
+        svm_model = pickle.load(open('house/ml_models/saved_models/svm_model.pkl', 'rb'))
+        dt_model = pickle.load(open('house/ml_models/saved_models/decision_tree.pkl', 'rb'))
         
         with open('house/ml_models/feature_names.pkl', 'rb') as f:
             feature_names = pickle.load(f)
-            
-        scaler = load('house/ml_models/saved_models/scaler.pkl')
-        svm_model = load('house/ml_models/saved_models/svm_model.pkl')
-        dt_model = load('house/ml_models/saved_models/decision_tree.pkl')
-
+        
         if request.method == 'POST':
+            # Get input values with validation
+            try:
+                area = float(request.POST.get('area', 0))
+                stories = float(request.POST.get('stories', 0))
+                road_width = float(request.POST.get('road_width', 0))
+                
+                # Input validation
+                if area <= 0 or stories <= 0 or road_width <= 0:
+                    raise ValueError("Input values must be positive numbers")
+                
+            except ValueError as e:
+                return render(request, 'predict.html', {'error': str(e)})
+            
+            city = request.POST.get('city')
+            road_type = request.POST.get('road_type')
+            
+            # Create input data dictionary
             input_data = {
-                'area': float(request.POST.get('area')),
-                'bedrooms': int(request.POST.get('bedrooms')),
-                'bathrooms': int(request.POST.get('bathrooms')),
-                'stories': int(request.POST.get('stories')),
-                'mainroad': encoder_mappings['mainroad']['encode'].get(request.POST.get('mainroad'), 0),
-                'guestroom': encoder_mappings['guestroom']['encode'].get(request.POST.get('guestroom'), 0),
-                'basement': encoder_mappings['basement']['encode'].get(request.POST.get('basement'), 0),
-                'hotwaterheating': encoder_mappings['hotwaterheating']['encode'].get(request.POST.get('hotwaterheating'), 0),
-                'airconditioning': encoder_mappings['airconditioning']['encode'].get(request.POST.get('airconditioning'), 0),
-                'parking': int(request.POST.get('parking')),
-                'prefarea': encoder_mappings['prefarea']['encode'].get(request.POST.get('prefarea'), 0),
-                'furnishingstatus_furnished': 1 if request.POST.get('furnishingstatus') == 'furnished' else 0,
-                'furnishingstatus_semi-furnished': 1 if request.POST.get('furnishingstatus') == 'semi-furnished' else 0,
-                'furnishingstatus_unfurnished': 1 if request.POST.get('furnishingstatus') == 'unfurnished' else 0,
+                'Floors': stories,
+                'Area': area,
+                'Road_Width': road_width,
+                'City_Bhaktapur': 1 if city == 'Bhaktapur' else 0,
+                'City_Kathmandu': 1 if city == 'Kathmandu' else 0,
+                'City_Lalitpur': 1 if city == 'Lalitpur' else 0,
+                'Road_Type_Blacktopped': 1 if road_type == 'Blacktopped' else 0,
+                'Road_Type_Gravelled': 1 if road_type == 'Gravelled' else 0,
+                'Road_Type_Soil Stabilized': 1 if road_type == 'Soil_Stabilized' else 0,
             }
-
+            
+            # Create DataFrame
             df = pd.DataFrame([input_data])
-            from .model_train import engineer_features
-            df_processed = engineer_features(df, is_training=False)
-            df_processed = df_processed[feature_names]
-            X_scaled = scaler.transform(df_processed)
-            svm_pred = svm_model.predict(X_scaled)[0]
-            dt_pred = dt_model.predict(df_processed)[0]
-            svm_pred_original = np.expm1(svm_pred)
-            dt_pred_original = np.expm1(dt_pred)
+            df = df.reindex(columns=feature_names, fill_value=0)
+            
+            # Scale features
+            X_scaled = feature_scaler.transform(df)
+            
+            # Get predictions (log scale)
+            svm_pred_log = svm_model.predict(X_scaled)[0]
+            dt_pred_log = dt_model.predict(X_scaled)[0]
+            
+            # Transform to actual prices
+            svm_pred_price = np.expm1(svm_pred_log)
+            dt_pred_price = np.expm1(dt_pred_log)
+            
+            # Apply reasonable price thresholds for Nepal real estate market
+            # MIN_PRICE = 20000000  # 1 million NPR
+            # MAX_PRICE = 500000000  # 500 million NPR
+            
+            svm_pred_price = np.clip(svm_pred_price)
+            dt_pred_price = np.clip(dt_pred_price)
+            
+           
             
             return render(request, 'predict.html', {
-                'prediction_svm': f'Rs. {svm_pred_original:,.2f}',
-                'prediction_dt': f'Rs. {dt_pred_original:,.2f}',
+                'prediction_svm': f'Rs. {svm_pred_price:,.2f}',
+                'prediction_dt': f'Rs. {dt_pred_price:,.2f}',
                 'form_data': request.POST,
-                'encoder_mappings': encoder_mappings
+                'input_area': area,
+                'input_stories': stories,
+                'input_road_width': road_width,
+                'input_city': city,
+                'input_road_type': road_type
             })
-
-        return render(request, 'predict.html', {
-            'encoder_mappings': encoder_mappings
-        })
-
+        
+        return render(request, 'predict.html')
+        
     except Exception as e:
-        print(f"Prediction error: {str(e)}")  
+        print(f"Prediction error: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return render(request, 'predict.html', {
-            'error': f"An error occurred: {str(e)}",
-            'encoder_mappings': encoder_mappings
+            'error': f"An error occurred: {str(e)}"
         })
-
+    
 def contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
