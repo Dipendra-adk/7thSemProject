@@ -23,7 +23,7 @@
   </head>
   <body class="{% block body_class %}index-page{% endblock %}">
     <!-- Header -->
-    <header id="header" class="header d-flex align-items-center fixed-top">
+    {% comment %} <header id="header" class="header d-flex align-items-center fixed-top">
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
       >
@@ -55,7 +55,61 @@
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
+    </header> {% endcomment %}
+
+
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+        <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+          <h1 class="sitename">City <span>Estate</span></h1>
+        </a>
+    
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li>
+              <a href="{% url 'home' %}" 
+                 style="font-weight: {% if request.path == '/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Home</a>
+            </li>
+            <li>
+              <a href="{% url 'predict' %}" 
+                 style="font-weight: {% if request.path == '/predict/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/predict/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Predict</a>
+            </li>
+            <li>
+              <a href="{% url 'buyer' %}" 
+                 style="font-weight: {% if request.path == '/buyer/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/buyer/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Buy</a>
+            </li>
+            <li>
+              <a href="{% url 'seller_view' %}" 
+                 style="font-weight: {% if request.path == '/seller/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/seller/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Sell</a>
+            </li>
+            <li>
+              <a href="{% url 'contact' %}" 
+                 style="font-weight: {% if request.path == '/contact/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/contact/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Contact</a>
+            </li>
+    
+            {% if user.is_authenticated %}
+              <li class="user-account">
+                <a href="{% url 'logout' %}" 
+                   class="btn btn-success" 
+                   style="font-weight: bold; color: white;">Logout</a>
+              </li>
+            {% else %}
+              <li class="user-account">
+                <a href="{% url 'login' %}" 
+                   class="btn btn-success" 
+                   style="font-weight: bold; color: white;">Login</a>
+              </li>
+            {% endif %}
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
     </header>
+    
+    
+    
+
 
     <!-- Content Section -->
     <main id="main">
@@ -103,5 +157,7 @@
     <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <!-- Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
+    <!-- Bootstrap JS (necessary for mobile menu toggle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
