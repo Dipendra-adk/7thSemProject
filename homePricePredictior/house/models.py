@@ -86,6 +86,7 @@ class Property(models.Model):
     furnishingstatus = models.CharField(max_length=20, choices=FURNISHING_STATUS_CHOICES, default='unfurnished')
     price = models.DecimalField(max_digits=20, decimal_places=2)
     property_image = models.ImageField(upload_to='property_images/')
+    is_approved = models.BooleanField(default=False)  # Approval field
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

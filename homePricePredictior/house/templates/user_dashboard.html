@@ -1,0 +1,145 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+{% comment %} 
+
+{% block title%}User Dashboard{%endblock%}
+{% block content %}
+<main class="main">
+  <div class="page-title">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-lg-8">
+            {% if user.is_staff or user.is_superuser %}
+            <h1>Admin Dashboard</h1>
+            {% else %}
+            <h1>User Dashboard</h1>
+            {% endif %}
+            <p class="mb-0">
+              "Welcome, {{ user.username }}! Here's your dashboard."
+            </p>
+          </div> {% endcomment %}
+      <!-- User Information -->
+      {% comment %} <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">User Profile</h5>
+            {% if not user.is_staff or not user.is_superuser %}
+            <p class="card-text">
+              <strong>Username:</strong> {{ user.first_name }}
+            </p>
+            {% endif %}
+            <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+            <p class="card-text">
+              <strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}
+            </p>
+          </div>
+        </div>
+      </div> {% endcomment %}
+
+      <!-- Admin Section (Visible only to Admin) -->
+      {% comment %} {% if user.is_staff or user.is_superuser %}
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Admin Controls</h5>
+            <p class="card-text">Manage all operations and datasets.</p>
+            <a href="{% url 'admin:index' %}" class="btn btn-danger">
+              <i class="bi bi-gear-fill"></i> Admin Panel
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div> {% endcomment %}
+
+    <!-- Properties Approval pending section -->
+    {% comment %} {% if user.is_staff or user.is_superuser %}
+    <h3>Pending Properties for Approval</h3>
+<ul>
+  {% for property in properties %}
+  <li>
+    <strong>{{ property.title }}</strong> - {{ property.description }}
+    <br />
+    <a href="{% url 'approve_property' property.id %}" class="btn btn-success">
+      Approve
+    </a>
+  </li>
+  {% empty %}
+  <li>No pending properties.</li>
+  {% endfor %}
+</ul>
+{% endif %}
+ {% endcomment %}
+
+    <!-- Datasets Section -->
+    {% comment %} {% if user.is_staff or user.is_superuser %}
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Datasets</h5>
+            <p class="card-text">
+              Here are the datasets available for analysis:
+            </p>
+            <ul class="list-group">
+              {% for dataset in datasets %}
+              <li class="list-group-item">
+                <a href="{{ dataset.url }}" target="_blank"
+                  >{{ dataset.name }}</a
+                >
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</main>
+{% endblock %} {% endcomment %}
+
+
+
+
+
+
+{% block title%}User Dashboard{%endblock%}
+{% block content %}
+<main class="main">
+  <div class="page-title">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-lg-8">
+            <h1>User Dashboard</h1>
+            <p class="mb-0">
+              "Welcome, {{ user.username }}! Here's your dashboard."
+            </p>
+          </div>
+
+          <!-- User Information -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">User Profile</h5>
+                <p class="card-text">
+                  <strong>Username:</strong> {{ user.first_name }}
+                </p>
+                <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                <p class="card-text">
+                  <strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

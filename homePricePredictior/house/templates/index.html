@@ -88,6 +88,7 @@
                  style="font-weight: {% if request.path == '/contact/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/contact/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Contact</a>
             </li>
     
+            {% comment %}
             {% if user.is_authenticated %}
               <li class="user-account">
                 <a href="{% url 'logout' %}" 
@@ -101,14 +102,49 @@
                    style="font-weight: bold; color: white;">Login</a>
               </li>
             {% endif %}
+
+            {% endcomment %}
+
+            <!-- User Authentication Section -->
+            {% if user.is_authenticated %}
+              <!-- User Dashboard Link -->
+              {% comment %} <li style="{% if request.resolver_match.url_name == 'dashboard' %}color: #28a745; font-weight: bold; border-bottom: 2px solid #28a745;{% endif %}">
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+              </li> {% endcomment %}
+              {% if user.is_superuser %}
+              <li>
+                <a href="{% url 'admin_dashboard' %}" 
+                   style="font-weight: {% if request.path == '/admin_dashboard/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/admin_dashboard/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Dashboard</a>
+              </li>
+              {% else %}
+              <li>
+                <a href="{% url 'user_dashboard' %}" 
+                   style="font-weight: {% if request.path == '/user_dashboard/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/user_dashboard/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Dashboard</a>
+              </li>
+              {% endif %}
+
+              <!-- Logout with User Icon -->
+              <li>
+                <a href="{% url 'logout' %}" style="display: flex; align-items: center; color: #fff; background-color: #28a745; padding: 8px 12px; border-radius: 5px; text-decoration: none;">
+                  <i class="bi bi-person-circle" style="margin-right: 8px;"></i> Logout
+                </a>
+              </li>
+            {% else %}
+              <!-- Login with User Icon -->
+              <li>
+                <a href="{% url 'login' %}" style="display: flex; align-items: center; color: #fff; background-color: #28a745; padding: 8px 12px; border-radius: 5px; text-decoration: none;">
+                  <i class="bi bi-person-circle" style="margin-right: 8px;"></i> Login
+                </a>
+              </li>
+            {% endif %}
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
     </header>
+     
     
-    
-    
+  
 
 
     <!-- Content Section -->

@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Property, ContactMessage, PropertyImage, Message,User
 from django.core.exceptions import ValidationError
-from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 import re
@@ -47,6 +47,8 @@ def validate_password(password):
     
     return True, ""
 
+def is_admin(user):
+    return user.is_staff or user.is_superuser
 
 def signup_view(request):
     if request.method == "POST":
@@ -187,7 +189,7 @@ def home(request):
     query_title = request.GET.get('title', '')
     query_city = request.GET.get('city', '')
     
-    properties = Property.objects.all()
+    properties = Property.objects.filter(is_approved=True)
 
     if query_title:
         properties = properties.filter(title__icontains=query_title)
@@ -203,12 +205,38 @@ def home(request):
         'query_city': query_city,
     })
 
+def user_dashboard(request):
+    return render(request, "user_dashboard.html")
+
+def admin_dashboard(request):
+    pending_properties = Property.objects.filter(is_approved=False)  # Fetch unapproved properties
+    return render(request, "admin_dashboard.html", {"properties": pending_properties})
+
 
 def buyer(request):
-    properties = Property.objects.all().order_by('-created_at')
+    properties = Property.objects.filter(is_approved=True).order_by('-created_at')
     return render(request, 'buyer.html', {
         'properties': properties
     })
+@user_passes_test(lambda u: u.is_superuser)
+def approve_property(request, property_id):
+    """Superuser approves a property"""
+    property_obj = Property.objects.get(id=property_id)
+    property_obj.is_approved = True
+    property_obj.save()
+    return redirect("pending_properties")  # Redirect to pending properties page
+
+
+def decline_property(request, property_id):
+    property = get_object_or_404(Property, id=property_id)
+    property.delete()  # This removes the property from the database
+    return redirect('admin_dashboard')  # Redirect back to the admin dashboard
+
+@user_passes_test(lambda u: u.is_superuser)
+def pending_properties(request):
+    """List properties pending approval"""
+    properties = Property.objects.filter(is_approved=False)  # Unapproved properties
+    return render(request, "dashboard.html", {"properties": properties})
 
 @login_required
 def seller_view(request):
