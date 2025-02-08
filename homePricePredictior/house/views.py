@@ -224,7 +224,7 @@ def approve_property(request, property_id):
     property_obj = Property.objects.get(id=property_id)
     property_obj.is_approved = True
     property_obj.save()
-    return redirect("pending_properties")  # Redirect to pending properties page
+    return redirect("buyer")  # Redirect to pending properties page
 
 
 def decline_property(request, property_id):
