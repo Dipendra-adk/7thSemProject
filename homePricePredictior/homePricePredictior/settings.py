@@ -84,14 +84,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'homedb',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',  # Set to empty string for localhost.
-        'PORT': '',           # Set to empty string for default.
+        'USER': 'homeadmin',
+        'PASSWORD': 'home1234',
+        'HOST': 'localhost',
+        'PORT': '',           
     }
 }
 
-AUTH_USER_MODEL = 'house.User'  # Replace 'house' with your actual app name
+AUTH_USER_MODEL = 'house.User' 
 LOGIN_URL = 'login'
 
 # Password validation
