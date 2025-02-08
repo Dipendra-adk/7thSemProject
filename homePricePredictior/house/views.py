@@ -206,7 +206,13 @@ def home(request):
     })
 
 def user_dashboard(request):
-    return render(request, "user_dashboard.html")
+    user_properties = Property.objects.filter(seller=request.user)  # Get properties listed by the logged-in user
+    
+    context = {
+        'user_properties': user_properties
+    }
+    return render(request, 'user_dashboard.html', context)
+    # return render(request, "user_dashboard.html")
 
 def admin_dashboard(request):
     pending_properties = Property.objects.filter(is_approved=False)  # Fetch unapproved properties
