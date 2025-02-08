@@ -1,0 +1,202 @@
+{% extends 'index.html' %} {% load static %} {% comment %} {% block title%}Admin
+Dashboard{%endblock %} {% block content %}
+<main class="main">
+  <div class="page-title">
+    <div class="container text-center">
+      <h1>Admin Dashboard</h1>
+      <p class="mb-0">
+        "Welcome, Admin {{ user.username }}! Manage all operations here."
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Admin Controls</h5>
+            <p class="card-text">Manage all operations and datasets.</p>
+            <a href="{% url 'admin:index' %}" class="btn btn-danger">
+              <i class="bi bi-gear-fill"></i> Admin Panel
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endcomment %}
+
+  <!-- Properties Approval Pending -->
+  {% comment %}
+  <div class="container mt-4">
+    <h3>Pending Properties for Approval</h3>
+    <ul>
+      {% for property in properties %}
+      <li>
+        <strong>{{ property.title }}</strong> - {{ property.description }}
+        <br />
+        <a
+          href="{% url 'approve_property' property.id %}"
+          class="btn btn-success"
+        >
+          Approve
+        </a>
+      </li>
+      {% empty %}
+      <li>No pending properties.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</main>
+{% endblock %} {% endcomment %} {% block title%}Admin Dashboard{%endblock%}
+{%block content %}
+<main class="main">
+  <div class="page-title">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-lg-8">
+            <h1>Admin Dashboard</h1>
+            <p class="mb-0">
+              "Welcome, {{ user.username }}! Here's your dashboard."
+            </p>
+          </div>
+
+          <!-- Admin Controls -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Admin Controls</h5>
+                <p class="card-text">Manage all operations and datasets.</p>
+                <a href="{% url 'admin:index' %}" class="btn btn-danger">
+                  <i class="bi bi-gear-fill"></i> Admin Panel
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Properties Approval Pending Section -->
+        {% comment %}
+        <div class="container mt-4">
+          <h3>Pending Properties for Approval</h3>
+          <ul>
+            {% for property in properties %}
+            <li>
+              <strong>{{ property.title }}</strong> - {{ property.description }}
+              <br />
+              <a
+                href="{% url 'approve_property' property.id %}"
+                class="btn btn-success"
+              >
+                Approve
+              </a>
+              <a
+                href="{% url 'decline_property' property.id %}"
+                class="btn btn-danger"
+              >
+                Decline
+              </a>
+            </li>
+            {% empty %}
+            <li>No pending properties.</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endcomment %}
+
+        <!-- Properties Approval Pending Section -->
+        <div class="container mt-4">
+          <h3>Pending Properties for Approval</h3>
+
+          {% if properties %}
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Title</th>
+                <th>Area (Aana)</th>
+                <th>Location</th>
+                <th>Bedrooms</th>
+                <th>Bathrooms</th>
+                <th>Floors</th>
+                <th>Furnished Status</th>
+                <th>Images</th>
+                <th>Price</th>
+                <th>Seller</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for property in properties %}
+              <tr>
+                <td>{{ property.title }}</td>
+                <td>{{ property.area }}</td>
+                <td>{{ property.city }}</td>
+                <td>{{ property.bedrooms }}</td>
+                <td>{{ property.bathrooms }}</td>
+                <td>{{ property.stories }}</td>
+                <td>{{ property.furnishingstatus }}</td>
+                <td>
+                  {% if property_images %}
+                  <img
+                    src="{{ property.image.url }}"
+                    alt="Property Image"
+                    width="100"
+                  />
+                  {% else %} No Image {% endif %}
+                </td>
+                <td>Rs. {{ property.price }}</td>
+                <td>
+                  {{ property.seller.username }} ({{ property.seller.email }})
+                </td>
+                <td>
+                  <a
+                    href="{% url 'approve_property' property.id %}"
+                    class="btn btn-success btn-sm"
+                  >
+                    Approve
+                  </a>
+                  <a
+                    href="{% url 'decline_property' property.id %}"
+                    class="btn btn-danger btn-sm"
+                  >
+                    Decline
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p>No pending properties.</p>
+          {% endif %}
+        </div>
+
+        <!-- Datasets Section -->
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Datasets</h5>
+                <p class="card-text">
+                  Here are the datasets available for analysis:
+                </p>
+                <ul class="list-group">
+                  {% for dataset in datasets %}
+                  <li class="list-group-item">
+                    <a href="{{ dataset.url }}" target="_blank"
+                      >{{ dataset.name }}</a
+                    >
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

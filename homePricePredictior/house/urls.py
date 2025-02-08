@@ -16,4 +16,9 @@ urlpatterns = [
     path('property/<int:property_id>/', property_detail, name='property_detail'),
     path("predict/",predict, name="predict"),
     path("contact/",contact, name='contact'), 
+    path("buyer/pending/", pending_properties, name="pending_properties"),
+    path("buyer/approve/<int:property_id>/", approve_property, name="approve_property"),
+    path('buyer/decline/<int:property_id>/', decline_property, name='decline_property'),
+    path("dashboard/", user_dashboard, name="user_dashboard"),
+    path("admin-dashboard/", admin_dashboard, name="admin_dashboard"),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

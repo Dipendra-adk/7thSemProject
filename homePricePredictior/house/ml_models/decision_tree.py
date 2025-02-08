@@ -1,82 +1,67 @@
 import numpy as np
 
+class TreeNode:
+    def __init__(self, feature_index=None, threshold=None, left=None, right=None, *, value=None):
+        self.feature_index = feature_index
+        self.threshold = threshold
+        self.left = left
+        self.right = right
+        self.value = value
+
 class DecisionTreeRegressor:
-    def __init__(self, max_depth=10, min_samples_split=5, min_samples_leaf=2):
+    def __init__(self, max_depth=5, min_samples_split=2):
         self.max_depth = max_depth
         self.min_samples_split = min_samples_split
-        self.min_samples_leaf = min_samples_leaf
-        self.tree = None
+        self.root = None
 
     def fit(self, X, y):
-        # Convert DataFrame to numpy array
         X = np.array(X)
         y = np.array(y)
-        self.tree = self._build_tree(X, y, depth=0)
+        self.root = self._build_tree(X, y, depth=0)
 
     def _build_tree(self, X, y, depth):
-        if depth >= self.max_depth or len(y) < self.min_samples_split or np.var(y) == 0:
-            return np.mean(y)
+        num_samples, num_features = X.shape
 
-        best_feature, best_threshold = self._find_best_split(X, y)
-        if best_feature is None:
-            return np.mean(y)
+        if num_samples < self.min_samples_split or depth >= self.max_depth:
+            return TreeNode(value=np.mean(y))
 
-        left_mask = X[:, best_feature] <= best_threshold
-        right_mask = ~left_mask
+        best_feature, best_thresh, best_mse = None, None, float("inf")
+        best_splits = None
 
-        return {
-            "feature": best_feature,
-            "threshold": best_threshold,
-            "left": self._build_tree(X[left_mask], y[left_mask], depth + 1),
-            "right": self._build_tree(X[right_mask], y[right_mask], depth + 1),
-        }
-
-    def _find_best_split(self, X, y):
-        best_mse, best_feature, best_threshold = float("inf"), None, None
-
-        for feature in range(X.shape[1]):
-            thresholds = np.unique(X[:, feature])
+        for feature_index in range(num_features):
+            thresholds = np.unique(X[:, feature_index])
             for threshold in thresholds:
-                left_mask = X[:, feature] <= threshold
-                right_mask = ~left_mask
+                left_mask = X[:, feature_index] <= threshold
+                right_mask = X[:, feature_index] > threshold
 
-                mse = self._calculate_mse(y[left_mask], y[right_mask])
+                if np.sum(left_mask) == 0 or np.sum(right_mask) == 0:
+                    continue
+
+                y_left = y[left_mask]
+                y_right = y[right_mask]
+                mse = np.var(y_left) * len(y_left) + np.var(y_right) * len(y_right)
+
                 if mse < best_mse:
-                    best_mse, best_feature, best_threshold = mse, feature, threshold
+                    best_mse = mse
+                    best_feature = feature_index
+                    best_thresh = threshold
+                    best_splits = (X[left_mask], y_left, X[right_mask], y_right)
 
-        return best_feature, best_threshold
+        if best_feature is None:
+            return TreeNode(value=np.mean(y))
 
-    def _calculate_mse(self, left_y, right_y):
-        mse = sum(np.var(group) * len(group) for group in [left_y, right_y] if len(group) > 0)
-        return mse
+        left_node = self._build_tree(best_splits[0], best_splits[1], depth + 1)
+        right_node = self._build_tree(best_splits[2], best_splits[3], depth + 1)
+        return TreeNode(feature_index=best_feature, threshold=best_thresh, left=left_node, right=right_node)
+
+    def _predict_sample(self, x, node):
+        if node.value is not None:
+            return node.value
+        if x[node.feature_index] <= node.threshold:
+            return self._predict_sample(x, node.left)
+        else:
+            return self._predict_sample(x, node.right)
 
     def predict(self, X):
-        X = np.array(X)  # Ensure input is numpy array
-        return np.array([self._predict_sample(x, self.tree) for x in X])
-
-    def _predict_sample(self, x, tree):
-        if not isinstance(tree, dict):
-            return tree
-        if x[tree["feature"]] <= tree["threshold"]:
-            return self._predict_sample(x, tree["left"])
-        return self._predict_sample(x, tree["right"])
-
-    # Add score method for evaluating R^2
-    def score(self, X, y):
-        y_pred = self.predict(X)
-        ss_total = np.sum((y - np.mean(y)) ** 2)
-        ss_residual = np.sum((y - y_pred) ** 2)
-        return 1 - (ss_residual / ss_total)
-
-    # Implementing get_params and set_params
-    def get_params(self, deep=True):
-        return {
-            "max_depth": self.max_depth,
-            "min_samples_split": self.min_samples_split,
-            "min_samples_leaf": self.min_samples_leaf
-        }
-
-    def set_params(self, **params):
-        for key, value in params.items():
-            setattr(self, key, value)
-        return self
+        X = np.array(X)
+        return np.array([self._predict_sample(x, self.root) for x in X])

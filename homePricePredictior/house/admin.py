@@ -29,7 +29,7 @@ class CustomUserAdmin(UserAdmin):
 # Register the Property model with custom admin
 @admin.register(Property)
 class PropertyAdmin(admin.ModelAdmin):
-    list_display = ('title', 'city', 'area', 'bedrooms', 'bathrooms', 'stories', 'mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'parking', 'prefarea', 'furnishingstatus', 'price', 'created_at')
+    list_display = ('title', 'city', 'area', 'bedrooms', 'bathrooms', 'stories', 'mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'parking','furnishingstatus', 'price', 'created_at')
     list_filter = ('city', 'bedrooms', 'bathrooms', 'furnishingstatus')
     search_fields = ('title', 'city')
 
