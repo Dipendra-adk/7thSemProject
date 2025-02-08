@@ -253,7 +253,6 @@ def seller_view(request):
         hotwaterheating = request.POST.get('hotwaterheating') == 'yes'
         airconditioning = request.POST.get('airconditioning') == 'yes'
         parking = request.POST.get('parking') == 'yes'
-        prefarea = request.POST.get('prefarea') == 'yes'
         furnishingstatus = request.POST.get('furnishingstatus')
         price = request.POST.get('price')
         property_images = request.FILES.getlist('property_images')
@@ -274,18 +273,16 @@ def seller_view(request):
                 hotwaterheating=hotwaterheating,
                 airconditioning=airconditioning,
                 parking=parking,
-                prefarea=prefarea,
                 furnishingstatus=furnishingstatus,
                 price=price,
-                seller=request.user
-                
+                seller=request.user  
             )
             property.save()
 
             for image in property_images:
                 property_image = PropertyImage(property=property, image=image)
                 property_image.save()
-            messages.success(request, 'Property listed successfully.')
+            messages.success(request, 'Property listed and request sent to admin for approval.')
             return redirect('seller_view')
         except ValidationError as e:
             messages.error(request, e.message)
