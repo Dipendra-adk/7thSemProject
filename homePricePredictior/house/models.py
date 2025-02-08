@@ -62,8 +62,6 @@ class Property(models.Model):
         ('ktm', 'Kathmandu'),
         ('bkt', 'Bhaktapur'),
         ('lat', 'Lalitpur'),
-        ('pkr', 'Pokhara'),
-        ('bir', 'Biratnagar'),
     ]
     FURNISHING_STATUS_CHOICES = [
         ('furnished', 'Furnished'),
@@ -82,11 +80,10 @@ class Property(models.Model):
     hotwaterheating = models.BooleanField(default=False)
     airconditioning = models.BooleanField(default=False)
     parking = models.IntegerField(default=0)
-    prefarea = models.BooleanField(default=False)
     furnishingstatus = models.CharField(max_length=20, choices=FURNISHING_STATUS_CHOICES, default='unfurnished')
     price = models.DecimalField(max_digits=20, decimal_places=2)
     property_image = models.ImageField(upload_to='property_images/')
-    is_approved = models.BooleanField(default=False)  # Approval field
+    is_approved = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
