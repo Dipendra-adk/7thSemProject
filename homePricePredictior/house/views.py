@@ -220,17 +220,69 @@ def buyer(request):
     })
 @user_passes_test(lambda u: u.is_superuser)
 def approve_property(request, property_id):
-    """Superuser approves a property"""
+    """Admin approves a property"""
     property_obj = Property.objects.get(id=property_id)
     property_obj.is_approved = True
     property_obj.save()
-    return redirect("buyer")  # Redirect to pending properties page
+    # return redirect("admin_dashboard")  # Redirect to pending properties page
+    subject = "Your Property Listing has been Approved!"
+    message = f"""
+    Hello {property_obj.seller.first_name} ({property_obj.seller.username}),
 
+    Congratulations! Your property "{property_obj.title}" has been approved and is now listed for sale on our platform.
 
+    Property Details:
+    - Title: {property_obj.title}
+    - Price: ${property_obj.price}
+    - Location: {property_obj.city}
+
+    You can now view your listing on your dashboard.
+
+    Regards,
+    Lean Coders
+    """
+
+    send_mail(
+        subject,
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        [property_obj.seller.email],  # Recipient email
+        fail_silently=False,
+    )
+
+    messages.success(request, "Property approved successfully and email sent to the user.")
+    return redirect("admin_dashboard")
+
+@user_passes_test(lambda u: u.is_superuser)
 def decline_property(request, property_id):
     property = get_object_or_404(Property, id=property_id)
+    # return redirect('admin_dashboard')  # Redirect back to the admin dashboard
+    
+    # Send email notification to the property owner
+    subject = "Your Property Listing has been Declined"
+    message = f"""
+    Hello {property.seller.first_name} ({property.seller.username}),
+
+    We regret to inform you that your property "{property.title}" has been declined for listing on our platform. 
+    If you believe this was a mistake or need clarification, feel free to contact support.
+
+    Thank you.
+    """
+    send_mail(
+        subject,
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        [property.seller.email],  # Recipient email
+        fail_silently=False,
+    )
+
     property.delete()  # This removes the property from the database
-    return redirect('admin_dashboard')  # Redirect back to the admin dashboard
+
+    # Display success message
+    messages.success(request, "Property declined successfully, and an email has been sent to the user.")
+
+    # Redirect back to the admin dashboard
+    return redirect("admin_dashboard")
 
 @user_passes_test(lambda u: u.is_superuser)
 def pending_properties(request):
@@ -285,7 +337,7 @@ def seller_view(request):
             for image in property_images:
                 property_image = PropertyImage(property=property, image=image)
                 property_image.save()
-            messages.success(request, 'Property listed successfully.')
+            messages.success(request, 'Property list is pending to approve from admin!')
             return redirect('seller_view')
         except ValidationError as e:
             messages.error(request, e.message)

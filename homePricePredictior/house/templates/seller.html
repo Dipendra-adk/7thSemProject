@@ -182,7 +182,8 @@
                     </select>
                   </div>
 
-                  {% comment %} <div class="col-md-4">
+                  {% comment %}
+                  <div class="col-md-4">
                     <label
                       >Preferred Area <span class="text-danger">*</span></label
                     >
@@ -190,7 +191,8 @@
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
                     </select>
-                  </div> {% endcomment %}
+                  </div>
+                  {% endcomment %}
                 </div>
                 <div class="row">
                   <div class="col-md-4">
@@ -254,7 +256,7 @@
     </div>
   </section>
 </main>
-{% endblock %} {% block extra_css %}
+{% endblock %} {% block extra_css %} {% comment %}
 <style>
   .alert-container .alert {
     padding: 15px;
@@ -309,4 +311,4 @@
     margin-bottom: 1rem;
   }
 </style>
-{% endblock %}
+{% endcomment %} {% endblock %}
