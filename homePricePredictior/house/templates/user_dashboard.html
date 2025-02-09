@@ -149,6 +149,7 @@
             <th>Title</th>
             <th>Location</th>
             <th>Price</th>
+            <th>Image</th>
             <th>Status</th>
             <th>Created At</th>
         </tr>
@@ -159,6 +160,15 @@
             <td>{{ property.title }}</td>
             <td>{{ property.city }}</td>
             <td>{{ property.price }}</td>
+            <td>
+              {% if property.images.all %}
+              <img
+                src="{{ property.images.first.image.url }}"
+                alt="Property Image"
+                width="100"
+              />
+              {% else %} No Image {% endif %}
+            </td>
             <td>
                 {% if property.is_approved %}
                     <span class="badge bg-success">Approved</span>
