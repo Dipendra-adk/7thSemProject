@@ -105,6 +105,18 @@ Dashboard{%endblock %} {% block content %}
           </ul>
         </div>
         {% endcomment %}
+        
+       
+        <!-- success messages for approval and send email to user -->
+        {% if messages %}
+        <div class="container mt-3">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
 
         <!-- Properties Approval Pending Section -->
         <div class="container mt-4">
