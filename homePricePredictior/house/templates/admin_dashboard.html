@@ -202,17 +202,20 @@ Dashboard{%endblock %} {% block content %}
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Datasets</h5>
-                <p class="card-text">
-                  Here are the datasets available for analysis:
-                </p>
                 <ul class="list-group">
-                  {% for dataset in datasets %}
-                  <li class="list-group-item">
-                    <a href="{{ dataset.url }}" target="_blank"
-                      >{{ dataset.name }}</a
-                    >
-                  </li>
-                  {% endfor %}
+                  {% if datasets %}
+                  <p class="card-text">
+                    Here are the datasets available for analysis:
+                  </p>
+                    {% for dataset in datasets %}
+                      <li class="list-group-item">
+                        <a href="{{ dataset.url }}" target="_blank"
+                        >{{ dataset.name }}</a>
+                      </li>
+                    {% endfor %}
+                  {% else %}
+                  <li class="list-group-item text-danger">No datasets available.</li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
