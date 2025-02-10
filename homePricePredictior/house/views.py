@@ -215,10 +215,59 @@ def user_dashboard(request):
     # return render(request, "user_dashboard.html")
 
 def admin_dashboard(request):
-    pending_properties = Property.objects.filter(is_approved=False)  # Fetch unapproved properties
-    return render(request, "admin_dashboard.html", {"properties": pending_properties})
+    datasets_dir = os.path.join('media', 'datasets')
+    dataset_files = []
+    
+    if os.path.exists(datasets_dir):
+        for file in os.listdir(datasets_dir):
+            if file.endswith('.csv'):
+                file_path = os.path.join(datasets_dir, file)
+                try:
+                    df = pd.read_csv(file_path)
+                    preview = df.head(5).to_html(classes='table table-striped table-bordered', index=False)
+                    dataset_files.append({
+                        'name': file,
+                        'path': file_path,
+                        'preview': preview,
+                        'total_rows': len(df)
+                    })
+                except Exception as e:
+                    print(f"Error reading {file}: {str(e)}")
 
+    pending_properties = Property.objects.filter(is_approved=False)
+    
+    context = {
+        'properties': pending_properties,
+        'datasets': dataset_files,
+    }
+    return render(request, "admin_dashboard.html", context)
 
+def view_dataset(request, filename):
+    try:
+        file_path = os.path.join('media', 'datasets', filename)
+        if not os.path.exists(file_path):
+            messages.error(request, f"Dataset file {filename} not found.")
+            return redirect('admin_dashboard')
+            
+        df = pd.read_csv(file_path)
+        dataset_html = df.to_html(
+            classes='table table-striped table-hover',
+            index=False,
+            escape=False
+        )
+        
+        context = {
+            'dataset_name': filename,
+            'dataset_html': dataset_html,
+            'total_rows': len(df),
+            'total_columns': len(df.columns)
+        }
+        return render(request, 'view_dataset.html', context)
+        
+    except Exception as e:
+        messages.error(request, f"Error viewing dataset: {str(e)}")
+        return redirect('admin_dashboard')
+    
 def buyer(request):
     properties = Property.objects.filter(is_approved=True).order_by('-created_at')
     return render(request, 'buyer.html', {
@@ -262,9 +311,6 @@ def approve_property(request, property_id):
 @user_passes_test(lambda u: u.is_superuser)
 def decline_property(request, property_id):
     property = get_object_or_404(Property, id=property_id)
-    # return redirect('admin_dashboard')  # Redirect back to the admin dashboard
-    
-    # Send email notification to the property owner
     subject = "Your Property Listing has been Declined"
     message = f"""
     Hello {property.seller.first_name} ({property.seller.username}),
@@ -278,16 +324,12 @@ def decline_property(request, property_id):
         subject,
         message,
         settings.DEFAULT_FROM_EMAIL,
-        [property.seller.email],  # Recipient email
+        [property.seller.email],
         fail_silently=False,
     )
 
-    property.delete()  # This removes the property from the database
-
-    # Display success message
+    property.delete()
     messages.success(request, "Property declined successfully, and an email has been sent to the user.")
-
-    # Redirect back to the admin dashboard
     return redirect("admin_dashboard")
 
 @user_passes_test(lambda u: u.is_superuser)
