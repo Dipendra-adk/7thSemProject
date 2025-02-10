@@ -148,6 +148,18 @@ Dashboard{%endblock %} {% block content %}
                 <td>{{ property.bathrooms }}</td>
                 <td>{{ property.stories }}</td>
                 <td>{{ property.furnishingstatus }}</td>
+                {% comment %}
+                <td>
+                  {% if property.images.all %}
+                  <img
+                    src="{{ property.images.first.image.url }}"
+                    alt="Property Image"
+                    width="100"
+                  />
+                  {% else %} No Image {% endif %}
+                </td>
+                {% endcomment %}
+
                 <td>
                   {% if property.images.all %}
                   <img
