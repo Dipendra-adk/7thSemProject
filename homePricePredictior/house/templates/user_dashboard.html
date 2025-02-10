@@ -34,6 +34,13 @@
       </div>
     </div>
   </div>
+  {% if messages %}
+  {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+      </div>
+  {% endfor %}
+{% endif %}
 
   <div class="container mt-4">
     <h3>Your Property Listings</h3>
@@ -46,6 +53,7 @@
           <th>Image</th>
           <th>Status</th>
           <th>Created At</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -80,6 +88,20 @@
             {% endif %}
           </td>
           <td>{{ property.created_at|date:"F d, Y" }}</td>
+          <td>
+            <a
+              href="{% url 'edit_property' property.id %}"
+              class="btn btn-success btn-sm"
+            >
+              Edit
+            </a>
+            <a
+              href="{% url 'delete_property' property.id %}"
+              class="btn btn-danger btn-sm"
+            >
+              Delete
+            </a>
+          </td>
         </tr>
         {% empty %}
         <tr>

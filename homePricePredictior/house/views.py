@@ -17,8 +17,6 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Property
-
 import re
 import os
 import numpy as np
@@ -345,6 +343,7 @@ def decline_property(request, property_id):
         return redirect("admin_dashboard")
 
     return redirect('admin_dashboard')
+
 @user_passes_test(lambda u: u.is_superuser)
 def pending_properties(request):
     """List properties pending approval"""
@@ -457,6 +456,32 @@ def property_detail(request, property_id):
             )
             
     return render(request, "property_detail.html", {"property": property_obj, "error_message": None})
+
+def edit_property(request, property_id):
+    property = get_object_or_404(Property, id=property_id, seller=request.user)
+
+    if request.method == 'POST':
+        property.title = request.POST.get('title')
+        property.price = request.POST.get('price')
+        property.city = request.POST.get('city')
+        property.area = request.POST.get('area')
+        property.description = request.POST.get('description')
+
+        property.save()
+        messages.success(request, "Property updated successfully!")
+        return redirect('user_dashboard')  # Redirect to the user's dashboard
+
+    return render(request, 'edit_property.html', {'property': property})
+
+def delete_property(request, property_id):
+    property = get_object_or_404(Property, id=property_id, seller=request.user)
+
+    if request.method == 'POST':
+        property.delete()
+        messages.success(request, "Property deleted successfully!")
+        return redirect('user_dashboard')
+
+    return render(request, 'confirm_delete.html', {'property': property})
 
 
 def predict(request):

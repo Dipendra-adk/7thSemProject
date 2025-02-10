@@ -1,0 +1,154 @@
+{% extends 'index.html' %} {% load static %} {% block content %}
+<main class="main">
+  <div class="page-title" data-aos="fade">
+    <div class="heading">
+      <div class="container">
+        <h2>Edit Property</h2>
+        <form method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              value="{{ property.title }}"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">City</label>
+            <select class="form-control" id="city" name="city" required>
+              <option value="">{{ property.city }}</option>
+              <option value="Kathmandu">Kathmandu</option>
+              <option value="Lalitpur">Lalitpur</option>
+              <option value="Bhaktapur">Bhaktapur</option>
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label>Area (Aana)</label>
+            <input
+              type="number"
+              class="form-control"
+              name="area"
+              value="{{ property.area }}"
+              required
+            />
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label>Bedrooms</label>
+              <input
+                type="number"
+                class="form-control"
+                name="bedrooms"
+                value="{{ property.bedrooms }}"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label>Bathrooms</label>
+              <input
+                type="number"
+                class="form-control"
+                name="bathrooms"
+                value="{{ property.bathrooms }}"
+                required
+              />
+            </div>
+            <div class="col-md-4">
+              <label>Floors</label>
+              <input
+                type="number"
+                class="form-control"
+                name="stories"
+                value="{{ property.stories }}"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label>Main Road Access</label>
+              <select class="form-control" name="mainroad" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label>Guest Room</label>
+              <select class="form-control" name="guestroom" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label>BaseMent</label>
+              <select class="form-control" name="basement" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label>Hot Water Heating</label>
+              <select class="form-control" name="hotwaterheating" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label>Air Conditioning</label>
+              <select class="form-control" name="airconditioning" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label>Parking (No. of Cars)</label>
+              <input
+                type="number"
+                class="form-control"
+                name="parking"
+                value="{{ property.parking }}"
+                required
+              />
+            </div>
+
+            <div class="col-md-4">
+              <label>Furnishing Status</label>
+              <select class="form-control" name="furnishingstatus">
+                <option value="furnished">Furnished</option>
+                <option value="semi-furnished">Semi-Furnished</option>
+                <option value="unfurnished">Unfurnished</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label>Price (Rs.)</label>
+              <input
+                type="number"
+                class="form-control"
+                name="price"
+                value="{{ property.price }}"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success">Update Property</button>
+          <a href="{% url 'user_dashboard' %}" class="btn btn-secondary"
+            >Cancel</a
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

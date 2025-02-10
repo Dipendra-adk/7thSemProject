@@ -67,7 +67,7 @@
           <div class="portfolio-description">
             <h3>Contact the Seller</h3>
 
-            {% if user.is_authenticated %}
+            {% if user.email == property.seller.email %}
 
             <!-- Message shown if the logged-in user is the seller -->
             <div class="alert alert-info">

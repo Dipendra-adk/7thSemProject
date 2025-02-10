@@ -3,6 +3,7 @@ from house.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('signup/', signup_view, name='signup'),
     path('login/', login_view, name='login'),
@@ -23,4 +24,6 @@ urlpatterns = [
     path("admin-dashboard/", admin_dashboard, name="admin_dashboard"),
     path('view-dataset/<str:filename>/', view_dataset, name='view_dataset'),
     path('decline_property/<int:property_id>/', decline_property, name='decline_property'),
+    path('property/edit/<int:property_id>/', edit_property, name='edit_property'),
+    path('property/delete/<int:property_id>/', delete_property, name='delete_property'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
