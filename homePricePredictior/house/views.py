@@ -234,7 +234,7 @@ def admin_dashboard(request):
                 except Exception as e:
                     print(f"Error reading {file}: {str(e)}")
 
-    pending_properties = Property.objects.filter(is_approved=False)
+    pending_properties = Property.objects.filter(is_approved=False, decline_reason__isnull=True)
     
     context = {
         'properties': pending_properties,
@@ -337,8 +337,6 @@ def decline_property(request, property_id):
         [property.seller.email],
         fail_silently=False,
         )
-
-        property.delete()
         messages.success(request, "Property declined successfully, and an email has been sent to the user.")
         return redirect("admin_dashboard")
 

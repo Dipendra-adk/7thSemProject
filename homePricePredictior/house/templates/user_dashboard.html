@@ -45,7 +45,6 @@
           <th>Price</th>
           <th>Image</th>
           <th>Status</th>
-          <th>Details</th>
           <th>Created At</th>
         </tr>
       </thead>
@@ -78,55 +77,6 @@
             <span class="badge bg-danger">Declined</span>
             {% else %}
             <span class="badge bg-warning">Pending</span>
-            {% endif %}
-          </td>
-          <td>
-            {% if property.decline_reason %}
-            <button
-              type="button"
-              class="btn btn-sm btn-info"
-              data-bs-toggle="modal"
-              data-bs-target="#declineReasonModal{{ property.id }}"
-            >
-              View Reason
-            </button>
-
-            <!-- Decline Reason Modal -->
-            <div
-              class="modal fade"
-              id="declineReasonModal{{ property.id }}"
-              tabindex="-1"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">
-                      Decline Reason for {{ property.title }}
-                    </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    <p><strong>Reason for declining:</strong></p>
-                    <p>{{ property.decline_reason }}</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
             {% endif %}
           </td>
           <td>{{ property.created_at|date:"F d, Y" }}</td>
