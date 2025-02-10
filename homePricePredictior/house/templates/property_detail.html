@@ -1,7 +1,6 @@
-{% extends 'index.html' %} {% block title %}Seller Detail{% endblock %}
-<!--jfghsd-->
-{% block content %} {% load static %}
-
+{% extends 'index.html' %} {% load static %}
+<!--nfdkgjsd-->
+{% block title %}Seller Detail{% endblock %} {% block content %}
 <main class="main">
   <!-- Page Title -->
   <div class="page-title" data-aos="fade">
@@ -63,10 +62,18 @@
           </div>
         </div>
 
+        <!-- Contact Seller Section -->
         <div class="col-lg-8" data-aos="fade-up">
           <div class="portfolio-description">
             <h3>Contact the Seller</h3>
 
+            {% if user.is_authenticated %}
+
+            <!-- Message shown if the logged-in user is the seller -->
+            <div class="alert alert-info">
+              You cannot contact yourself regarding your own property.
+            </div>
+            {% else %}
             <!-- Display error message if form validation fails -->
             {% if error_message %}
             <div class="alert alert-danger">{{ error_message }}</div>
@@ -110,6 +117,7 @@
                 Contact Seller
               </button>
             </form>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -117,5 +125,4 @@
   </section>
   <!-- /Real Estate 2 Section -->
 </main>
-
 {% endblock %}
