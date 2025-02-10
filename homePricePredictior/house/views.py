@@ -216,6 +216,8 @@ def user_dashboard(request):
 
 def admin_dashboard(request):
     pending_properties = Property.objects.filter(is_approved=False)  # Fetch unapproved properties
+
+
     return render(request, "admin_dashboard.html", {"properties": pending_properties})
 
 

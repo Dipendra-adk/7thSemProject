@@ -1,0 +1,87 @@
+.real-estate .card {
+  background-color: var(--background-color);
+  color: var(--default-color);
+  border: none;
+  position: relative;
+  border-radius: 0px;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.real-estate .card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(0, 0, 0, 0.9) 75%
+  );
+  z-index: 2;
+}
+
+.real-estate .card img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.real-estate .card .card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 30px;
+}
+
+.real-estate .card .card-body .sale-rent {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--contrast-color);
+  padding: 4px 20px;
+  border: 2px solid var(--accent-color);
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+
+.real-estate .card .card-body h3 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  border-left: 3px solid var(--accent-color);
+}
+
+.real-estate .card .card-body h3 a {
+  color: var(--contrast-color);
+}
+
+.real-estate .card .card-body .card-content {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  height: 80px;
+  visibility: hidden;
+  opacity: 0;
+  margin-top: 10px;
+  margin-bottom: -80px;
+  margin-left: -30px;
+  margin-right: -30px;
+  transition: 0.3s;
+  padding: 0 10px;
+}
+
+.real-estate .card .card-body .card-content .propery-info {
+  font-weight: 500;
+}
+
+.real-estate .card:hover .card-content {
+  margin-bottom: -30px;
+  visibility: visible;
+  opacity: 1;
+}

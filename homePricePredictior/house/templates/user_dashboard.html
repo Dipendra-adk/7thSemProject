@@ -162,11 +162,14 @@
             <td>{{ property.price }}</td>
             <td>
               {% if property.images.all %}
-              <img
+              <a href="{{ property.images.first.image.url }}" target="_blank">
+                <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 10px;"
                 src="{{ property.images.first.image.url }}"
                 alt="Property Image"
                 width="100"
               />
+              </a>
+              
               {% else %} No Image {% endif %}
             </td>
             <td>

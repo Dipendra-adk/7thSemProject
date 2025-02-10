@@ -1,4 +1,6 @@
-{% extends 'index.html' %} {% load static %} {% comment %} {% block title%}Admin
+{% extends 'index.html' %} {% load static %} 
+
+{% comment %} {% block title%}Admin
 Dashboard{%endblock %} {% block content %}
 <main class="main">
   <div class="page-title">
@@ -162,11 +164,13 @@ Dashboard{%endblock %} {% block content %}
 
                 <td>
                   {% if property.images.all %}
-                  <img
+                  <a href="{{ property.images.first.image.url }}" target="_blank">
+                    <img style="width: 150px; height: 150px; object-fit: cover; border-radius: 15px;"
                     src="{{ property.images.first.image.url }}"
                     alt="Property Image"
                     width="100"
                   />
+                  </a>
                   {% else %} No Image {% endif %}
                 </td>
                 <td>Rs. {{ property.price }}</td>
@@ -221,6 +225,8 @@ Dashboard{%endblock %} {% block content %}
             </div>
           </div>
         </div>
+        
+
       </div>
     </div>
   </div>
