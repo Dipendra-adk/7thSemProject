@@ -68,6 +68,10 @@ class Property(models.Model):
         ('semi_furnished', 'Semi-furnished'),
         ('unfurnished', 'Unfurnished'),
     ]
+    # SALE_STATUS_CHOICES = [
+    #     ('available', 'Available'),
+    #     ('sold', 'Sold'),
+    # ]
     title = models.CharField(max_length=200)
     city = models.CharField(max_length=100, choices=CITY_CHOICES)
     area = models.DecimalField(max_digits=10, decimal_places=2)
@@ -85,6 +89,11 @@ class Property(models.Model):
     property_image = models.ImageField(upload_to='property_images/')
     is_approved = models.BooleanField(default=False)
     decline_reason = models.TextField(null=True, blank=True)
+    # sale_status = models.CharField(
+    #     max_length=20, 
+    #     choices=SALE_STATUS_CHOICES, 
+    #     default='available'
+    # )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

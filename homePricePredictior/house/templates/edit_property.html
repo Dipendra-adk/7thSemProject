@@ -4,25 +4,29 @@
     <div class="heading">
       <div class="container">
         <h2>Edit Property</h2>
-        <form method="POST">
+
+        <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input
               type="text"
               class="form-control"
+              id="title"
               name="title"
               value="{{ property.title }}"
               required
             />
           </div>
           <div class="mb-3">
-            <label for="price" class="form-label">City</label>
+            <label for="city" class="form-label">City</label>
             <select class="form-control" id="city" name="city" required>
-              <option value="">{{ property.city }}</option>
-              <option value="Kathmandu">Kathmandu</option>
-              <option value="Lalitpur">Lalitpur</option>
-              <option value="Bhaktapur">Bhaktapur</option>
+                {% for value, display in city_choices %}
+                    <option value="{{ value }}" 
+                            {% if value == property.city %}selected{% endif %}>
+                        {{ display }}
+                    </option>
+                {% endfor %}
             </select>
           </div>
           <div class="form-group mb-3">
@@ -69,52 +73,50 @@
           </div>
           <div class="row">
             <div class="col-md-4">
-              <label>Main Road Access</label>
-              <select class="form-control" name="mainroad" required>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+                <label>Main Road Access</label>
+                <select class="form-control" name="mainroad" required>
+                    <option value="True" {% if property.mainroad %}selected{% endif %}>Yes</option>
+                    <option value="False" {% if not property.mainroad %}selected{% endif %}>No</option>
+                </select>
             </div>
-
             <div class="col-md-4">
-              <label>Guest Room</label>
-              <select class="form-control" name="guestroom" required>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+                <label>Guest Room</label>
+                <select class="form-control" name="guestroom" required>
+                    <option value="True" {% if property.guestroom %}selected{% endif %}>Yes</option>
+                    <option value="False" {% if not property.guestroom %}selected{% endif %}>No</option>
+                </select>
             </div>
-
             <div class="col-md-4">
-              <label>BaseMent</label>
-              <select class="form-control" name="basement" required>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+                <label>Basement</label>
+                <select class="form-control" name="basement" required>
+                    <option value="True" {% if property.basement %}selected{% endif %}>Yes</option>
+                    <option value="False" {% if not property.basement %}selected{% endif %}>No</option>
+                </select>
             </div>
-          </div>
-          <div class="row">
+        </div>
+        <div class="row">
             <div class="col-md-4">
-              <label>Hot Water Heating</label>
-              <select class="form-control" name="hotwaterheating" required>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+                <label>Hot Water Heating</label>
+                <select class="form-control" name="hotwaterheating" required>
+                    <option value="True" {% if property.hotwaterheating %}selected{% endif %}>Yes</option>
+                    <option value="False" {% if not property.hotwaterheating %}selected{% endif %}>No</option>
+                </select>
             </div>
-
             <div class="col-md-4">
-              <label>Air Conditioning</label>
-              <select class="form-control" name="airconditioning" required>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+                <label>Air Conditioning</label>
+                <select class="form-control" name="airconditioning" required>
+                    <option value="True" {% if property.airconditioning %}selected{% endif %}>Yes</option>
+                    <option value="False" {% if not property.airconditioning %}selected{% endif %}>No</option>
+                </select>
             </div>
-          </div>
+        </div>
           <div class="row">
             <div class="col-md-4">
               <label>Parking (No. of Cars)</label>
               <input
                 type="number"
                 class="form-control"
+                id="parking"
                 name="parking"
                 value="{{ property.parking }}"
                 required
@@ -123,11 +125,14 @@
 
             <div class="col-md-4">
               <label>Furnishing Status</label>
-              <select class="form-control" name="furnishingstatus">
-                <option value="furnished">Furnished</option>
-                <option value="semi-furnished">Semi-Furnished</option>
-                <option value="unfurnished">Unfurnished</option>
-              </select>
+              <select class="form-control" id="furnishingstatus" name="furnishingstatus">
+                {% for value, display in furnishing_choices %}
+                    <option value="{{ value }}" 
+                            {% if value == property.furnishingstatus %}selected{% endif %}>
+                        {{ display }}
+                    </option>
+                {% endfor %}
+            </select>
             </div>
 
             <div class="col-md-4">
@@ -140,6 +145,15 @@
                 required
               />
             </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="property_image">Property Image</label>
+            <input type="file" class="form-control-file" id="property_image" 
+                   name="property_image">
+            {% if property.property_image %}
+                <small>Current image: {{ property.property_image.name }}</small>
+            {% endif %}
           </div>
 
           <button type="submit" class="btn btn-success">Update Property</button>

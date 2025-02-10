@@ -224,7 +224,7 @@ def admin_dashboard(request):
                 file_path = os.path.join(datasets_dir, file)
                 try:
                     df = pd.read_csv(file_path)
-                    preview = df.head(5).to_html(classes='table table-striped table-bordered', index=False)
+                    preview = df.head(2).to_html(classes='table table-striped table-bordered', index=False)
                     dataset_files.append({
                         'name': file,
                         'path': file_path,
@@ -458,27 +458,65 @@ def property_detail(request, property_id):
     return render(request, "property_detail.html", {"property": property_obj, "error_message": None})
 
 def edit_property(request, property_id):
-    property = get_object_or_404(Property, id=property_id, seller=request.user)
-
+    # Get the property, ensuring the current user is the seller
+    property_obj = get_object_or_404(Property, id=property_id, seller=request.user)
+    
     if request.method == 'POST':
-        property.title = request.POST.get('title')
-        property.price = request.POST.get('price')
-        property.city = request.POST.get('city')
-        property.area = request.POST.get('area')
-        property.description = request.POST.get('description')
-
-        property.save()
-        messages.success(request, "Property updated successfully!")
-        return redirect('user_dashboard')  # Redirect to the user's dashboard
-
-    return render(request, 'edit_property.html', {'property': property})
+        # Convert boolean fields
+        boolean_fields = [
+            'mainroad', 'guestroom', 'basement', 
+            'hotwaterheating', 'airconditioning'
+        ]
+        
+        try:
+            # Update basic fields
+            property_obj.title = request.POST.get('title', '').strip()
+            property_obj.city = request.POST.get('city')
+            property_obj.area = request.POST.get('area')
+            property_obj.bedrooms = request.POST.get('bedrooms')
+            property_obj.bathrooms = request.POST.get('bathrooms')
+            property_obj.stories = request.POST.get('stories')
+            property_obj.parking = request.POST.get('parking')
+            property_obj.furnishingstatus = request.POST.get('furnishingstatus')
+            property_obj.price = request.POST.get('price')
+            
+            # Handle boolean fields
+            for field in boolean_fields:
+                # Convert string 'True'/'False' to actual boolean
+                value = request.POST.get(field)
+                if value == 'True':
+                    setattr(property_obj, field, True)
+                elif value == 'False':
+                    setattr(property_obj, field, False)
+            
+            # Handle image upload (optional)
+            if 'property_image' in request.FILES:
+                property_obj.property_image = request.FILES['property_image']
+            
+            # Save the updated property
+            property_obj.save()
+            
+            messages.success(request, f"Property '{property_obj.title}' updated successfully!")
+            return redirect('user_dashboard')
+        
+        except Exception as e:
+            # Log the error for debugging
+            print(f"Error updating property: {e}")
+            messages.error(request, "An error occurred while updating the property.")
+    
+    # For GET request, render the edit page
+    return render(request, 'edit_property.html', {
+        'property': property_obj,
+        'city_choices': Property.CITY_CHOICES,
+        'furnishing_choices': Property.FURNISHING_STATUS_CHOICES
+    })
 
 def delete_property(request, property_id):
     property = get_object_or_404(Property, id=property_id, seller=request.user)
 
     if request.method == 'POST':
         property.delete()
-        messages.success(request, "Property deleted successfully!")
+        messages.success(request, f"Property '{property.title}' deleted successfully!")
         return redirect('user_dashboard')
 
     return render(request, 'confirm_delete.html', {'property': property})
