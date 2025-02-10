@@ -17,6 +17,8 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from .models import Property
+
 import re
 import os
 import numpy as np
@@ -327,8 +329,10 @@ def decline_property(request, property_id):
         We regret to inform you that your property "{property.title}" has been declined for listing on our platform. 
         If you believe this was a mistake or need clarification, feel free to contact support.
         
-        Reason for declining: {decline_reason}
-        Thank you.
+        Reason of declined:
+        {decline_reason}
+        Thank you!
+        Lean Coders
         """
         send_mail(
         subject,
@@ -410,7 +414,7 @@ def property_detail(request, property_id):
         sender_name = request.POST.get("sender_name")
         sender_email = request.POST.get("sender_email")
         content = request.POST.get("content")
-        
+    
         if sender_name and sender_email and content:
             message = Message(
                 sender_name=sender_name,
