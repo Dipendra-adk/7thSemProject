@@ -1,114 +1,6 @@
-
-{% extends 'index.html' %}
-
-{% load static %}
-{% comment %} 
-
-{% block title%}User Dashboard{%endblock%}
-{% block content %}
-<main class="main">
-  <div class="page-title">
-    <div class="heading">
-      <div class="container">
-        <div class="row d-flex justify-content-center text-center">
-          <div class="col-lg-8">
-            {% if user.is_staff or user.is_superuser %}
-            <h1>Admin Dashboard</h1>
-            {% else %}
-            <h1>User Dashboard</h1>
-            {% endif %}
-            <p class="mb-0">
-              "Welcome, {{ user.first_name }}! Here's your dashboard."
-            </p>
-          </div> {% endcomment %}
-      <!-- User Information -->
-      {% comment %} <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">User Profile</h5>
-            {% if not user.is_staff or not user.is_superuser %}
-            <p class="card-text">
-              <strong>Username:</strong> {{ user.first_name }}
-            </p>
-            {% endif %}
-            <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
-            <p class="card-text">
-              <strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}
-            </p>
-          </div>
-        </div>
-      </div> {% endcomment %}
-
-      <!-- Admin Section (Visible only to Admin) -->
-      {% comment %} {% if user.is_staff or user.is_superuser %}
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Admin Controls</h5>
-            <p class="card-text">Manage all operations and datasets.</p>
-            <a href="{% url 'admin:index' %}" class="btn btn-danger">
-              <i class="bi bi-gear-fill"></i> Admin Panel
-            </a>
-          </div>
-        </div>
-      </div>
-      {% endif %}
-    </div> {% endcomment %}
-
-    <!-- Properties Approval pending section -->
-    {% comment %} {% if user.is_staff or user.is_superuser %}
-    <h3>Pending Properties for Approval</h3>
-<ul>
-  {% for property in properties %}
-  <li>
-    <strong>{{ property.title }}</strong> - {{ property.description }}
-    <br />
-    <a href="{% url 'approve_property' property.id %}" class="btn btn-success">
-      Approve
-    </a>
-  </li>
-  {% empty %}
-  <li>No pending properties.</li>
-  {% endfor %}
-</ul>
-{% endif %}
- {% endcomment %}
-
-    <!-- Datasets Section -->
-    {% comment %} {% if user.is_staff or user.is_superuser %}
-    <div class="row mt-4">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Datasets</h5>
-            <p class="card-text">
-              Here are the datasets available for analysis:
-            </p>
-            <ul class="list-group">
-              {% for dataset in datasets %}
-              <li class="list-group-item">
-                <a href="{{ dataset.url }}" target="_blank"
-                  >{{ dataset.name }}</a
-                >
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-  </div>
-</main>
-{% endblock %} {% endcomment %}
-
-
-
-
-
-
-{% block title%}User Dashboard{%endblock%}
-{% block content %}
+{% extends 'index.html' %} {% load static %} {% block title %}User Dashboard
+<!--bfhjfkj-->
+{%endblock %} {% block content %}
 <main class="main">
   <div class="page-title">
     <div class="heading">
@@ -129,67 +21,125 @@
                 <p class="card-text">
                   <strong>Username:</strong> {{ user.first_name }}
                 </p>
-                <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                <p class="card-text">
+                  <strong>Email:</strong> {{ user.email }}
+                </p>
                 <p class="card-text">
                   <strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}
                 </p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 
-  <h3>Your Property Listings</h3>
-<table class="table">
-    <thead>
+  <div class="container mt-4">
+    <h3>Your Property Listings</h3>
+    <table class="table">
+      <thead>
         <tr>
-            <th>Title</th>
-            <th>Location</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Status</th>
-            <th>Created At</th>
+          <th>Title</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>Image</th>
+          <th>Status</th>
+          <th>Details</th>
+          <th>Created At</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         {% for property in user_properties %}
         <tr>
-            <td>{{ property.title }}</td>
-            <td>{{ property.city }}</td>
-            <td>{{ property.price }}</td>
-            <td>
-              {% if property.images.all %}
-              <a href="{{ property.images.first.image.url }}" target="_blank">
-                <img style="width: 70px; height: 70px; object-fit: cover; border-radius: 10px;"
+          <td>{{ property.title }}</td>
+          <td>{{ property.city }}</td>
+          <td>Rs. {{ property.price }}</td>
+          <td>
+            {% if property.images.all %}
+            <a href="{{ property.images.first.image.url }}" target="_blank">
+              <img
+                style="
+                  width: 70px;
+                  height: 70px;
+                  object-fit: cover;
+                  border-radius: 10px;
+                "
                 src="{{ property.images.first.image.url }}"
                 alt="Property Image"
-                width="100"
               />
-              </a>
-              
-              {% else %} No Image {% endif %}
-            </td>
-            <td>
-                {% if property.is_approved %}
-                    <span class="badge bg-success">Approved</span>
-                {% elif property.is_decline %}
-                    <span class="badge bg-warning">Rejected</span>
-                {% else %}
-                    <span class="badge bg-warning">Pending</span>
-                {% endif %}
-            </td>
-            <td>{{ property.created_at|date:"F d, Y" }}</td>
+            </a>
+            {% else %} No Image {% endif %}
+          </td>
+          <td>
+            {% if property.is_approved %}
+            <span class="badge bg-success">Approved</span>
+            {% elif property.decline_reason %}
+            <span class="badge bg-danger">Declined</span>
+            {% else %}
+            <span class="badge bg-warning">Pending</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if property.decline_reason %}
+            <button
+              type="button"
+              class="btn btn-sm btn-info"
+              data-bs-toggle="modal"
+              data-bs-target="#declineReasonModal{{ property.id }}"
+            >
+              View Reason
+            </button>
+
+            <!-- Decline Reason Modal -->
+            <div
+              class="modal fade"
+              id="declineReasonModal{{ property.id }}"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">
+                      Decline Reason for {{ property.title }}
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p><strong>Reason for declining:</strong></p>
+                    <p>{{ property.decline_reason }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </td>
+          <td>{{ property.created_at|date:"F d, Y" }}</td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="4" class="text-center">You have not listed any properties yet.</td>
+          <td colspan="7" class="text-center">
+            You have not listed any properties yet.
+          </td>
         </tr>
         {% endfor %}
-    </tbody>
-</table>
-
+      </tbody>
+    </table>
+  </div>
 </main>
 {% endblock %}

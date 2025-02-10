@@ -311,27 +311,38 @@ def approve_property(request, property_id):
 @user_passes_test(lambda u: u.is_superuser)
 def decline_property(request, property_id):
     property = get_object_or_404(Property, id=property_id)
-    subject = "Your Property Listing has been Declined"
-    message = f"""
-    Hello {property.seller.first_name} ({property.seller.username}),
+    
+    if request.method == 'POST':
+        decline_reason = request.POST.get('decline_reason')
+        
+        # Update property status
+        property.is_approved = False
+        property.decline_reason = decline_reason  # You'll need to add this field to your Property model
+        property.save()
+        
+        subject = "Your Property Listing has been Declined"
+        message = f"""
+        Hello {property.seller.first_name} ({property.seller.username}),
 
-    We regret to inform you that your property "{property.title}" has been declined for listing on our platform. 
-    If you believe this was a mistake or need clarification, feel free to contact support.
-
-    Thank you.
-    """
-    send_mail(
+        We regret to inform you that your property "{property.title}" has been declined for listing on our platform. 
+        If you believe this was a mistake or need clarification, feel free to contact support.
+        
+        Reason for declining: {decline_reason}
+        Thank you.
+        """
+        send_mail(
         subject,
         message,
         settings.DEFAULT_FROM_EMAIL,
         [property.seller.email],
         fail_silently=False,
-    )
+        )
 
-    property.delete()
-    messages.success(request, "Property declined successfully, and an email has been sent to the user.")
-    return redirect("admin_dashboard")
+        property.delete()
+        messages.success(request, "Property declined successfully, and an email has been sent to the user.")
+        return redirect("admin_dashboard")
 
+    return redirect('admin_dashboard')
 @user_passes_test(lambda u: u.is_superuser)
 def pending_properties(request):
     """List properties pending approval"""
