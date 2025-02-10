@@ -152,9 +152,9 @@ Dashboard{%endblock %} {% block content %}
                 <td>{{ property.furnishingstatus }}</td>
                 {% comment %}
                 <td>
-                  {% if property_images %}
+                  {% if property.images.all %}
                   <img
-                    src="{{ property.image.url }}"
+                    src="{{ property.images.first.image.url }}"
                     alt="Property Image"
                     width="100"
                   />
@@ -175,7 +175,7 @@ Dashboard{%endblock %} {% block content %}
                 </td>
                 <td>Rs. {{ property.price }}</td>
                 <td>
-                  {{ property.seller.username }} ({{ property.seller.email }})
+                  {{ property.seller.first_name }} ({{ property.seller.email }})
                 </td>
                 <td>
                   <a
@@ -201,28 +201,34 @@ Dashboard{%endblock %} {% block content %}
         </div>
 
         <!-- Datasets Section -->
-        <div class="row mt-4">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Datasets</h5>
-                <ul class="list-group">
-                  {% if datasets %}
-                  <p class="card-text">
-                    Here are the datasets available for analysis:
-                  </p>
-                    {% for dataset in datasets %}
-                      <li class="list-group-item">
-                        <a href="{{ dataset.url }}" target="_blank"
-                        >{{ dataset.name }}</a>
-                      </li>
-                    {% endfor %}
-                  {% else %}
-                  <li class="list-group-item text-danger">No datasets available.</li>
-                  {% endif %}
-                </ul>
+        <div class="container mt-4">
+          <h3>Available Datasets</h3>
+          <div class="row">
+            {% for dataset in datasets %}
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">{{ dataset.name }}</h5>
+                </div>
+                <div class="card-body">
+                  <p>Total Rows: {{ dataset.total_rows }}</p>
+                  <div class="table-responsive preview-table">
+                    {{ dataset.preview|safe }}
+                  </div>
+                  <a
+                    href="{% url 'view_dataset' dataset.name %}"
+                    class="btn btn-primary mt-3"
+                  >
+                    View Full Dataset
+                  </a>
+                </div>
               </div>
             </div>
+            {% empty %}
+            <div class="col-12">
+              <p>No datasets available.</p>
+            </div>
+            {% endfor %}
           </div>
         </div>
         

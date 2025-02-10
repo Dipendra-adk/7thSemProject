@@ -21,4 +21,5 @@ urlpatterns = [
     path('buyer/decline/<int:property_id>/', decline_property, name='decline_property'),
     path("dashboard/", user_dashboard, name="user_dashboard"),
     path("admin-dashboard/", admin_dashboard, name="admin_dashboard"),
+    path('view-dataset/<str:filename>/', view_dataset, name='view_dataset'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

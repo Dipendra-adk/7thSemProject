@@ -130,6 +130,26 @@ print("Number of NaN values in target:", y_log.isnull().sum())
 # Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y_log, test_size=0.15, random_state=42)
 
+# Save train and test datasets
+# Combine features and target for saving
+train_data = pd.concat([pd.DataFrame(X_train, columns=X.columns), 
+                       pd.Series(y_train, name='Price_Log')], axis=1)
+test_data = pd.concat([pd.DataFrame(X_test, columns=X.columns), 
+                      pd.Series(y_test, name='Price_Log')], axis=1)
+
+# Add original price values
+train_data['Price_Original'] = np.expm1(train_data['Price_Log'])
+test_data['Price_Original'] = np.expm1(test_data['Price_Log'])
+
+# Save to CSV
+train_data.to_csv('media/datasets/train_dataset.csv', index=False)
+test_data.to_csv('media/datasets/test_dataset.csv', index=False)
+
+print("\nDatasets saved:")
+print(f"Training set shape: {train_data.shape}")
+print(f"Test set shape: {test_data.shape}")
+
+
 # Scale features
 feature_scaler = StandardScaler()
 X_train_scaled = feature_scaler.fit_transform(X_train)
