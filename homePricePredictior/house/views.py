@@ -371,7 +371,8 @@ def seller_view(request):
         try:
             if not title or not city or not area or not bedrooms or not bathrooms or not stories or not price:
                 raise ValidationError('Please fill out all required fields.')
-
+            
+    
             property = Property(
                 title=title,
                 city=city,
