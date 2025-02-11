@@ -364,7 +364,7 @@ def seller_view(request):
         basement = request.POST.get('basement') == 'yes'
         hotwaterheating = request.POST.get('hotwaterheating') == 'yes'
         airconditioning = request.POST.get('airconditioning') == 'yes'
-        parking = request.POST.get('parking') == 'yes'
+        parking = request.POST.get('parking')
         furnishingstatus = request.POST.get('furnishingstatus')
         price = request.POST.get('price')
         property_images = request.FILES.getlist('property_images')
