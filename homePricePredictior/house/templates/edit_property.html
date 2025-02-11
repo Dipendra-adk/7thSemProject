@@ -147,6 +147,19 @@
             </div>
           </div>
 
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label>Sale Status</label>
+              <select class="form-control" name="sale_status" required>
+                  {% for value, display in sale_status_choices %}
+                      <option value="{{ value }}" {% if value == property.sale_status %}selected{% endif %}>
+                          {{ display }}
+                      </option>
+                  {% endfor %}
+              </select>
+          </div>
+        </div>
+
           <div class="form-group mb-3">
             <label for="property_image">Property Image</label>
             <input type="file" class="form-control-file" id="property_image" 

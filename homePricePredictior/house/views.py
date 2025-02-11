@@ -387,7 +387,8 @@ def seller_view(request):
                 parking=parking,
                 furnishingstatus=furnishingstatus,
                 price=price,
-                seller=request.user  
+                seller=request.user,  
+                sale_status='available',
             )
             property.save()
 
@@ -403,7 +404,18 @@ def seller_view(request):
 
     return render(request, 'seller.html')
 
-
+@login_required
+def update_sale_status(request, property_id):
+    if request.method == 'POST':
+        property = get_object_or_404(Property, id=property_id, seller=request.user)
+        new_status = request.POST.get('sale_status')
+        if new_status in dict(Property.SALE_STATUS_CHOICES):
+            property.sale_status = new_status
+            property.save()
+            messages.success(request, 'Sale status updated successfully!')
+        else:
+            messages.error(request, 'Invalid sale status!')
+    return redirect('user_dashboard')
 
 def property_detail(request, property_id):
     property_obj = get_object_or_404(Property, id=property_id)
@@ -461,7 +473,7 @@ def edit_property(request, property_id):
     # Get the property, ensuring the current user is the seller
     property_obj = get_object_or_404(Property, id=property_id, seller=request.user)
     
-    if request.method == 'POST':
+    if request.method == 'POST':        
         # Convert boolean fields
         boolean_fields = [
             'mainroad', 'guestroom', 'basement', 
@@ -479,7 +491,7 @@ def edit_property(request, property_id):
             property_obj.parking = request.POST.get('parking')
             property_obj.furnishingstatus = request.POST.get('furnishingstatus')
             property_obj.price = request.POST.get('price')
-            
+            property_obj.sale_status = request.POST.get('sale_status')
             # Handle boolean fields
             for field in boolean_fields:
                 # Convert string 'True'/'False' to actual boolean
@@ -508,7 +520,8 @@ def edit_property(request, property_id):
     return render(request, 'edit_property.html', {
         'property': property_obj,
         'city_choices': Property.CITY_CHOICES,
-        'furnishing_choices': Property.FURNISHING_STATUS_CHOICES
+        'furnishing_choices': Property.FURNISHING_STATUS_CHOICES,
+        'sale_status_choices':Property.SALE_STATUS_CHOICES
     })
 
 def delete_property(request, property_id):
