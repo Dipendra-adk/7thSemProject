@@ -148,11 +148,15 @@
           </div>
 
           <div class="form-group mb-3">
-            <label for="property_image">Property Image</label>
+            <label for="property_image">Property Image:</label>
             <input type="file" class="form-control-file" id="property_image" 
-                   name="property_image">
-            {% if property.property_image %}
-                <small>Current image: {{ property.property_image.name }}</small>
+                   name="property_image"/>
+            {% if property.images.all %}
+                <small>Current image: {{ property.images.first.image.name|cut:"property_images/" }}<img  style="margin-top: 20px; height: 70px; width: 70px; object-fit: cover; border-radius: 10px;"
+                  src="{{ property.images.first.image.url }}"
+                  alt="House Image"
+                  class="img-fluid mb-4"
+                /></small>
             {% endif %}
           </div>
 
