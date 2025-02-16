@@ -1,6 +1,4 @@
-{% extends 'index.html' %} {% load static %} 
-
-{% comment %} {% block title%}Admin
+{% extends 'index.html' %} {% load static %} {% comment %} {% block title%}Admin
 Dashboard{%endblock %} {% block content %}
 <main class="main">
   <div class="page-title">
@@ -164,12 +162,21 @@ Dashboard{%endblock %} {% block content %}
 
                 <td>
                   {% if property.images.all %}
-                  <a href="{{ property.images.first.image.url }}" target="_blank">
-                    <img style="width: 150px; height: 150px; object-fit: cover; border-radius: 15px;"
-                    src="{{ property.images.first.image.url }}"
-                    alt="Property Image"
-                    width="100"
-                  />
+                  <a
+                    href="{{ property.images.first.image.url }}"
+                    target="_blank"
+                  >
+                    <img
+                      style="
+                        width: 150px;
+                        height: 150px;
+                        object-fit: cover;
+                        border-radius: 15px;
+                      "
+                      src="{{ property.images.first.image.url }}"
+                      alt="Property Image"
+                      width="100"
+                    />
                   </a>
                   {% else %} No Image {% endif %}
                 </td>
@@ -184,12 +191,15 @@ Dashboard{%endblock %} {% block content %}
                   >
                     Approve
                   </a>
-                  <a
-                    href="{% url 'decline_property' property.id %}"
+                  <button
                     class="btn btn-danger btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#declineModal"
+                    data-property-id="{{ property.id }}"
+                    data-property-title="{{ property.title }}"
                   >
                     Decline
-                  </a>
+                  </button>
                 </td>
               </tr>
               {% endfor %}
@@ -200,6 +210,57 @@ Dashboard{%endblock %} {% block content %}
           {% endif %}
         </div>
 
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="declineModal"
+          tabindex="-1"
+          aria-labelledby="declineModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="declineModalLabel">
+                  Decline Property: <span id="propertyTitle"></span>
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <form method="POST" id="declineForm">
+                {% csrf_token %}
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="decline_reason">Reason for Declining:</label>
+                    <textarea
+                      class="form-control"
+                      id="decline_reason"
+                      name="decline_reason"
+                      rows="3"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-danger">
+                    Decline Property
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         <!-- Datasets Section -->
         <div class="container mt-4">
           <h3>Available Datasets</h3>
@@ -231,10 +292,23 @@ Dashboard{%endblock %} {% block content %}
             {% endfor %}
           </div>
         </div>
-        
-
       </div>
     </div>
   </div>
 </main>
-{% endblock %}
+{% block extra_js %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const declineModal = document.getElementById("declineModal");
+    const declineForm = document.getElementById("declineForm");
+    const propertyTitleElement = document.getElementById("propertyTitle");
+    declineModal.addEventListener("show.bs.modal", function (event) {
+      const button = event.relatedTarget;
+      const propertyId = button.getAttribute("data-property-id");
+      const propertyTitle = button.getAttribute("data-property-title");
+      propertyTitleElement.textContent = propertyTitle;
+      declineForm.action = `/decline_property/${propertyId}/`;
+    });
+  });
+</script>
+{% endblock %} {% endblock %}
