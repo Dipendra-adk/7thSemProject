@@ -191,22 +191,6 @@ Dashboard{%endblock %} {% block content %}
                   >
                     Approve
                   </a>
-<<<<<<< HEAD
-                  {% comment %} <a
-                    href="{% url 'decline_property' property.id %}"
-=======
-                  <button
->>>>>>> 3c1b13f4f1b7c4d0dce5944d51ec5106ea9b09c3
-                    class="btn btn-danger btn-sm"
-                    data-bs-toggle="modal"
-                    data-bs-target="#declineModal"
-                    data-property-id="{{ property.id }}"
-                    data-property-title="{{ property.title }}"
-                  >
-                    Decline
-<<<<<<< HEAD
-                  </a> {% endcomment %}
-
                   <button
                     class="btn btn-danger btn-sm"
                     data-bs-toggle="modal"
@@ -215,8 +199,6 @@ Dashboard{%endblock %} {% block content %}
                     data-property-title="{{ property.title }}"
                   >
                     Decline
-=======
->>>>>>> 3c1b13f4f1b7c4d0dce5944d51ec5106ea9b09c3
                   </button>
                 </td>
               </tr>
@@ -228,7 +210,6 @@ Dashboard{%endblock %} {% block content %}
           {% endif %}
         </div>
 
-<<<<<<< HEAD
            <!-- Modal -->
            <div
            class="modal fade"
@@ -281,59 +262,6 @@ Dashboard{%endblock %} {% block content %}
            </div>
          </div>
 
-=======
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="declineModal"
-          tabindex="-1"
-          aria-labelledby="declineModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="declineModalLabel">
-                  Decline Property: <span id="propertyTitle"></span>
-                </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <form method="POST" id="declineForm">
-                {% csrf_token %}
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label for="decline_reason">Reason for Declining:</label>
-                    <textarea
-                      class="form-control"
-                      id="decline_reason"
-                      name="decline_reason"
-                      rows="3"
-                      required
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button type="submit" class="btn btn-danger">
-                    Decline Property
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
->>>>>>> 3c1b13f4f1b7c4d0dce5944d51ec5106ea9b09c3
         <!-- Datasets Section -->
         <div class="container mt-4">
           <h3>Available Datasets</h3>
@@ -369,10 +297,6 @@ Dashboard{%endblock %} {% block content %}
     </div>
   </div>
 </main>
-<<<<<<< HEAD
-
-=======
->>>>>>> 3c1b13f4f1b7c4d0dce5944d51ec5106ea9b09c3
 {% block extra_js %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -388,9 +312,5 @@ Dashboard{%endblock %} {% block content %}
     });
   });
 </script>
-<<<<<<< HEAD
 {% endblock %}
 {% endblock %}
-=======
-{% endblock %} {% endblock %}
->>>>>>> 3c1b13f4f1b7c4d0dce5944d51ec5106ea9b09c3
