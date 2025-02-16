@@ -383,6 +383,32 @@ h6 {
   }
 }
 
+/* Auth button styles */
+.auth-item {
+  padding: 0;
+}
+
+.auth-button {
+  color: var(--contrast-color) !important;
+  background-color: var(--accent-color);
+  width: calc(100% - 40px);
+  margin: 10px 20px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  justify-content: center;
+}
+
+.auth-button i {
+  background: none !important;
+  margin: 0 8px 0 0 !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.auth-button:hover {
+  background-color: color-mix(in srgb, var(--accent-color), black 10%);
+}
+
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
