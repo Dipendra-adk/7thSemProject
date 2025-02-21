@@ -8,7 +8,11 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
-    <link rel="icon" href="{% static 'assets/img/home-favicon.png' %}" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="{% static 'assets/img/house-favicon-svg.svg' %}"
+      type="image/x-icon"
+    />
 
     <link
       href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
@@ -21,133 +25,123 @@
 
     <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
     {% block styles %} {% endblock %}
-
   </head>
   <body class="{% block body_class %}index-page{% endblock %}">
     <!-- Header -->
-    {% comment %} <header id="header" class="header d-flex align-items-center fixed-top">
+    <header id="header" class="header d-flex align-items-center fixed-top">
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
       >
         <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+          <img
+            style="width: 40px; height: 80px"
+            src="{% static 'assets/img/haunted-house.svg' %}"
+            alt="House Logo Error"
+          />
           <h1 class="sitename">City <span>Estate</span></h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'predict' %}">Predict</a></li>
-            <li><a href="{% url 'buyer' %}">Buy</a></li>
-            <li><a href="{% url 'seller_view' %}">Sell</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li>
+              <a
+                href="{% url 'home' %}"
+                style="font-weight: {% if request.path == '/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/' %}rgb(46, 202, 106){% else %}inherit{% endif %};"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'predict' %}"
+                style="font-weight: {% if request.path == '/predict/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/predict/' %}rgb(46, 202, 106){% else %}inherit{% endif %};"
+                >Predict</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'buyer' %}"
+                style="font-weight: {% if request.path == '/buyer/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/buyer/' %}rgb(46, 202, 106){% else %}inherit{% endif %};"
+                >Properties</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'seller_view' %}"
+                style="font-weight: {% if request.path == '/seller/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/seller/' %}rgb(46, 202, 106){% else %}inherit{% endif %};"
+                >Sell</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'contact' %}"
+                style="font-weight: {% if request.path == '/contact/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/contact/' %}rgb(46, 202, 106){% else %}inherit{% endif %};"
+                >Contact</a
+              >
+            </li>
 
-            {% if user.is_authenticated %}
-            <li>
-              <button type="button" class="btn btn-success">
-                <a href="{% url 'logout' %}">Logout</a></li>
-              </button>
-            </li>
-            <li>
-            {% else %}
-            <li> <button type="button" class="btn btn-success">
-              <a href="{% url 'login' %}">Login</a></li>
-            </button></li>
-            {% endif %}
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-      </div>
-    </header> {% endcomment %}
-
-
-
-    <header id="header" class="header d-flex align-items-center fixed-top">
-      <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-        <a href="{% url 'home' %}" class="logo d-flex align-items-center">
-          <h1 class="sitename">City <span>Estate</span></h1>
-        </a>
-    
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li>
-              <a href="{% url 'home' %}" 
-                 style="font-weight: {% if request.path == '/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Home</a>
-            </li>
-            <li>
-              <a href="{% url 'predict' %}" 
-                 style="font-weight: {% if request.path == '/predict/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/predict/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Predict</a>
-            </li>
-            <li>
-              <a href="{% url 'buyer' %}" 
-                 style="font-weight: {% if request.path == '/buyer/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/buyer/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Properties</a>
-            </li>
-            <li>
-              <a href="{% url 'seller_view' %}" 
-                 style="font-weight: {% if request.path == '/seller/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/seller/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Sell</a>
-            </li>
-            <li>
-              <a href="{% url 'contact' %}" 
-                 style="font-weight: {% if request.path == '/contact/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/contact/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Contact</a>
-            </li>
-    
-            {% comment %}
-            {% if user.is_authenticated %}
-              <li class="user-account">
-                <a href="{% url 'logout' %}" 
-                   class="btn btn-success" 
-                   style="font-weight: bold; color: white;">Logout</a>
-              </li>
-            {% else %}
-              <li class="user-account">
-                <a href="{% url 'login' %}" 
-                   class="btn btn-success" 
-                   style="font-weight: bold; color: white;">Login</a>
-              </li>
-            {% endif %}
-
-            {% endcomment %}
 
             <!-- User Authentication Section -->
-            {% if user.is_authenticated %}
-              <!-- User Dashboard Link -->
-              {% comment %} <li style="{% if request.resolver_match.url_name == 'dashboard' %}color: #28a745; font-weight: bold; border-bottom: 2px solid #28a745;{% endif %}">
-                <a href="{% url 'dashboard' %}">Dashboard</a>
-              </li> {% endcomment %}
-              {% if user.is_superuser %}
-              <li>
-                <a href="{% url 'admin_dashboard' %}" 
-                   style="font-weight: {% if request.path == '/admin_dashboard/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/admin_dashboard/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Dashboard</a>
-              </li>
-              {% else %}
-              <li>
-                <a href="{% url 'user_dashboard' %}" 
-                   style="font-weight: {% if request.path == '/user_dashboard/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/user_dashboard/' %}rgb(46, 202, 106){% else %}inherit{% endif %};">Dashboard</a>
-              </li>
-              {% endif %}
-
-              <!-- Logout with User Icon -->
-              <li>
-                <a href="{% url 'logout' %}" style="display: flex; align-items: center; color: #fff; background-color: #28a745; padding: 8px 12px; border-radius: 5px; text-decoration: none;">
-                  <i class="bi bi-person-circle" style="margin-right: 8px;"></i> Logout
-                </a>
-              </li>
+            {% if user.is_authenticated %} {% if user.is_superuser %}
+            <li>
+              <a
+                href="{% url 'admin_dashboard' %}"
+                style="font-weight: {% if request.path == '/admin_dashboard/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/admin_dashboard/' %}rgb(46, 202, 106){% else %}inherit{% endif %};"
+                >Dashboard</a
+              >
+            </li>
             {% else %}
-              <!-- Login with User Icon -->
-              <li>
-                <a href="{% url 'login' %}" style="display: flex; align-items: center; color: #fff; background-color: #28a745; padding: 8px 12px; border-radius: 5px; text-decoration: none;">
-                  <i class="bi bi-person-circle" style="margin-right: 8px;"></i> Login
-                </a>
-              </li>
+            <li>
+              <a
+                href="{% url 'user_dashboard' %}"
+                style="font-weight: {% if request.path == '/user_dashboard/' %}bold{% else %}normal{% endif %}; color: {% if request.path == '/user_dashboard/' %}rgb(46, 202, 106){% else %}inherit{% endif %};"
+                >Dashboard</a
+              >
+            </li>
+            {% endif %}
+
+            <!-- Logout with User Icon -->
+            <li>
+              <a
+                href="{% url 'logout' %}"
+                style="
+                  display: flex;
+                  align-items: center;
+                  color: #fff;
+                  background-color: #28a745;
+                  padding: 8px 12px;
+                  border-radius: 5px;
+                  text-decoration: none;
+                "
+              >
+                <i class="bi bi-person-circle" style="margin-right: 8px"></i>
+                Logout
+              </a>
+            </li>
+            {% else %}
+            <!-- Login with User Icon -->
+            <li>
+              <a
+                href="{% url 'login' %}"
+                style="
+                  display: flex;
+                  align-items: center;
+                  color: #fff;
+                  background-color: #28a745;
+                  padding: 8px 12px;
+                  border-radius: 5px;
+                  text-decoration: none;
+                "
+              >
+                <i class="bi bi-person-circle" style="margin-right: 8px"></i>
+                Login
+              </a>
+            </li>
             {% endif %}
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
     </header>
-     
-    
-  
-
 
     <!-- Content Section -->
     <main id="main">
@@ -164,17 +158,52 @@
           <strong class="px-1 sitename">City Estate</strong>
           <span>All Rights Reserved</span>
         </p>
-        <div class="credits">Developed by <a href="#">Lean Coders</a> – Powered by <span style="color: blue;">Coffee & Code</span> ☕💻</div>
         <div class="credits">
-          <a target="_blank" href="https://www.facebook.com/purush.brahman">Pursottam Bhandari&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-          </svg></a>&nbsp;&nbsp;
-          <a target="_blank" href="https://www.facebook.com/profile.php?id=100086716277989">Dipendra Adhikari&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-          </svg></a>&nbsp;&nbsp;
-          <a target="_blank" href="https://www.facebook.com/phanindrax">Phanindra Jaisi&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-          </svg></a>
+          Developed by <a href="#">Lean Coders</a> – Powered by
+          <span style="color: blue">Coffee & Code</span> ☕💻
+        </div>
+        <div class="credits">
+          <a target="_blank" href="https://www.facebook.com/purush.brahman"
+            >Pursottam Bhandari&nbsp;<svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-facebook"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+              /></svg></a
+          >&nbsp;&nbsp;
+          <a
+            target="_blank"
+            href="https://www.facebook.com/profile.php?id=100086716277989"
+            >Dipendra Adhikari&nbsp;<svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-facebook"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+              /></svg></a
+          >&nbsp;&nbsp;
+          <a target="_blank" href="https://www.facebook.com/phanindrax"
+            >Phanindra Jaisi&nbsp;<svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-facebook"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+              /></svg
+          ></a>
         </div>
       </div>
     </footer>
@@ -198,6 +227,5 @@
     <!-- Bootstrap JS (necessary for mobile menu toggle) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
-  {%block extra_js%}
-  {%endblock%}
+  {%block extra_js%} {%endblock%}
 </html>

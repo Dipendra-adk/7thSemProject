@@ -210,57 +210,58 @@ Dashboard{%endblock %} {% block content %}
           {% endif %}
         </div>
 
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="declineModal"
-          tabindex="-1"
-          aria-labelledby="declineModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="declineModalLabel">
-                  Decline Property: <span id="propertyTitle"></span>
-                </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <form method="POST" id="declineForm">
-                {% csrf_token %}
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label for="decline_reason">Reason for Declining:</label>
-                    <textarea
-                      class="form-control"
-                      id="decline_reason"
-                      name="decline_reason"
-                      rows="3"
-                      required
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button type="submit" class="btn btn-danger">
-                    Decline Property
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+           <!-- Modal -->
+           <div
+           class="modal fade"
+           id="declineModal"
+           tabindex="-1"
+           aria-labelledby="declineModalLabel"
+           aria-hidden="true"
+         >
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="declineModalLabel">
+                   Decline Property: <span id="propertyTitle"></span>
+                 </h5>
+                 <button
+                   type="button"
+                   class="btn-close"
+                   data-bs-dismiss="modal"
+                   aria-label="Close"
+                 ></button>
+               </div>
+               <form method="POST" id="declineForm">
+                 {% csrf_token %}
+                 <div class="modal-body">
+                   <div class="form-group">
+                     <label for="decline_reason">Reason for Declining:</label>
+                     <textarea
+                       class="form-control"
+                       id="decline_reason"
+                       name="decline_reason"
+                       rows="3"
+                       required
+                     ></textarea>
+                   </div>
+                 </div>
+                 <div class="modal-footer">
+                   <button
+                     type="button"
+                     class="btn btn-secondary"
+                     data-bs-dismiss="modal"
+                   >
+                     Close
+                   </button>
+                   <button type="submit" class="btn btn-danger">
+                     Decline Property
+                   </button>
+                 </div>
+               </form>
+             </div>
+           </div>
+         </div>
+
         <!-- Datasets Section -->
         <div class="container mt-4">
           <h3>Available Datasets</h3>
@@ -311,4 +312,5 @@ Dashboard{%endblock %} {% block content %}
     });
   });
 </script>
-{% endblock %} {% endblock %}
+{% endblock %}
+{% endblock %}
