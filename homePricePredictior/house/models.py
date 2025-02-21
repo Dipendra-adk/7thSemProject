@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
+from django.core.validators import MinValueValidator
 
 
 class CustomUserManager(BaseUserManager):
@@ -126,3 +127,86 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"Message from {self.name} - {self.subject}"
+
+
+
+class HousePricePrediction(models.Model):
+    CITY_CHOICES = [
+        ('Bhaktapur', 'Bhaktapur'),
+        ('Kathmandu', 'Kathmandu'),
+        ('Lalitpur', 'Lalitpur'),
+    ]
+    
+    ROAD_TYPE_CHOICES = [
+        ('Blacktopped', 'Blacktopped'),
+        ('Gravelled', 'Gravelled'),
+        ('Soil_Stabilized', 'Soil Stabilized'),
+    ]
+    
+    # Input Features
+    area = models.FloatField(
+        validators=[MinValueValidator(0.0)],
+        help_text="Area in square feet"
+    )
+    stories = models.FloatField(
+        validators=[MinValueValidator(0.0)],
+        help_text="Number of floors"
+    )
+    road_width = models.FloatField(
+        validators=[MinValueValidator(0.0)],
+        help_text="Width of road in feet"
+    )
+    city = models.CharField(
+        max_length=20,
+        choices=CITY_CHOICES,
+        help_text="City location"
+    )
+    road_type = models.CharField(
+        max_length=20,
+        choices=ROAD_TYPE_CHOICES,
+        help_text="Type of road"
+    )
+    
+    # Prediction Results
+    svm_prediction = models.FloatField(
+        null=True,
+        blank=True,
+        help_text="Price prediction from SVM model"
+    )
+    dt_prediction = models.FloatField(
+        null=True,
+        blank=True,
+        help_text="Price prediction from Decision Tree model"
+    )
+    
+    # Metadata
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "House Price Prediction"
+        verbose_name_plural = "House Price Predictions"
+    
+    def __str__(self):
+        return f"{self.area} sq.ft house in {self.city} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
+
+class MLModel(models.Model):
+    """Store ML model files and metadata"""
+    MODEL_TYPES = [
+        ('feature_scaler', 'Feature Scaler'),
+        ('svm', 'Support Vector Machine'),
+        ('decision_tree', 'Decision Tree'),
+        ('feature_names', 'Feature Names')
+    ]
+    
+    name = models.CharField(max_length=100)
+    model_type = models.CharField(max_length=20, choices=MODEL_TYPES)
+    model_file = models.FileField(upload_to='ml_models/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ['-uploaded_at']
+    
+    def __str__(self):
+        return f"{self.name} ({self.model_type})"

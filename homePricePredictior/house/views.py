@@ -12,7 +12,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Property, ContactMessage, PropertyImage, Message,User
+from .models import Property, ContactMessage, PropertyImage, Message,User, HousePricePrediction
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404, redirect
@@ -538,7 +538,6 @@ def delete_property(request, property_id):
 
 def predict(request):
     try:
-        # Load models and scalers
         feature_scaler = pickle.load(open('house/ml_models/saved_models/feature_scaler.pkl', 'rb'))
         svm_model = pickle.load(open('house/ml_models/saved_models/svm_model.pkl', 'rb'))
         dt_model = pickle.load(open('house/ml_models/saved_models/decision_tree.pkl', 'rb'))
@@ -547,13 +546,11 @@ def predict(request):
             feature_names = pickle.load(f)
         
         if request.method == 'POST':
-            # Get input values with validation
             try:
                 area = float(request.POST.get('area', 0))
                 stories = float(request.POST.get('stories', 0))
                 road_width = float(request.POST.get('road_width', 0))
                 
-                # Input validation
                 if area <= 0 or stories <= 0 or road_width <= 0:
                     raise ValueError("Input values must be positive numbers")
                 
@@ -563,7 +560,6 @@ def predict(request):
             city = request.POST.get('city')
             road_type = request.POST.get('road_type')
             
-            # Create input data dictionary
             input_data = {
                 'Floors': stories,
                 'Area': area,
@@ -576,18 +572,17 @@ def predict(request):
                 'Road_Type_Soil Stabilized': 1 if road_type == 'Soil_Stabilized' else 0,
             }
             
-            # Create DataFrame
             df = pd.DataFrame([input_data])
             df = df.reindex(columns=feature_names, fill_value=0)
             
-            # Scale features
+
             X_scaled = feature_scaler.transform(df)
             
-            # Get predictions (log scale)
+
             svm_pred_log = svm_model.predict(X_scaled)[0]
             dt_pred_log = dt_model.predict(X_scaled)[0]
             
-            # Transform to actual prices
+
             svm_pred_price = np.expm1(svm_pred_log)
             dt_pred_price = np.expm1(dt_pred_log)
             
@@ -598,7 +593,18 @@ def predict(request):
             svm_pred_price = np.clip(svm_pred_price)
             dt_pred_price = np.clip(dt_pred_price)
             
-           
+            try:
+                prediction = HousePricePrediction.objects.create(
+                    area=area,
+                    stories=stories,
+                    road_width=road_width,
+                    city=city,
+                    road_type=road_type,
+                    svm_prediction=svm_pred_price,
+                    dt_prediction=dt_pred_price
+                )
+            except Exception as db_error:
+                print(f"Database error: {str(db_error)}")
             
             return render(request, 'predict.html', {
                 'prediction_svm': f'Rs. {svm_pred_price:,.2f}',
