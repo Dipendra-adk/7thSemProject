@@ -1,7 +1,7 @@
 import numpy as np
 
 class SVR:
-    def __init__(self, C=5.0, epsilon=0.05, learning_rate=0.01, n_epochs=2000, decay=0.99, momentum=0.9):
+    def __init__(self, kernel='rbf', C=5.0, epsilon=0.05, learning_rate=0.01, n_epochs=2000, decay=0.99, momentum=0.9,gamma='scale'):
         self.C = C
         self.epsilon = epsilon
         self.learning_rate = learning_rate
@@ -12,6 +12,8 @@ class SVR:
         self.b = None
         self.velocity_w = None
         self.velocity_b = None
+        self.kernel = kernel
+        self.gamma = gamma
 
     def fit(self, X, y):
         X = np.array(X)

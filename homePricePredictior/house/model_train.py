@@ -3,8 +3,8 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
-from ml_models.svm_model import SVR
-from ml_models.decision_tree import DecisionTreeRegressor
+from sklearn.svm import SVR
+from sklearn.tree import DecisionTreeRegressor
 import pickle
 
 data = pd.read_csv("house/Final_cleaned_encoded_data.csv")
