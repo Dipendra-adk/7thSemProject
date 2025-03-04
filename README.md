@@ -47,3 +47,15 @@ This project is a House Price Prediction System developed to estimate property p
 * Get Predictions: Receive estimated house prices based on the provided details.
 * Compare Results: View and compare predictions from both Decision Tree and SVM models.
 
+## Screenshots
+
+## Technologies Used
+* Backend: Django
+* Frontend: HTML, CSS, JavaScript
+* Database: PostgreSQL
+* Machine Learning: scikit-learn
+
+## Contributors
+   [Dipendra Adhikari](https://github.com/Dipendra-adk}
+   Pursottam Bhandari
+   Phanendra Jaisi
