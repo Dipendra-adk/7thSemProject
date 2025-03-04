@@ -56,6 +56,6 @@ This project is a House Price Prediction System developed to estimate property p
 * Machine Learning: scikit-learn
 
 ## Contributors
-   [Dipendra Adhikari](https://github.com/Dipendra-adk}
-   Pursottam Bhandari
-   Phanendra Jaisi
+   * [Dipendra Adhikari](https://github.com/Dipendra-adk)
+   * [Pursottam Bhandari](https://github.com/pursottam1234)
+   * [Phanendra Jaisi](https://github.com/phanindraspk)
