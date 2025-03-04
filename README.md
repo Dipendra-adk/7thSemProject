@@ -49,10 +49,10 @@ This project is a House Price Prediction System developed to estimate property p
 
 ## Screenshots
 ### Login/Signup
-<img src="./homePricePredictior/ss/login_signup.png" alt="home" align="center" width="500" />
+<img src="./homePricePredictior/ss/login_signup.png" alt="home" style="align: center;" width="500" />
 
 ### Home Page
-<img src="./homePricePredictior/ss/home.png" alt="home" width="300" />
+<img src="./homePricePredictior/ss/home.png" alt="home" width="500" />
 ## Technologies Used
 * Backend: Django
 * Frontend: HTML, CSS, JavaScript
