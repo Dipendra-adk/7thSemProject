@@ -14,4 +14,13 @@ This project is a House Price Prediction System developed to estimate property p
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/Dipendra-adk/7thSemProject.git
+2. **Navigate to the Project Directory:**
+   ```bash
+   cd 7thSemProject/homePricePredictior
+3. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+4. Set Up the Database:
+   * Ensure PostgreSQL is installed and running.
+   * Create a database named house_price_db.
 
