@@ -7,7 +7,11 @@ This project is a House Price Prediction System developed to estimate property p
 - **Accurate Predictions:** Utilizes Decision Tree and SVM algorithms to provide reliable house price estimates.
 - **User-Friendly Interface:** Allows users to input property details effortlessly and receive instant predictions.
 - **Secure Authentication:** Ensures user data protection through integrated authentication mechanisms.
-- **City and Road Type Specific:** Supports property data from Kathmandu, Lalitpur, and Bhaktapur, with road types categorized as blacktopped, graveled, and soil stabilized.
+- Facilitates direct communication between buyers and sellers:
+  - Buyers can contact sellers by filling out a contact form with their message.
+  - Upon submission, an email is sent directly to the seller via the host user.
+- Automated notifications for property listings:
+  - Sellers receive an email notification when their listed properties are approved or declined by the admin.
 
 ## Installation
 
