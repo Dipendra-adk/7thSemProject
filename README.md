@@ -22,5 +22,28 @@ This project is a House Price Prediction System developed to estimate property p
    pip install -r requirements.txt
 4. Set Up the Database:
    * Ensure PostgreSQL is installed and running.
-   * Create a database named house_price_db.
+   * Create a database named homedb.
+     ```bash
+     DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME': 'homedb',
+           'USER': 'postgres',
+           'PASSWORD': 'admin',
+           'HOST': 'localhost',
+           'PORT': '',           
+       }
+     }
+   * Apply migrations:
+     ```bash
+     python manage.py migrate
+5. Run the Development Server:
+   ```bash
+   python manage.py runserver
+
+## Usage
+* Register or Log In: Create an account or log in with existing credentials.
+* Input Property Details: Enter information such as area in aana, number of floors, road width (in feet), city, and road type.
+* Get Predictions: Receive estimated house prices based on the provided details.
+* Compare Results: View and compare predictions from both Decision Tree and SVM models.
 
