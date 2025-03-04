@@ -48,11 +48,33 @@ This project is a House Price Prediction System developed to estimate property p
 * Compare Results: View and compare predictions from both Decision Tree and SVM models.
 
 ## Screenshots
-### Login/Signup
-<img src="./homePricePredictior/ss/login_signup.png" alt="home" style="align: center;" width="500" />
+### 1. Login/Signup
+<img src="./homePricePredictior/ss/login_signup.png" alt="home" width="500" />
 
-### Home Page
+### 2. Home Page
 <img src="./homePricePredictior/ss/home.png" alt="home" width="500" />
+
+### 3. Listing properties for buying
+<img src="./homePricePredictior/ss/properties.png" alt="properties" width="500" />
+
+### 4. Adding properties detail for selling
+<img src="./homePricePredictior/ss/sell_properties.png" alt="selling details" width="500" />
+
+### 5. contact
+<img src="./homePricePredictior/ss/contact.png" alt="contact" width="500" />
+
+### 6. User Dashboard
+<img src="./homePricePredictior/ss/user_dashboard.png" alt="User Dashboard" width="500" />
+
+### 7. Admin Dashboard
+<img src="./homePricePredictior/ss/admin_dashboard.png" alt="Admin Dashboard" width="500" />
+
+### 8. House Price Prediction
+<img src="./homePricePredictior/ss/price_prediction.png" alt="House Price Prediction" width="500" />
+
+### 9. Price Prediction result with both models
+<img src="./homePricePredictior/ss/prediction_result.png" alt="Prediction" width="500" />
+
 ## Technologies Used
 * Backend: Django
 * Frontend: HTML, CSS, JavaScript
