@@ -48,7 +48,8 @@ This project is a House Price Prediction System developed to estimate property p
 * Compare Results: View and compare predictions from both Decision Tree and SVM models.
 
 ## Screenshots
-
+### Login/Signup
+![Alt login/signup](./homePricePredictior/ss/login_signup.png)
 ## Technologies Used
 * Backend: Django
 * Frontend: HTML, CSS, JavaScript
