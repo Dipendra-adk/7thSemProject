@@ -31,9 +31,9 @@ This project is a House Price Prediction System developed to estimate property p
      DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql',
-           'NAME': 'homedb',
-           'USER': 'postgres',
-           'PASSWORD': 'admin',
+           'NAME': '',
+           'USER': '',
+           'PASSWORD': '',
            'HOST': 'localhost',
            'PORT': '',           
        }
